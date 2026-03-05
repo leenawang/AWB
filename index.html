@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AWB">
+<meta name="theme-color" content="#f8f7f4">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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"><link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEdklEQVR4nO2XW2xUVRSGv73PzJmWXhlKEQqhooSAEkRBIDwQERAkiKDGC0aCxPCgRhQUfVR8UGMChBASNPpgEINBQwxSQ0qIXLUKpEWbEsACtWGcXqDtzHTmnL2XD9PWlk5bvKWY+CeTOVlr9l7//tfl7FEiIgwi9GAG/5/Af5eAFRiockXAt3+DgGcg5aeffQNJ74+QWoHq9rv2bj7fQFtSUAoCN3C8wPUGK+nNLzUYNnwaozZiKS7UvPpQNvdNCmIF3vg8zrqFWRTna2qjhrf3xDl92aA1jBvhcFuxpuKcz/2TXV5fko2jgW6ke0AywNj095k6X1j6mzy8paXLVxs1wqNR2VOR7LLtPNou415uEh6Lynv74iIi8s5XcWF+RLaXJ0RExDOZIolkFEmrtBJ3lDjMmuZypMYjnkzLXFaZgphlzw+ptGLWUv2rx+o5IQhYhrjpcz450wXXUl3fkcc+iqbPLFmbLqRH7nFpqDNU1RkAzkcMs2YE2X04TkMbaK2Jk8v8u4ZQEMrBdaA9ZfjgCEyeHObF+TmIkE5DBvSqgS5mGpSCxVNc1jtw+KzHyAIoyIYtzw5l+cYUR39qITd+nmTVRQ5dSjC+9gzV+0ezuaKAT76oZsWi8ZQOfRylQqQnfu8qUP29Czo9Y19poigX1i4OU1oEqv4U7277BpWIgrWsXvUgJWNGce+Mp/n4o7dYuXIxlSermPfAOubMnc5nuzbiOA5K9SbQb6MYm87xEzNzyM3Jw9T9yJtrnmfT5l3QWs+pkzWMLR3FkmXzyMvPJZSVhxMIYIEp06awdPlcyvYfJxJpRimFtb3P2mcKABQWx9Gsmt5K9MCHbNx2iDUvPMWGDc9QWXmeqVNXYIzF0QrH0Yi1hEJBHJ0+V8X3PzNp0q0UFRUgIhkV6JOAiOA4mrKy46x96X1qzl7g6/3bWbRwJtZaJk4cy4QJpSxYMINIpIkdO77EGMPOnWVorTl4sILhwwvZunU9oZCLtYLOpHfGOWDSTbtp0y6BqTJ79nOyd++34nm++L7p8h87VinXrrXJlSuNsm/fUTlxokrKyyvkwIHvpKrqXNd+1maeASIiGQnYjhXl5RWybNlrUl8f7WG/UVhrxZj+1/TbBd1hjMFxnB42a21XXrsXWNqk0Drj8O2BfglYawGFUmQsoH8CN6zAv4V+2xCgL36dimTyd8486Wi9/tS7ORXoZF5zoS4G4LpB7QYDqrkl5icS7VYBJbcUhS5HGtvzh2QFYomUKRkRDvnGiG+tpFKeBINB1doW90ePGJYVLswLyp8dRB2BnYv10UQw4Oih+TlO09U2LysU0FdbYiZcmB8cNTwcarrW6rW0xfxkKmXdgKPdkKvqrjQmx4wcltXQ3OIV5uUEw4V5wb5i3Jwp6I7r+bXGEv7p6l9aS0cXZ19tiXlKKZVKelbEcvedt+cppVX328dA7TvgtbGzijs/ITfohAtzg43NrZ5SSlljpd3zRCmdcc2A+9/0KciE6zmL8Jen5aArMOh/zX4HF9wDp8gUzaoAAAAASUVORK5CYII=">
+<title>AWB Fiduciaire · V12 — 认知外骨骼</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'DM Sans','Noto Sans SC',sans-serif;min-height:100dvh;overscroll-behavior:none;letter-spacing:.01em;font-size:14px;background:var(--bg0);color:var(--tx);transition:background .3s,color .3s}
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-thumb{background:var(--bd);border-radius:10px}
+::-webkit-scrollbar-track{background:transparent}
+a{color:inherit;text-decoration:none}
+
+/* ═══ LIGHT THEME (DEFAULT) ═══ */
+:root{
+  --bg0:#f8f7f4;--bg1:#ffffff;--bg2:#faf9f6;--bg3:#f0efe8;
+  --bd:#e2e0d8;--bd2:#eae8e2;
+  --tx:#141412;--tx2:#4a4a48;--tx3:#7a7a76;
+  --ac:#1a3a5f;--acA:rgba(26,58,95,.06);--acB:rgba(26,58,95,.15);
+  --ok:#2d8a56;--okA:rgba(45,138,86,.08);
+  --wn:#c8882e;--wnA:rgba(200,136,46,.08);
+  --er:#c45454;--erA:rgba(196,84,84,.06);
+  --gy:#ccc;--r:8px;
+  --ring:#bbb;--ringW:2;--ringR:18;--ringSz:44;
+  --fs-xs:11px;--fs-sm:12px;--fs-md:13px;--fs-base:14px;--fs-lg:15px;--fs-xl:17px;--fs-2xl:24px;--fs-3xl:32px;
+  --card-p:16px;--card-r:10px;--card-gap:12px;
+  --green:#2d8a56;--greenA:rgba(45,138,86,.08);
+  --yellow:#c8882e;--yellowA:rgba(200,136,46,.08);
+  --red:#c45454;--redA:rgba(196,84,84,.06);
+  --black:#6b7280;--blackA:rgba(107,114,128,.06);
+  --shadow:0 1px 3px rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.03);
+  --shadow-lg:0 4px 16px rgba(0,0,0,.06),0 1px 4px rgba(0,0,0,.04);
+  --gold:#c8a86e;--goldA:rgba(200,168,110,.1)
+}
+
+/* ═══ DARK THEME ═══ */
+.dk{
+  --bg0:#0e0e12;--bg1:#161619;--bg2:#1c1c20;--bg3:#242428;
+  --bd:#2e2e34;--bd2:#222228;
+  --tx:#f0eee8;--tx2:#a0a0a8;--tx3:#6a6a72;
+  --ac:#7aaed4;--acA:rgba(122,174,212,.08);--acB:rgba(122,174,212,.2);
+  --ok:#6fcf97;--okA:rgba(111,207,151,.1);
+  --wn:#e4b860;--wnA:rgba(228,184,96,.1);
+  --er:#e87070;--erA:rgba(232,112,112,.08);
+  --gy:#3a3a40;
+  --green:#6fcf97;--greenA:rgba(111,207,151,.08);
+  --yellow:#e4b860;--yellowA:rgba(228,184,96,.08);
+  --red:#e87070;--redA:rgba(232,112,112,.06);
+  --black:#8b8fa0;--blackA:rgba(139,143,160,.08);
+  --shadow:0 1px 3px rgba(0,0,0,.2),0 4px 12px rgba(0,0,0,.15);
+  --shadow-lg:0 4px 16px rgba(0,0,0,.25)
+}
+
+/* ═══ TYPOGRAPHY ═══ */
+.heading{font-family:'Playfair Display','Noto Sans SC',serif;font-weight:600;letter-spacing:.01em}
+
+/* ═══ NAV BUTTONS ═══ */
+.nb{padding:8px 16px;border-radius:var(--r);font-size:13px;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--tx3);transition:all .2s;white-space:nowrap;letter-spacing:.02em}
+.nb.on{color:var(--ac);background:var(--acA);font-weight:600}
+.nb:hover:not(.on){color:var(--tx);background:var(--bg3)}
+
+/* ═══ STATUS BUTTONS ═══ */
+.sb{border-radius:6px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;border:1px solid;transition:.15s;-webkit-tap-highlight-color:transparent}
+.sb:active{transform:scale(1.08)}
+.ss{width:28px;height:28px;font-size:11px}
+.sm{width:34px;height:34px;font-size:13px}
+.sO{background:var(--greenA);color:var(--green);border-color:rgba(45,138,86,.25)}
+.sN{background:var(--yellowA);color:var(--yellow);border-color:rgba(200,136,46,.2)}
+.sI{background:var(--acA);color:var(--ac);border-color:var(--acB)}
+.sP{background:var(--bg3);color:var(--tx3);border-color:var(--bd)}
+.sE{background:var(--bg2);color:var(--tx3);border-color:var(--bd2)}
+
+/* ═══ CARDS ═══ */
+.cd{background:var(--bg1);border:1px solid var(--bd2);border-radius:var(--card-r);padding:var(--card-p);box-shadow:var(--shadow);transition:box-shadow .2s}
+.cd:hover{box-shadow:var(--shadow-lg)}
+.ki{border-radius:var(--card-r);background:var(--bg1);border:1px solid var(--bd2);padding:var(--card-p);box-shadow:var(--shadow)}
+
+/* ═══ MODAL ═══ */
+.ol{position:fixed;inset:0;background:rgba(0,0,0,.3);backdrop-filter:blur(12px);z-index:50;display:flex;align-items:flex-end;justify-content:center}
+.bx{background:var(--bg1);border:1px solid var(--bd);border-radius:16px 16px 0 0;width:100%;max-width:520px;max-height:88dvh;overflow-y:auto;animation:sheetUp .3s cubic-bezier(.16,1,.3,1);box-shadow:var(--shadow-lg)}
+@keyframes sheetUp{from{transform:translateY(40%);opacity:0}to{transform:none;opacity:1}}
+.bh{display:flex;align-items:center;padding:18px 20px;border-bottom:1px solid var(--bd2);position:sticky;top:0;background:var(--bg1);z-index:10;border-radius:16px 16px 0 0}
+
+/* ═══ INPUTS ═══ */
+.ip{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:var(--r);font-size:15px;font-family:inherit;outline:none;background:var(--bg0);color:var(--tx);-webkit-appearance:none;transition:border-color .2s,box-shadow .2s}
+.ip:focus{border-color:var(--ac);box-shadow:0 0 0 3px var(--acA)}
+
+/* ═══ PRIMARY BUTTON ═══ */
+.bb{padding:12px;border-radius:var(--r);background:var(--ac);color:#fff;font-size:14px;font-weight:600;border:none;cursor:pointer;width:100%;-webkit-tap-highlight-color:transparent;transition:.15s;letter-spacing:.03em;text-transform:uppercase;box-shadow:0 2px 8px rgba(26,58,95,.15)}
+.bb:hover{opacity:.9;box-shadow:0 4px 12px rgba(26,58,95,.2)}
+.bb:active{transform:scale(.97)}
+
+/* ═══ SECONDARY TEXT / TAGS ═══ */
+.t2{font-size:12px;color:var(--tx2);letter-spacing:.02em}
+.tg{padding:6px 12px;border-radius:var(--r);font-size:11px;cursor:pointer;border:1px solid var(--bd);display:inline-block;font-weight:500;-webkit-tap-highlight-color:transparent;transition:all .15s;letter-spacing:.03em;text-transform:uppercase;background:var(--bg1);color:var(--tx2)}
+.tg:hover{background:var(--bg3);color:var(--tx)}
+.tg:active{transform:scale(.95)}
+.tg.warn{background:var(--yellowA);color:var(--yellow);border-color:rgba(200,136,46,.2)}
+.tg.ac{background:var(--acA);color:var(--ac);border-color:var(--acB)}
+.tg.on{background:var(--acA);color:var(--ac);border-color:var(--acB);font-weight:600}
+
+/* ═══ TABLES ═══ */
+table{border-collapse:collapse;width:100%}
+th,td{padding:8px 10px;border-bottom:1px solid var(--bd2);font-size:12px}
+th{font-weight:600;position:sticky;top:0;z-index:5;color:var(--tx2);background:var(--bg1);text-transform:uppercase;letter-spacing:.06em;font-size:10px}
+
+/* ═══ CONTACT BUTTONS ═══ */
+.ct{height:36px;min-width:36px;border-radius:var(--r);background:var(--bg2);border:1px solid var(--bd);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:18px;color:var(--tx);-webkit-tap-highlight-color:transparent;transition:.15s}
+.ct:hover{background:var(--acA);border-color:var(--ac)}
+.ct:active{background:var(--acA);border-color:var(--ac)}
+
+/* ═══ MISC ═══ */
+.pr{transform:rotate(-90deg)}
+.vt{writing-mode:vertical-rl;display:inline-block;height:56px;line-height:1;font-size:10px;font-weight:400;color:var(--tx3);white-space:nowrap;padding:3px 0;letter-spacing:.02em}
+select{background:var(--bg0);color:var(--tx);border:1px solid var(--bd);border-radius:var(--r);font-family:inherit;font-size:14px;padding:8px;-webkit-appearance:none}
+textarea{resize:vertical}
+.lk{display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:var(--r);font-size:11px;color:var(--ac);cursor:pointer;border:1px solid var(--bd);text-decoration:none;transition:.15s}
+.lk:hover{background:var(--acA)}
+.divider{height:1px;background:var(--bd2);margin:6px 0}
+
+/* ═══ TRAFFIC LIGHTS ═══ */
+.tl{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.04em}
+.tl-g{background:var(--greenA);color:var(--green);border:1px solid rgba(45,138,86,.15)}
+.tl-y{background:var(--yellowA);color:var(--yellow);border:1px solid rgba(200,136,46,.15)}
+.tl-r{background:var(--redA);color:var(--red);border:1px solid rgba(196,84,84,.15)}
+.tl-b{background:var(--blackA);color:var(--black);border:1px solid rgba(107,114,128,.15)}
+
+/* ═══ COMMAND CENTER PANELS ═══ */
+.cmd-panel{background:var(--bg1);border:1px solid var(--bd2);border-radius:var(--card-r);padding:var(--card-p);display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow);transition:box-shadow .2s}
+.cmd-panel:hover{box-shadow:var(--shadow-lg)}
+.cmd-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid var(--bd2)}
+.cmd-title{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.1em}
+.cmd-count{font-size:24px;font-weight:800;line-height:1}
+.cmd-item{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--bd2);font-size:13px}
+.cmd-item:last-child{border-bottom:none}
+
+/* ═══ PIPELINE ═══ */
+.pipeline{display:flex;gap:2px;height:6px;border-radius:3px;overflow:hidden;background:var(--bg3)}
+.pipeline-seg{height:100%;border-radius:3px;transition:width .4s ease}
+
+/* ═══ RESPONSIVE NAV ═══ */
+.top-nav{display:flex}
+.bot-nav{display:none}
+@media(max-width:768px){
+  .top-nav{display:none}
+  .bot-nav{display:flex;position:fixed;bottom:0;left:0;right:0;background:var(--bg1);border-top:1px solid var(--bd2);z-index:40;justify-content:space-around;padding:6px 0 env(safe-area-inset-bottom);box-shadow:0 -2px 12px rgba(0,0,0,.04)}
+  .bnb{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 4px;border:none;background:none;color:var(--tx3);cursor:pointer;font-size:10px;font-family:inherit;min-width:48px;letter-spacing:.02em;-webkit-tap-highlight-color:transparent;transition:color .2s}
+  .bnb.on{color:var(--ac);font-weight:600}
+  .bnb .bi{font-size:18px;line-height:1}
+  .main-wrap{padding-bottom:72px!important}
+}
+@media(min-width:769px){
+  .ol{align-items:center;padding:20px}
+  .bx{border-radius:12px;max-width:520px}
+  .bh{border-radius:12px 12px 0 0}
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const{useState,useEffect,useMemo,useCallback,useRef,createRef}=React;
+const SK="awb-v12";
+const MZ=["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"];
+const TD=new Date().toISOString().slice(0,10);
+const CY=new Date().getFullYear();
+const CM=new Date().getMonth()+1;
+const GR=["Roberto","餐饮","企业","科技","机构","金融","航空","其他"];
+const CT={comptabilité:"会计",déclarations:"申报",IS:"源头税",TVA:"增值税",impôts:"所得税",taxes:"地方税",clôture:"结账"};
+
+// ═══ V12 服务类型 ═══
+const SVC_TYPES={fiscal:{l:"财税全包",s:"财税",c:"var(--ac)"},domicil:{l:"法人挂靠",s:"挂靠",c:"var(--green)"},consult:{l:"咨询顾问",s:"咨询",c:"#a78bfa"},hybrid:{l:"混合型",s:"混合",c:"var(--yellow)"}};
+const TK_DOM=[
+  {id:"dom_addr",s:"地址管理",dl:null,c:"domiciliation"},{id:"dom_mail",s:"信件转寄",dl:null,c:"domiciliation"},
+  {id:"dom_rc",s:"商事登记年检",dl:3,c:"domiciliation"},{id:"dom_fee",s:"挂靠费",dl:1,c:"domiciliation"},
+  {id:"dom_report",s:"年度汇报",dl:3,c:"domiciliation"},{id:"dom_renewal",s:"合同续签",dl:12,c:"domiciliation"}
+];
+const CT_DOM={domiciliation:"挂靠服务"};
+const tkForClient=(c)=>{const s=c.svc||"fiscal";if(s==="domicil")return TK_DOM;if(s==="consult")return[];if(s==="hybrid")return TK;return TK;};
+const ctForClient=(c)=>{const s=c.svc||"fiscal";if(s==="domicil")return{...CT_DOM};if(s==="consult")return{};return CT;};
+const PAL={"香槟金":"#c8a86e","银灰":"#9a9a9a","冰蓝":"#7aacbe","暖白":"#d4c8b0","玫瑰":"#b08888","翡翠":"#7daa88","石墨":"#6a6a72","琥珀":"#c49456"};
+const PC=["个人","家庭","健康","财务","旅行","学习","其他"];
+
+// ═══════════════════════════════════════
+// V10 新增：瑞士截止日引擎（26州）
+// ═══════════════════════════════════════
+const CANTONS={
+  GE:{n:"日内瓦",pp:3,pm:6,tva_s:[8,2],avs:1,is_q:[4,7,10,1],is_r:3},
+  VD:{n:"沃州",pp:3,pm:6,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  VS:{n:"瓦莱",pp:3,pm:6,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  NE:{n:"纳沙泰尔",pp:3,pm:6,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  FR:{n:"弗里堡",pp:3,pm:6,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  BE:{n:"伯尔尼",pp:3,pm:7,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  ZH:{n:"苏黎世",pp:3,pm:9,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  BS:{n:"巴塞尔城市",pp:3,pm:6,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  BL:{n:"巴塞尔乡村",pp:3,pm:6,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  LU:{n:"卢塞恩",pp:3,pm:6,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  ZG:{n:"楚格",pp:3,pm:7,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  AG:{n:"阿尔高",pp:3,pm:6,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  SG:{n:"圣加仑",pp:3,pm:6,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  TG:{n:"图尔高",pp:3,pm:6,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  SH:{n:"沙夫豪森",pp:3,pm:6,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  GR:{n:"格劳宾登",pp:3,pm:7,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  TI:{n:"提契诺",pp:3,pm:9,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  JU:{n:"汝拉",pp:3,pm:6,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  SO:{n:"索洛图恩",pp:3,pm:6,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  AR:{n:"外阿彭策尔",pp:3,pm:6,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  AI:{n:"内阿彭策尔",pp:3,pm:6,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  SZ:{n:"施维茨",pp:3,pm:6,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  OW:{n:"上瓦尔登",pp:3,pm:6,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  NW:{n:"下瓦尔登",pp:3,pm:6,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  UR:{n:"乌里",pp:3,pm:6,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+  GL:{n:"格拉鲁斯",pp:3,pm:6,tva_s:[8,2],avs:2,is_q:[4,7,10,1],is_r:3},
+};
+
+// ═══════════════════════════════════════
+// V10 新增：状态机引擎
+// ═══════════════════════════════════════
+// 业务状态流水线：待开始 → 等客户材料 → 处理中 → 内部审核 → 已完成 → 已交付
+const PIPELINE_STATES=[
+  {id:"QUEUE",l:"待开始",icon:"○",color:"var(--tx3)"},
+  {id:"WAIT_DOC",l:"等客户",icon:"⏳",color:"var(--yellow)"},
+  {id:"WORKING",l:"处理中",icon:"◐",color:"var(--ac)"},
+  {id:"REVIEW",l:"审核",icon:"◉",color:"#7c5cbf"},
+  {id:"DONE",l:"完成",icon:"✓",color:"var(--green)"},
+  {id:"DELIVERED",l:"已交付",icon:"✉",color:"var(--ok)"},
+  {id:"SKIP",l:"不适用",icon:"—",color:"var(--tx3)"}
+];
+const PS_MAP={};PIPELINE_STATES.forEach((s,i)=>PS_MAP[s.id]=i);
+
+// 红绿灯计算：基于截止日距离
+function trafficLight(deadlineMonth, currentMonth, status) {
+  if(!deadlineMonth) return 'none';
+  if(status==='DONE'||status==='DELIVERED'||status==='SKIP'||status==='O') return 'green';
+  const gap = deadlineMonth - currentMonth;
+  if(gap < 0) return 'black'; // 严重逾期
+  if(gap === 0) return 'red'; // 本月到期
+  if(gap === 1) return 'yellow'; // 下月到期
+  return 'green'; // 充足时间
+}
+
+// 26个任务定义（与V9兼容 + V10状态机扩展）
+const TK=[
+  {id:"journal",s:"总日记账",dl:3,c:"comptabilité"},{id:"amort",s:"资产折旧",dl:3,c:"comptabilité"},
+  {id:"salaires",s:"工资社保",dl:3,c:"comptabilité"},{id:"transitoire",s:"过渡分录",dl:3,c:"comptabilité"},
+  {id:"impots",s:"税费预提",dl:3,c:"comptabilité"},{id:"liquidites",s:"现金调整",dl:3,c:"comptabilité"},
+  {id:"honoraire",s:"会计费用",dl:3,c:"comptabilité"},{id:"avs",s:"AVS年报",dl:2,c:"déclarations"},
+  {id:"certif",s:"工资证明",dl:2,c:"déclarations"},{id:"bulletin",s:"付款单",dl:1,c:"déclarations"},
+  {id:"is1234",s:"源头税季报",dl:null,c:"IS"},{id:"is_recap",s:"源头税年报",dl:3,c:"IS"},
+  {id:"is_rectif",s:"源头税更正",dl:6,c:"IS"},{id:"tva_s06",s:"TVA上半年",dl:8,c:"TVA"},
+  {id:"tva_s12",s:"TVA下半年",dl:2,c:"TVA"},{id:"decl_pm",s:"公司税",dl:9,c:"impôts"},
+  {id:"decl_pp",s:"个人税",dl:9,c:"impôts"},{id:"tourisme",s:"旅游税",dl:3,c:"taxes"},
+  {id:"prof_comm",s:"行业税",dl:6,c:"taxes"},{id:"ccnt",s:"CCNT",dl:3,c:"taxes"},
+  {id:"cloture",s:"关账",dl:3,c:"clôture"},{id:"misepage",s:"排版",dl:4,c:"clôture"},
+  {id:"bilan",s:"三表",dl:4,c:"clôture"},{id:"journaux",s:"创建日记",dl:1,c:"clôture"},
+  {id:"extourne",s:"冲销",dl:1,c:"clôture"},{id:"repartition",s:"利润分配",dl:3,c:"clôture"},
+];
+
+// V9 兼容映射：旧状态 → 新状态
+const V9_TO_V10={"":"","N":"WAIT_DOC","/":"WORKING","O":"DONE","P":"SKIP"};
+const V10_TO_V9={"":"","QUEUE":"N","WAIT_DOC":"N","WORKING":"/","REVIEW":"/","DONE":"O","DELIVERED":"O","SKIP":"P"};
+
+// ═══════════════════════════════════════
+// 数据模型（兼容V9 + V10扩展）
+// ═══════════════════════════════════════
+const mc=o=>({id:0,n:"",m:0,g:"其他",ct:"",crm:30,lc:"",em:"",ph:"",wx:"",canton:"GE",svc:"fiscal",...o});
+const DC=[
+  mc({id:1,n:"Roberto, RailsConsultant SA",m:1670,g:"Roberto",ct:"Roberto"}),
+  mc({id:2,n:"Roberto, T Management SA",m:1770,g:"Roberto",ct:"Roberto"}),
+  mc({id:3,n:"Roberto, IT High Industry",m:1770,g:"Roberto",ct:"Roberto"}),
+  mc({id:4,n:"Roberto, Exact Level SA",g:"Roberto",ct:"Roberto",crm:60}),
+  mc({id:5,n:"Roberto, Tech Builder SA",g:"Roberto",ct:"Roberto",crm:60}),
+  mc({id:6,n:"Roberto, Alliance ESN",g:"Roberto",ct:"Roberto",crm:60}),
+  mc({id:7,n:"Roberto, German Capitals",g:"Roberto",ct:"Roberto",crm:60}),
+  mc({id:8,n:"王晓敏 餐馆",m:2600,g:"餐饮",ct:"王晓敏",crm:14}),
+  mc({id:9,n:"北京同仁堂瑞士公司",m:200,g:"企业",ct:"同仁堂"}),
+  mc({id:10,n:"CIMM Carbon & Energy SA",m:650,g:"企业",ct:"隋东燕",crm:21}),
+  mc({id:11,n:"奥林匹克艺术委员会 CMOA",m:740,g:"机构",ct:"CMOA"}),
+  mc({id:12,n:"郭露璐 Ruizé SA",m:650,g:"企业",ct:"郭露璐",crm:21}),
+  mc({id:13,n:"梁宇宁 MetaComputing SA",m:1500,g:"科技",ct:"梁宇宁",crm:14}),
+  mc({id:14,n:"航天宏图 Piesat SARL",m:947,g:"科技",ct:"Piesat",crm:21}),
+  mc({id:15,n:"陈恕萍 餐馆",m:750,g:"餐饮",ct:"陈恕萍",crm:21}),
+  mc({id:16,n:"蔻诗弥 SwissKossme Sarl",m:900,g:"企业",ct:"SwissKossme"}),
+  mc({id:17,n:"潘多资产 Pando AG",m:125,g:"金融",ct:"Pando"}),
+  mc({id:18,n:"FDS Sarl 陶玮",m:550,g:"企业",ct:"陶玮",crm:21}),
+  mc({id:19,n:"王思佳 CuraDex SA",m:1407,g:"企业",ct:"王思佳",crm:21}),
+  mc({id:20,n:"中国汽车标准化 CASIC",m:500,g:"机构",ct:"CASIC"}),
+  mc({id:21,n:"日内瓦贸促会 CCPIT",m:1015,g:"机构",ct:"CCPIT",crm:14}),
+  mc({id:22,n:"日内瓦商业贸促会 ODCCN",m:740,g:"机构",ct:"ODCCN"}),
+  mc({id:23,n:"瑞士中国商会",m:350,g:"机构",ct:"商会"}),
+  mc({id:24,n:"时锦航 泰餐中餐",m:900,g:"餐饮",ct:"时锦航",crm:21}),
+  mc({id:25,n:"倪佳临 Lai Thai",m:500,g:"餐饮",ct:"倪佳临",crm:21}),
+  mc({id:26,n:"日内瓦东航",m:1500,g:"航空",ct:"东航",crm:14}),
+  mc({id:27,n:"日内瓦国航",m:500,g:"航空",ct:"国航"}),
+];
+
+function mkYr(clients){const st={},py={};clients.forEach(c=>{TK.forEach(t=>{st[`${c.id}-${t.id}`]="";});for(let i=1;i<=12;i++)py[`${c.id}-${i}`]="";});return{st,py};}
+function init(){return{clients:DC,years:{[CY]:mkYr(DC)},projects:[],personal:[
+  {id:90,name:"妇科医生",cat:"健康",pri:"M",dl:"2026-03-03",status:"O",notes:"",steps:[],acts:[{t:"2026-03-03",a:"从Google日历导入"}],created:"2026-03-03"},
+  {id:91,name:"琳娜眼科约会",cat:"家庭",pri:"M",dl:"2026-03-04",status:"N",notes:"15:00",steps:[],acts:[{t:"2026-03-03",a:"从Google日历导入"}],created:"2026-03-03"},
+  {id:92,name:"日内瓦肺科医生",cat:"健康",pri:"M",dl:"2026-03-11",status:"N",notes:"11:00",steps:[],acts:[{t:"2026-03-03",a:"从Google日历导入"}],created:"2026-03-03"},
+  {id:93,name:"韩冰生日",cat:"家庭",pri:"H",dl:"2026-03-14",status:"N",notes:"每年3月14日",steps:[{id:0,text:"准备礼物",done:false,dl:"2026-03-12",notes:""},{id:1,text:"发祝福",done:false,dl:"2026-03-14",notes:""}],acts:[{t:"2026-03-03",a:"从Google日历导入"}],created:"2026-03-03"},
+  {id:94,name:"妇科检查",cat:"健康",pri:"M",dl:"2026-04-30",status:"N",notes:"10:15",steps:[],acts:[{t:"2026-03-03",a:"从Google日历导入"}],created:"2026-03-03"},
+  {id:95,name:"郭露璐房子 — 书房腾空 + 拆遮阳棚",cat:"个人",pri:"H",dl:"2026-03-31",status:"N",notes:"3月底之前完成",steps:[{id:0,text:"书房物品整理打包",done:false,dl:"2026-03-20",notes:""},{id:1,text:"书房腾空搬出",done:false,dl:"2026-03-25",notes:""},{id:2,text:"拆除遮阳棚",done:false,dl:"2026-03-31",notes:""},{id:3,text:"最终检查确认",done:false,dl:"2026-03-31",notes:""}],acts:[{t:"2026-03-03",a:"创建"}],created:"2026-03-03"},
+],prospects:[],logs:[],timeLogs:[],invoices:[],invNum:1000,backlog:[],cfg:{theme:"light",accent:"海军蓝"}};}
+
+function migrate(d){
+  // V9 → V10 迁移
+  if(d.st&&!d.years){d.years={[CY]:{st:d.st,py:d.py}};delete d.st;delete d.py;}
+  if(!d.years)d.years={[CY]:mkYr(d.clients||DC)};
+  if(!d.personal)d.personal=[];
+  if(!d.cfg)d.cfg={theme:"dark",accent:"香槟金"};if(!d.timeLogs)d.timeLogs=[];if(!d.invoices)d.invoices=[];if(!d.backlog)d.backlog=[];if(d.invNum===undefined)d.invNum=1000;d.clients.forEach(c=>{if(!c.svc)c.svc="fiscal";if(c.tva===undefined)c.tva=true;if(!c.bc)c.bc="monthly";if(!c.bl)c.bl="zh";if(!c.addr)c.addr="";if(!c.daddr)c.daddr="";});
+  d.clients.forEach(c=>{
+    if(c.wx===undefined)c.wx="";if(c.em===undefined)c.em="";if(c.ph===undefined)c.ph="";
+    if(c.canton===undefined)c.canton="GE"; // V10: 默认日内瓦
+  });
+  (d.projects||[]).forEach(p=>{if(!p.links)p.links=[];if(!p.acts)p.acts=[];p.steps?.forEach(s=>{if(s.dl===undefined)s.dl="";if(s.notes===undefined)s.notes="";});});
+  if(!d._calImported2){
+    const calItems=init().personal;
+    const existIds=new Set(d.personal.map(p=>p.id));
+    calItems.forEach(it=>{if(!existIds.has(it.id))d.personal.push(it);});
+    d._calImported2=true;
+  if(!d._getaxAdded){
+    d.projects=d.projects||[];
+    d.projects.push({id:9900,name:"GETax 税务自动化",cid:0,dl:"2026-06-30",status:"N",notes:"待开发：\n①FirmOS财务数据→自动生成GETax XML导入文件（公司税+个人税），VBA宏一键导出\n②客户PDF资料（工资证明/银行利息/养老金/房产）→Claude读取提取→生成GETax申报数据\n\n需要准备：\n· GETax导出的XML样本文件\n· FirmOS某客户的财务报表\n· 客户个人税PDF材料样本\n\n目标：日内瓦州个人所得税ICC/IFD自动化",steps:[{id:0,text:"提供GETax XML样本给Claude",done:false,dl:"",notes:""},{id:1,text:"提供FirmOS报表样本",done:false,dl:"",notes:""},{id:2,text:"提供客户PDF材料样本",done:false,dl:"",notes:""},{id:3,text:"Claude构建XML生成VBA宏",done:false,dl:"",notes:""},{id:4,text:"Claude构建PDF→申报数据流程",done:false,dl:"",notes:""},{id:5,text:"测试并部署",done:false,dl:"",notes:""}],links:[],acts:[{t:"2026-03-05",a:"创建规划"}],created:"2026-03-05"});
+    d._getaxAdded=true;
+  }
+  }
+  // 尝试从 V9 localStorage 迁移
+  if(!d._v10migrated){
+    try{
+      const v9=localStorage.getItem("awb-v9");
+      if(v9){const v9d=JSON.parse(v9);
+        if(v9d.clients&&v9d.years){
+          d.clients=v9d.clients;d.years=v9d.years;d.projects=v9d.projects||[];
+          d.personal=v9d.personal||[];d.prospects=v9d.prospects||[];d.logs=v9d.logs||[];
+          d.nid=v9d.nid||100;d.cfg={...d.cfg,...v9d.cfg};
+          d.clients.forEach(c=>{if(c.canton===undefined)c.canton="GE";});
+        }
+      }
+    }catch(e){}
+    d._v10migrated=true;
+  }
+  return d;
+}
+function dayDiff(a,b){if(!a||!b)return 999;return Math.floor((new Date(b)-new Date(a))/86400000);}
+function dLeft(dl){if(!dl)return null;return Math.ceil((new Date(dl)-new Date(TD))/86400000);}
+function mkMail(ct,nm,tp,lg,level,overdueInfo){
+  const lv=level||1;const oi=overdueInfo||{};const S="Wang Tao\nW&B Société Fiduciaire";
+  if(tp==="pay"){const T={zh:[{s:`友好提醒：账单 – ${nm}`,b:`${ct} 您好，\n\n感谢您一直以来的信任。我们注意到目前有部分账款尚未到账。烦请您在方便时安排付款。\n\n如有疑问随时联系。\n\n祝好，\n${S}`},{s:`账款跟进 – ${nm}`,b:`${ct} 您好，\n\n经核实，贵公司仍有未结清款项。请在5个工作日内安排付款。\n\n此致\n${S}`},{s:`重要：逾期催告 – ${nm}`,b:`${ct} 您好，\n\n我们已多次就未结清款项联系，至今未收到付款。请在3个工作日内全额付款，否则将采取进一步措施。`+(oi.interest?`\n\n逾期金额：${oi.balance} CHF\n逾期天数：${oi.days}天\n逾期利息（5%年利率）：${oi.interest} CHF\n应付总额：${(oi.balance+oi.interest).toFixed(2)} CHF`:``)+`\n\n${S}`}],fr:[{s:`Rappel amical – ${nm}`,b:`Cher/Chère ${ct},\n\nNous vous rappelons qu'un solde reste ouvert. Merci de procéder au règlement.\n\nCordialement,\n${S}`},{s:`Relance – ${nm}`,b:`Cher/Chère ${ct},\n\nMalgré notre rappel, le montant dû n'a pas été réglé. Veuillez payer sous 5 jours ouvrables.\n\nCordialement,\n${S}`},{s:`URGENT : Mise en demeure – ${nm}`,b:`Cher/Chère ${ct},\n\nMalgré nos relances, votre solde reste impayé. Sans règlement sous 3 jours, nous engagerons des procédures de recouvrement.`+(oi.interest?`\n\nMontant dû : ${oi.balance} CHF\nJours de retard : ${oi.days}\nIntérêts (5% par an) : ${oi.interest} CHF\nTotal : ${(oi.balance+oi.interest).toFixed(2)} CHF`:``)+`\n\n${S}`}],en:[{s:`Friendly reminder – ${nm}`,b:`Dear ${ct},\n\nWe kindly remind you that an outstanding balance remains. Please arrange payment at your convenience.\n\nBest regards,\n${S}`},{s:`Payment follow-up – ${nm}`,b:`Dear ${ct},\n\nThe outstanding amount has not been received. Please arrange payment within 5 business days.\n\nSincerely,\n${S}`},{s:`URGENT: Final notice – ${nm}`,b:`Dear ${ct},\n\nDespite repeated reminders, your account remains unpaid. Please settle within 3 business days or further action will follow.`+(oi.interest?`\n\nOutstanding: ${oi.balance} CHF\nDays overdue: ${oi.days}\nDefault interest (5% p.a.): ${oi.interest} CHF\nTotal due: ${(oi.balance+oi.interest).toFixed(2)} CHF`:``)+`\n\n${S}`}]};return(T[lg]||T.zh)[lv-1];}
+  const D2={zh:{s:`请提供材料 – ${nm}`,b:`${ct} 您好，\n\n请提供：银行对账单、工资单、发票和收据。\n\n感谢配合，\n${S}`},fr:{s:`Documents requis – ${nm}`,b:`Cher/Chère ${ct},\n\nVeuillez transmettre : relevés bancaires, fiches de salaire, factures.\n\nCordialement,\n${S}`},en:{s:`Documents required – ${nm}`,b:`Dear ${ct},\n\nPlease send: bank statements, payroll docs, invoices and receipts.\n\nBest regards,\n${S}`}};return D2[lg]||D2.zh;
+}
+function mkICS(events){
+  const pad=d=>d.toISOString().replace(/[-:]/g,"").replace(/\.\d{3}/,"");
+  let ics="BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//AWB Fiduciaire//V12//CN\nCALSCALE:GREGORIAN\nMETHOD:PUBLISH\n";
+  events.forEach(ev=>{
+    const dt=new Date(ev.date+"T09:00:00");const dtE=new Date(ev.date+"T10:00:00");
+    ics+=`BEGIN:VEVENT\nDTSTART:${pad(dt)}\nDTEND:${pad(dtE)}\nSUMMARY:${ev.title}\n`;
+    if(ev.desc)ics+=`DESCRIPTION:${ev.desc.replace(/\n/g,"\\n")}\n`;
+    ics+="BEGIN:VALARM\nTRIGGER:-P1D\nACTION:DISPLAY\nDESCRIPTION:Reminder\nEND:VALARM\n";
+    ics+="END:VEVENT\n";
+  });
+  return ics+"END:VCALENDAR";
+}
+function dlICS(events,fname){const blob=new Blob([mkICS(events)],{type:"text/calendar"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=fname||"awb.ics";a.click();URL.revokeObjectURL(url);}
+function parseICS(text){const events=[];let cur=null;text.split(/\r?\n/).forEach(line=>{if(line==="BEGIN:VEVENT")cur={};else if(line==="END:VEVENT"&&cur){events.push(cur);cur=null;}else if(cur){const m=line.match(/^(SUMMARY|DTSTART|DTSTART;[^:]*|DESCRIPTION|LOCATION):(.+)/);if(m){const k=m[1].startsWith("DTSTART")?"DTSTART":m[1];let v=m[2].replace(/\\n/g,"\n").replace(/\\,/g,",");if(k==="DTSTART")v=v.replace(/^(\d{4})(\d{2})(\d{2}).*$/,"$1-$2-$3");cur[k]=v;}}});return events;}
+// ═══════════════════════════════════════
+// 共享组件
+// ═══════════════════════════════════════
+const SB=({s,onClick,z})=>{const m={O:{c:"sO",l:"✓"},N:{c:"sN",l:"!"},P:{c:"sP",l:"—"},"/": {c:"sI",l:"◐"},"": {c:"sE",l:"·"}}[s]||{c:"sE",l:"?"};return<button className={`sb ${z==="m"?"sm":"ss"} ${m.c}`} onClick={onClick}>{m.l}</button>;};
+const Dlg=({open,close,title,children})=>{if(!open)return null;return<div className="ol" onClick={close}><div className="bx" onClick={e=>e.stopPropagation()}><div className="bh"><h3 className="heading" style={{fontSize:18,flex:1}}>{title}</h3><button onClick={close} style={{background:"none",border:"none",cursor:"pointer",fontSize:20,color:"var(--tx3)",padding:8,lineHeight:1}}>×</button></div><div style={{padding:20}}>{children}</div></div></div>;};
+const Btns=({c,log})=><div style={{display:"flex",gap:4}}>
+  {c.wx?<button className="ct" onClick={()=>{setFrm({wxCid:c.id});setMod("wechat");}}>💬</button>:<button className="ct" onClick={()=>{setFrm({wxCid:c.id});setMod("wechat");}}>💬</button>}
+  {c.ph?<a href={`tel:${c.ph}`} className="ct" onClick={()=>log(c.id,"电话")}>📞</a>:<button className="ct" style={{opacity:.5}}>📞</button>}
+  {c.em?<a href={`mailto:${c.em}`} className="ct" onClick={()=>log(c.id,"邮件")}>✉</a>:<button className="ct" style={{opacity:.5}}>✉</button>}
+  <button className="ct" onClick={()=>log(c.id,"面谈")}>☕</button>
+</div>;
+
+const CForm=({f,sf,onOk,lb})=><div style={{display:"flex",flexDirection:"column",gap:12}}>
+  <div><label className="t2" style={{marginBottom:4,display:"block"}}>名称</label><input value={f.n||""} onChange={e=>sf({...f,n:e.target.value})} className="ip"/></div>
+  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}><div><label className="t2" style={{marginBottom:4,display:"block"}}>月费 CHF</label><input type="number" value={f.m||""} onChange={e=>sf({...f,m:e.target.value})} className="ip"/></div><div><label className="t2" style={{marginBottom:4,display:"block"}}>类别</label><select value={f.g||"其他"} onChange={e=>sf({...f,g:e.target.value})} className="ip">{GR.map(g=><option key={g}>{g}</option>)}</select></div></div>
+  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}><div><label className="t2" style={{marginBottom:4,display:"block"}}>联系人</label><input value={f.ct||""} onChange={e=>sf({...f,ct:e.target.value})} className="ip"/></div><div><label className="t2" style={{marginBottom:4,display:"block"}}>联系周期</label><input type="number" value={f.crm||30} onChange={e=>sf({...f,crm:e.target.value})} className="ip"/></div></div>
+  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}><div><label className="t2" style={{marginBottom:4,display:"block"}}>州</label><select value={f.canton||"GE"} onChange={e=>sf({...f,canton:e.target.value})} className="ip">{Object.entries(CANTONS).map(([k,v])=><option key={k} value={k}>{v.n} ({k})</option>)}</select></div><div><label className="t2" style={{marginBottom:4,display:"block"}}>邮箱</label><input type="email" value={f.em||""} onChange={e=>sf({...f,em:e.target.value})} className="ip"/></div></div>
+  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}><div><label className="t2" style={{marginBottom:4,display:"block"}}>电话</label><input type="tel" value={f.ph||""} onChange={e=>sf({...f,ph:e.target.value})} className="ip"/></div><div><label className="t2" style={{marginBottom:4,display:"block"}}>微信号</label><input value={f.wx||""} onChange={e=>sf({...f,wx:e.target.value})} className="ip"/></div></div>
+  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr 1fr",gap:10}}>
+    <div><label className="t2" style={{marginBottom:4,display:"block"}}>服务类型</label><select value={f.svc||"fiscal"} onChange={e=>sf({...f,svc:e.target.value})} className="ip">{Object.entries(SVC_TYPES).map(([k,v])=><option key={k} value={k}>{v.l}</option>)}</select></div>
+    <div><label className="t2" style={{marginBottom:4,display:"block"}}>TVA</label><select value={f.tva===false?"no":"yes"} onChange={e=>sf({...f,tva:e.target.value==="yes"})} className="ip"><option value="yes">含TVA 8.1%</option><option value="no">免TVA</option></select></div><div><label className="t2" style={{marginBottom:4,display:"block"}}>账期</label><select value={f.bc||"monthly"} onChange={e=>sf({...f,bc:e.target.value})} className="ip"><option value="monthly">月付</option><option value="quarterly">季付</option><option value="semi">半年付</option><option value="annual">年付</option></select></div>
+    <div><label className="t2" style={{marginBottom:4,display:"block"}}>语言</label><select value={f.bl||"zh"} onChange={e=>sf({...f,bl:e.target.value})} className="ip"><option value="zh">中文</option><option value="fr">FR</option><option value="en">EN</option></select></div>
+  </div>
+  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
+    <div><label className="t2" style={{marginBottom:4,display:"block"}}>账单地址</label><input value={f.addr||""} onChange={e=>sf({...f,addr:e.target.value})} className="ip" placeholder="公司注册地址"/></div>
+    <div><label className="t2" style={{marginBottom:4,display:"block"}}>收件地址</label><input value={f.daddr||""} onChange={e=>sf({...f,daddr:e.target.value})} className="ip" placeholder="邮寄地址（如不同）"/></div>
+  </div>
+  {f.svc==="consult"&&<div style={{padding:8,borderRadius:6,background:"var(--bg0)",fontSize:12,color:"var(--tx2)"}}>💡 咨询客户无固定任务面板，以项目和工时驱动。发票将自动拉取工时明细。</div>}
+  {f.svc==="domicil"&&<div style={{padding:8,borderRadius:6,background:"var(--bg0)",fontSize:12,color:"var(--tx2)"}}>📍 挂靠客户使用精简任务面板：地址管理、信件转寄、商事登记、年检。</div>}
+  <button onClick={onOk} className="bb" style={{marginTop:6}}>{lb}</button>
+</div>;
+
+const LinkBtn=({url,name})=>{if(!url)return null;return<a href={url.startsWith("http")?url:`file:///${url.replace(/\\/g,"/")}`} target="_blank" rel="noopener" className="lk">{name||"打开"}</a>;};
+const StepRow=({s,onTog})=>{const dl=dLeft(s.dl);return<div style={{display:"flex",alignItems:"center",gap:8,padding:"8px 10px",borderBottom:"1px solid var(--bd2)"}}>
+  <input type="checkbox" checked={s.done} onChange={onTog} style={{width:16,height:16,accentColor:"var(--ac)"}}/>
+  <span style={{flex:1,fontSize:13,textDecoration:s.done?"line-through":"none",color:s.done?"var(--tx3)":"var(--tx)"}}>{s.text}</span>
+  {s.dl&&<span style={{fontSize:11,color:dl!==null&&dl<=0?"var(--wn)":"var(--tx3)"}}>{dl!==null&&dl<=0?"逾期":dl+"天"}</span>}
+</div>;};
+
+// ═══════════════════════════════════════
+// V10 新增：红绿灯指示器组件
+// ═══════════════════════════════════════
+const TrafficLight=({color,label})=>{
+  const cls={green:"tl-g",yellow:"tl-y",red:"tl-r",black:"tl-b",none:"tl-g"}[color]||"tl-g";
+  const dot={green:"🟢",yellow:"🟡",red:"🔴",black:"⚫",none:""}[color]||"";
+  return <span className={`tl ${cls}`}>{dot} {label}</span>;
+};
+
+// V10 新增：流水线进度条
+const PipelineBar=({stages})=>{
+  const total=stages.length||1;
+  return<div className="pipeline" style={{width:"100%"}}>
+    {stages.map((s,i)=><div key={i} className="pipeline-seg" style={{
+      width:`${100/total}%`,
+      background:s==="DONE"||s==="DELIVERED"?"var(--green)":
+        s==="WORKING"||s==="REVIEW"?"var(--ac)":
+        s==="WAIT_DOC"?"var(--yellow)":
+        s==="SKIP"?"var(--tx3)":"var(--bg3)"
+    }}/>)}
+  </div>;
+};
+
+// V10 新增：项目卡片（简化版）
+const ProjCard=({p,D,sv,clients})=>{
+  const cl=clients.find(x=>x.id===p.cid);
+  const pct=p.steps.length?Math.round(p.steps.filter(s=>s.done).length/p.steps.length*100):0;
+  const dl=dLeft(p.dl);
+  const nr=useRef(null);const lr=useRef(null);
+  const updF=(f,v)=>sv({...D,projects:D.projects.map(x=>x.id===p.id?{...x,[f]:v,acts:[{t:TD,a:`${f}→${v}`},...(x.acts||[])].slice(0,50)}:x)});
+  const togS=sid=>{const st=p.steps.find(s=>s.id===sid);sv({...D,projects:D.projects.map(x=>x.id===p.id?{...x,steps:x.steps.map(s=>s.id===sid?{...s,done:!s.done}:s),acts:[{t:TD,a:`${st?.done?"撤销":"完成"}「${st?.text}」`},...(x.acts||[])].slice(0,50)}:x)});};
+  const addNote=()=>{const v=nr.current?.value;if(!v?.trim())return;sv({...D,projects:D.projects.map(x=>x.id===p.id?{...x,acts:[{t:TD,a:v},...(x.acts||[])].slice(0,50)}:x)});nr.current.value="";};
+  const addLink=()=>{const v=lr.current?.value;if(!v?.trim())return;const name=v.startsWith("http")?new URL(v).hostname:v.split(/[\/\\]/).pop();sv({...D,projects:D.projects.map(x=>x.id===p.id?{...x,links:[...(x.links||[]),{name,url:v}]}:x)});lr.current.value="";};
+  const rmLink=i=>sv({...D,projects:D.projects.map(x=>x.id===p.id?{...x,links:(x.links||[]).filter((_,j)=>j!==i)}:x)});
+  return<div className="cd" style={{opacity:p.status==="O"?.35:1}}>
+  <div style={{display:"flex",justifyContent:"space-between",marginBottom:10}}>
+    <div>
+      <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:4,flexWrap:"wrap"}}>
+        {p.pri==="H"&&<span style={{fontSize:11,fontWeight:600,color:"var(--wn)",letterSpacing:".06em",textTransform:"uppercase"}}>高优先</span>}
+        <span className="heading" style={{fontSize:17}}>{p.name}</span>
+        {dl!==null&&dl<=0&&<span style={{fontSize:11,color:"var(--wn)",background:"var(--wnA)",padding:"2px 8px",borderRadius:4}}>已逾期</span>}
+        {dl!==null&&dl>0&&dl<=7&&<span style={{fontSize:11,color:"var(--ac)",background:"var(--acA)",padding:"2px 8px",borderRadius:4}}>剩{dl}天</span>}
+      </div>
+      <div className="t2">{cl?.n||"内部事务"}{p.dl&&` · ${p.dl}`}</div>
+    </div>
+    <div style={{display:"flex",alignItems:"center",gap:4}}>
+      <select value={p.status} onChange={e=>updF("status",e.target.value)} className="ip" style={{width:76,fontSize:13,padding:4}}><option value="N">待办</option><option value="/">进行中</option><option value="O">完成</option></select>
+      <button onClick={()=>sv({...D,projects:D.projects.filter(x=>x.id!==p.id)})} style={{background:"none",border:"none",cursor:"pointer",color:"var(--tx3)",fontSize:14,padding:4}}>×</button>
+    </div>
+  </div>
+  {p.notes&&<p style={{fontSize:13,color:"var(--tx2)",marginBottom:8,padding:"8px 10px",background:"var(--bg0)",borderRadius:6,lineHeight:1.6}}>{p.notes}</p>}
+  {(p.links||[]).length>0&&<div style={{display:"flex",gap:4,flexWrap:"wrap",marginBottom:8}}>{p.links.map((lk,i)=><span key={i} style={{display:"inline-flex",alignItems:"center",gap:3}}><LinkBtn url={lk.url} name={lk.name}/><button onClick={()=>rmLink(i)} style={{background:"none",border:"none",cursor:"pointer",color:"var(--tx3)",fontSize:11}}>×</button></span>)}</div>}
+  {p.steps.length>0&&<div style={{marginBottom:10}}>
+    <div style={{width:"100%",height:2,background:"var(--bg3)",borderRadius:99,marginBottom:8}}><div style={{width:`${pct}%`,height:"100%",background:"var(--ok)",borderRadius:99,transition:"width .4s ease"}}/></div>
+    {p.steps.map(s=><StepRow key={s.id} s={s} onTog={()=>togS(s.id)}/>)}
+    <div className="t2" style={{marginTop:4}}>{pct}% · {p.steps.filter(s=>s.done).length}/{p.steps.length}</div>
+  </div>}
+  <div style={{display:"flex",gap:4,marginBottom:4}}><input ref={nr} className="ip" placeholder="备注..." style={{fontSize:13}} onKeyDown={e=>{if(e.key==="Enter")addNote();}}/><button onClick={addNote} className="tg">记录</button></div>
+  <div style={{display:"flex",gap:4}}><input ref={lr} className="ip" placeholder="链接..." style={{fontSize:13}} onKeyDown={e=>{if(e.key==="Enter")addLink();}}/><button onClick={addLink} className="tg">关联</button></div>
+  {(p.acts||[]).length>0&&<details style={{marginTop:8}}><summary className="t2" style={{cursor:"pointer",padding:4}}>历史 ({(p.acts||[]).length})</summary>
+    <div style={{maxHeight:120,overflowY:"auto",padding:"8px 0",marginTop:4}}>{(p.acts||[]).map((a,i)=><div key={i} className="t2" style={{padding:"2px 0"}}><span style={{color:"var(--ac)"}}>{a.t}</span> {a.a}</div>)}</div>
+  </details>}
+</div>;};
+// ═══════════════════════════════════════
+// 主应用
+// ═══════════════════════════════════════
+function App(){
+const[D,setD]=useState(null);
+const[vw,setVw]=useState("cmd"); // V10: 默认打开指挥中心
+const[yr,setYr]=useState(CY);
+const[sel,setSel]=useState(null);
+const[q,setQ]=useState("");
+const[gf,setGf]=useState("all");
+const[mod,setMod]=useState(null);
+const[frm,setFrm]=useState({});
+const[cped,setCped]=useState(false);
+const[syncing,setSyncing]=useState(null);
+const[syncMsg,setSyncMsg]=useState("");
+const[timer,setTimer]=useState(null);
+const[tick,setTick]=useState(0);
+const[voiceText,setVoiceText]=useState("");
+const[listening,setListening]=useState(false);
+
+const cloudPush=async()=>{const url=D.cfg?.syncUrl;if(!url){alert("请先配置同步地址");return;}setSyncing("push");setSyncMsg("上传中...");try{const r=await fetch(url,{method:"POST",body:JSON.stringify({action:"sync",data:{...D,_lastModified:new Date().toISOString()}}),redirect:"follow"});let res;try{res=await r.json();}catch{res={ok:r.ok||r.status===0};}if(res.ok){if(res.merged&&res.data){sv(migrate(res.data));setSyncMsg("双向合并完成 "+new Date().toLocaleTimeString());}else{setSyncMsg("已同步 "+new Date().toLocaleTimeString());}setCfg("lastPush",new Date().toISOString());}else setSyncMsg("同步状态不确定");}catch{try{await fetch(url,{method:"POST",body:JSON.stringify({action:"save",data:D}),mode:"no-cors"});setSyncMsg("已发送 "+new Date().toLocaleTimeString());setCfg("lastPush",new Date().toISOString());}catch(e2){setSyncMsg("失败: "+e2.message);}}finally{setSyncing(null);}};
+const cloudPull=async()=>{const url=D.cfg?.syncUrl;if(!url)return;setSyncing("pull");setSyncMsg("下载中...");try{const r=await fetch(url+"?action=read");const j=await r.json();if(j.ok&&j.data?.clients){let d=migrate(j.data);if(confirm(`从云端同步 ${d.clients.length} 位客户？`)){sv(d);setSyncMsg("已同步");}}else setSyncMsg("云端暂无数据");}catch(e){setSyncMsg("失败: "+e.message);}finally{setSyncing(null);}};
+const nRef=useRef(false);
+
+useEffect(()=>{try{let raw=localStorage.getItem(SK);if(!raw)raw=localStorage.getItem("awb-v11");if(!raw)raw=localStorage.getItem("awb-v10");if(!raw)raw=localStorage.getItem("awb-v9");if(!raw)raw=localStorage.getItem("awb-v8");let d=raw?JSON.parse(raw):init();d=migrate(d);setD(d);try{localStorage.setItem(SK,JSON.stringify(d));}catch{}}catch{setD(init());}},[]);
+useEffect(()=>{if(!D)return;document.body.className=D.cfg?.theme==="dark"?"dk":"";const a=PAL[D.cfg?.accent]||PAL["香槟金"];document.documentElement.style.setProperty("--ac",a);document.documentElement.style.setProperty("--acA",a+"18");document.documentElement.style.setProperty("--acB",a+"40");},[D?.cfg]);
+useEffect(()=>{if(!D||nRef.current)return;nRef.current=true;const items=[];const ySt=D.years[CY]?.st||{};D.clients.forEach(c=>{TK.forEach(t=>{const s=ySt[`${c.id}-${t.id}`]||"";if(t.dl&&t.dl<=CM&&s!=="O"&&s!=="P")items.push(`${c.ct}: ${t.s}`);});});if(items.length&&"Notification"in window){Notification.requestPermission().then(r=>{if(r==="granted")new Notification(`AWB: ${items.length}项待处理`,{body:items.slice(0,5).join("\n")});});}},[D]);
+
+useEffect(()=>{if(!timer)return;const iv=setInterval(()=>setTick(t=>t+1),1000);return()=>clearInterval(iv);},[timer]);
+const startTimer=(cid,task)=>setTimer({cid,task:task||"通用",start:Date.now()});
+const stopTimer=(desc)=>{if(!timer)return;const dur=Math.round((Date.now()-timer.start)/60000);if(dur<1){setTimer(null);return;}const fmt=d=>new Date(d).toLocaleTimeString("zh-CN",{hour:"2-digit",minute:"2-digit"});const e={id:D.nid,cid:timer.cid,task:timer.task,date:TD,duration:dur,t0:fmt(timer.start),t1:fmt(Date.now()),desc:desc||""};sv({...D,timeLogs:[e,...D.timeLogs].slice(0,2000),nid:D.nid+1});setTimer(null);};
+const addTimeLog=(cid,task,dur,desc,date,t0,t1)=>{const e={id:D.nid,cid,task:task||"通用",date:date||TD,duration:Number(dur)||0,desc:desc||"",t0:t0||"",t1:t1||""};sv({...D,timeLogs:[e,...D.timeLogs].slice(0,2000),nid:D.nid+1});};
+const rmTimeLog=id=>sv({...D,timeLogs:D.timeLogs.filter(t=>t.id!==id)});
+
+const exportTimesheet=(cid,month)=>{const c=D.clients.find(x=>x.id===cid);if(!c)return;const prefix=month||`${CY}-${String(CM).padStart(2,"0")}`;const logs=D.timeLogs.filter(t=>t.cid===cid&&t.date?.startsWith(prefix)).sort((a,b)=>(a.date||"").localeCompare(b.date||"")||(a.t0||"").localeCompare(b.t0||""));let csv="\uFEFF";csv+="Timesheet - "+c.n+"\n";csv+="Period: "+prefix+"\n";csv+="Generated: "+TD+"\n\n";csv+="Date,Start,End,Duration(min),Hours,Task,Description\n";let totalMin=0;logs.forEach(t=>{totalMin+=t.duration||0;csv+=`${t.date||""},${t.t0||""},${t.t1||""},${t.duration||0},${((t.duration||0)/60).toFixed(2)},${(t.task||"").replace(/,/g,";")},${(t.desc||"").replace(/,/g,";").replace(/\n/g," ")}\n`;});csv+=`\nTotal,,,,${(totalMin/60).toFixed(2)},,\n`;if(c.m>0){const rate=totalMin>0?Math.round(c.m/(totalMin/60)):0;csv+=`Monthly fee,,,,,${c.m} CHF,\n`;csv+=`Effective rate,,,,,${rate} CHF/h,\n`;}const blob=new Blob([csv],{type:"text/csv;charset=utf-8"});const u=URL.createObjectURL(blob);const a=document.createElement("a");a.href=u;a.download=`Timesheet_${c.ct}_${prefix}.csv`;a.click();URL.revokeObjectURL(u);};
+
+// V13 语音快速录入
+const voiceStart=()=>{if(!('webkitSpeechRecognition' in window||'SpeechRecognition' in window)){alert("您的浏览器不支持语音识别");return;}const SR=window.SpeechRecognition||window.webkitSpeechRecognition;const rec=new SR();rec.lang="zh-CN";rec.continuous=false;rec.interimResults=true;rec.onstart=()=>setListening(true);rec.onend=()=>setListening(false);rec.onresult=(e)=>{const t=Array.from(e.results).map(r=>r[0].transcript).join("");setVoiceText(t);};rec.onerror=()=>setListening(false);rec.start();};
+const voiceParse=(text)=>{if(!text)return null;const r={};const cn=D.clients.find(c=>text.includes(c.ct)||text.includes(c.n));if(cn)r.cid=cn.id;if(/材料|资料|文件/.test(text))r.action="material";if(/已收|收到|已付|付款/.test(text))r.status="received";if(/催|提醒|跟进/.test(text))r.action="followup";if(/计时|开始|工作/.test(text))r.action="timer";if(/Q[1-4]|[一二三四]季/.test(text)){const qm=text.match(/Q([1-4])|([一二三四])季/);if(qm)r.quarter=qm[1]||"一二三四".indexOf(qm[2])+1;}if(/(\d+)\s*分钟/.test(text)){const mm=text.match(/(\d+)\s*分钟/);if(mm)r.minutes=Number(mm[1]);}if(/(\d+)\s*小时/.test(text)){const hm=text.match(/(\d+)\s*小时/);if(hm)r.minutes=(Number(hm[1])||0)*60;}r.raw=text;return r;};
+const voiceExecute=(parsed)=>{if(!parsed||!parsed.cid)return"未识别客户";const c=D.clients.find(x=>x.id===parsed.cid);if(!c)return"客户未找到";if(parsed.action==="timer"){startTimer(parsed.cid,"通用");return`开始为 ${c.ct} 计时`;}if(parsed.action==="followup"){logC(parsed.cid,"语音");return`已记录联系 ${c.ct}`;}if(parsed.minutes){addTimeLog(parsed.cid,"通用",parsed.minutes);return`已为 ${c.ct} 记录 ${fmtDur(parsed.minutes)} 工时`;}return`已识别: ${c.ct} — ${parsed.raw}`;};
+
+// V13 微信集成
+const wxMsg=(c,type)=>{const nm=c.ct||c.n;if(type==="pay"){const invs=D.invoices.filter(i=>i.cid===c.id&&i.status!=="paid");const total=invs.reduce((s,i)=>s+invBalance(i),0);return`${nm} 您好！\n\n温馨提醒，目前有${invs.length}张账单待付，合计 ${total.toLocaleString()} CHF。\n\n如已安排付款请忽略此消息。如需查看明细请随时告知。\n\n谢谢！\n汪涛 · W&B`;}if(type==="doc"){return`${nm} 您好！\n\n方便时请将以下材料发送给我：\n📄 银行对账单\n📄 工资单\n📄 发票/收据\n\n谢谢配合！\n汪涛 · W&B`;}if(type==="update"){return`${nm} 您好！\n\n您的${CY}年度账务工作进展顺利，如有任何问题随时联系。\n\n汪涛 · W&B`;}return`${nm} 您好！\n\n汪涛 · W&B`;};
+const wxCopy=(text)=>{navigator.clipboard?.writeText(text);};
+const fmtDur=m=>{if(!m)return"0m";const h=Math.floor(m/60);const mm=m%60;return h>0?h+"h"+(mm>0?mm+"m":""):m+"m";};
+const sv=useCallback(d=>{setD(d);try{localStorage.setItem(SK,JSON.stringify(d));}catch{}},[]);
+const ySt=(D?.years[yr]?.st)||{};const yPy=(D?.years[yr]?.py)||{};
+const ensureYr=(d,y)=>{if(!d.years[y])d.years[y]=mkYr(d.clients);return d;};
+const cyc=useCallback(k=>{if(!D)return;const d=ensureYr({...D},yr);const o=["","N","/","O","P"];d.years[yr]={...d.years[yr],st:{...d.years[yr].st,[k]:o[(o.indexOf(d.years[yr].st[k]||"")+1)%o.length]}};sv(d);},[D,yr,sv]);
+const tPay=useCallback(k=>{if(!D)return;const d=ensureYr({...D},yr);d.years[yr]={...d.years[yr],py:{...d.years[yr].py,[k]:d.years[yr].py[k]==="paid"?"":"paid"}};sv(d);},[D,yr,sv]);
+const logC=(cid,method)=>{const c=D.clients.find(x=>x.id===cid);if(!c)return;sv({...D,clients:D.clients.map(x=>x.id===cid?{...x,lc:TD}:x),logs:[{cid,date:TD,method,ct:c.ct},...D.logs].slice(0,200)});};
+const openC=id=>{setSel(id);setVw("client");};
+const addCli=f=>{const id=D.nid;const nc=mc({id,n:f.n||"新客户",m:Number(f.m)||0,g:f.g,ct:f.ct,crm:Number(f.crm)||30,em:f.em,ph:f.ph,wx:f.wx,canton:f.canton||"GE",bc:f.bc||"monthly",bl:f.bl||"zh",addr:f.addr||"",daddr:f.daddr||"",tva:f.tva!==false});const d={...D,clients:[...D.clients,nc],nid:id+1};Object.keys(d.years).forEach(y=>{TK.forEach(t=>{d.years[y].st[`${id}-${t.id}`]="";});for(let i=1;i<=12;i++)d.years[y].py[`${id}-${i}`]="";});sv(d);setMod(null);};
+const editCli=(id,f)=>{sv({...D,clients:D.clients.map(c=>c.id===id?{...c,...f}:c)});setMod(null);};
+const rmCli=id=>{if(!confirm("确定删除？"))return;const d={...D,clients:D.clients.filter(c=>c.id!==id),projects:D.projects.filter(p=>p.cid!==id)};Object.keys(d.years).forEach(y=>{Object.keys(d.years[y].st).forEach(k=>{if(k.startsWith(id+"-"))delete d.years[y].st[k];});Object.keys(d.years[y].py).forEach(k=>{if(k.startsWith(id+"-"))delete d.years[y].py[k];});});sv(d);if(sel===id){setSel(null);setVw("cmd");}};
+const addProj=f=>{sv({...D,projects:[...D.projects,{id:D.nid,cid:f.cid?Number(f.cid):null,name:f.name||"",dl:f.dl||"",status:"N",notes:f.notes||"",pri:f.pri||"M",steps:f.steps?f.steps.split("\n").filter(Boolean).map((s,i)=>({id:i,text:s,done:false,dl:"",notes:""})):[],links:[],acts:[{t:TD,a:"创建"}],created:TD}],nid:D.nid+1});setMod(null);};
+const addPersn=f=>{sv({...D,personal:[...D.personal,{id:D.nid,name:f.name||"",cat:f.cat||"个人",pri:f.pri||"M",dl:f.dl||"",status:"N",notes:f.notes||"",steps:f.steps?f.steps.split("\n").filter(Boolean).map((s,i)=>({id:i,text:s,done:false,dl:"",notes:""})):[],acts:[{t:TD,a:"创建"}],created:TD}],nid:D.nid+1});setMod(null);};
+const updPersn=(id,f,v)=>sv({...D,personal:D.personal.map(x=>x.id===id?{...x,[f]:v,acts:[{t:TD,a:`${f}→${v}`},...(x.acts||[])].slice(0,50)}:x)});
+const togPStep=(pid,sid)=>{const p=D.personal.find(x=>x.id===pid);const st=p?.steps.find(s=>s.id===sid);sv({...D,personal:D.personal.map(x=>x.id===pid?{...x,steps:x.steps.map(s=>s.id===sid?{...s,done:!s.done}:s)}:x)});};
+const addPNote=(pid,note)=>sv({...D,personal:D.personal.map(x=>x.id===pid?{...x,acts:[{t:TD,a:note},...(x.acts||[])].slice(0,50)}:x)});
+const addProsp=f=>{sv({...D,prospects:[...D.prospects,{id:D.nid,name:f.name||"",src:f.src||"",status:"新线索",created:TD}],nid:D.nid+1});setMod(null);};
+
+// ═══ V12 发票系统 ═══
+const TVA_RATE=0.081;
+const nextInvNum=()=>{const n=D.invNum+1;return{num:`WB-${CY}-${String(n).padStart(4,"0")}`,next:n};};
+const calcDue=(date,days)=>{const d=new Date(date);d.setDate(d.getDate()+(days||30));return d.toISOString().slice(0,10);};
+const genInvoice=(cid,period,items,lang)=>{const c=D.clients.find(x=>x.id===cid);if(!c)return;const{num,next}=nextInvNum();const sub=items.reduce((s,it)=>s+(it.amount||0),0);const hasTva=c.tva!==false;const tva=hasTva?Math.round(sub*TVA_RATE*100)/100:0;const tot=Math.round((sub+tva)*100)/100;const inv={id:D.nid,num,cid,date:TD,due:calcDue(TD,30),period:period||TD.slice(0,7),items,subtotal:sub,tva,total:tot,status:"draft",sentDate:"",payments:[],lang:lang||c.bl||"zh",notes:""};const nd={...D,invoices:[inv,...D.invoices],invNum:next,nid:D.nid+1};sv(nd);return inv;};
+const genMonthlyInvoice=(cid,month,lang)=>{const c=D.clients.find(x=>x.id===cid);if(!c){console.error("Client not found:",cid);return null;}if(c.svc==="consult"){return genConsultInvoice(cid,month,lang);}if(!c.m){console.error("Client has no fee:",c.ct);return null;}const descsF={zh:["年度包干服务费：","工资及社保管理","全套记账","编制财务报表","增值税申报","公司税务申报","日常行政咨询"],fr:["Honoraires forfaitaires annuels :","Gestion des salaires et des assurances sociales","Tenue complète de la comptabilité","Etablissement des états financiers","Décomptes et Déclarations TVA","Déclarations fiscales de la société","Conseils administratifs courants"],en:["Annual fixed-fee services:","Payroll and social insurance management","Full bookkeeping","Financial statements preparation","VAT returns","Corporate tax filings","General administrative consulting"]};const descsD={zh:["法人挂靠及虚拟地址服务：","注册地址代理","信件接收与转寄","法人代表服务","商事登记年检"],fr:["Services de domiciliation :","Adresse du siège social","Réception et réexpédition du courrier","Représentation légale","Mise à jour du Registre du Commerce"],en:["Domiciliation services:","Registered office address","Mail reception and forwarding","Legal representation","Commercial Register update"]};const lg=lang||c.bl||"zh";const svc=c.svc||"fiscal";const descs=svc==="domicil"?descsD:descsF;const desc=descs[lg]||descs.zh;const periodAmt=c.bc==="annual"?c.m*12:c.bc==="semi"?c.m*6:c.bc==="quarterly"?c.m*3:c.m;const items=[{desc:desc[0],qty:1,unit:1,amount:periodAmt,details:desc.slice(1)}];return genInvoice(cid,month||TD.slice(0,7),items,lg);};
+
+const genConsultInvoice=(cid,month,lang)=>{const c=D.clients.find(x=>x.id===cid);if(!c)return;const prefix=month||TD.slice(0,7);const logs=D.timeLogs.filter(t=>t.cid===cid&&t.date?.startsWith(prefix));if(!logs.length)return null;const rate=c.m>0?Math.round(c.m):250;const totalMin=logs.reduce((s,t)=>s+(t.duration||0),0);const totalHrs=Math.round(totalMin/60*100)/100;const amount=Math.round(totalHrs*rate*100)/100;const items=[{desc:logs.map(t=>`${t.date} ${t.task}: ${t.desc||""} (${fmtDur(t.duration)})`).join("\n"),qty:1,unit:1,amount,hours:totalHrs,rate}];return genInvoice(cid,prefix,items,lang||c.bl||"zh");};
+const batchGenInvoices=(month)=>{let count=0;const p=month||TD.slice(0,7);D.clients.filter(c=>c.m>0).forEach(c=>{const existing=D.invoices.find(i=>i.cid===c.id&&i.period===p);if(!existing){const r=genMonthlyInvoice(c.id,p);if(r)count++;}});return count;};
+const updInvoice=(id,fields)=>sv({...D,invoices:D.invoices.map(i=>i.id===id?{...i,...fields}:i)});
+const addPayment=(invId,amount,date,note)=>{sv({...D,invoices:D.invoices.map(i=>{if(i.id!==invId)return i;const payments=[...i.payments,{amount:Number(amount),date:date||TD,note:note||""}];const totalPaid=payments.reduce((s,p)=>s+p.amount,0);const status=totalPaid>=i.total?"paid":totalPaid>0?"partial":i.status;return{...i,payments,status};})});};
+const rmInvoice=id=>{sv({...D,invoices:D.invoices.filter(i=>i.id!==Number(id))});};
+
+// ═══ 重整计划系统 ═══
+const BL_CATS=[
+  {id:"accounting",l:"记账",icon:"📒"},
+  {id:"financial",l:"年报/三表",icon:"📊"},
+  {id:"tax_corp",l:"公司税申报",icon:"🏢"},
+  {id:"tax_personal",l:"个人税申报",icon:"👤"},
+  {id:"tva",l:"TVA申报",icon:"💶"},
+  {id:"payroll",l:"工资/社保",icon:"💰"},
+  {id:"avs",l:"AVS年报",icon:"📋"},
+  {id:"is",l:"源头税",icon:"📑"},
+  {id:"admin",l:"行政事务",icon:"📁"},
+  {id:"other",l:"其他",icon:"📌"}
+];
+const addBacklog=(cid,cat,year,desc,target)=>{const item={id:D.nid,cid,cat:cat||"other",year:Number(year)||CY-1,desc:desc||"",target:target||"",status:"todo",created:TD,completed:"",notes:"",priority:year<=CY-2?"high":"medium",steps:[],logs:[]};sv({...D,backlog:[item,...D.backlog],nid:D.nid+1});};
+const updBacklog=(id,fields)=>sv({...D,backlog:D.backlog.map(b=>b.id===id?{...b,...fields,completed:fields.status==="done"?TD:b.completed}:b)});
+const rmBacklog=id=>sv({...D,backlog:D.backlog.filter(b=>b.id!==id)});
+const addBlLog=(id,text)=>sv({...D,backlog:D.backlog.map(b=>b.id===id?{...b,logs:[{t:TD,text},...(b.logs||[])].slice(0,100)}:b)});
+const addBlStep=(id,text)=>sv({...D,backlog:D.backlog.map(b=>b.id===id?{...b,steps:[...(b.steps||[]),{id:(b.steps||[]).length,text,done:false,added:TD}]}:b)});
+const togBlStep=(bid,sid)=>sv({...D,backlog:D.backlog.map(b=>b.id===bid?{...b,steps:(b.steps||[]).map(s=>s.id===sid?{...s,done:!s.done,doneDate:!s.done?TD:""}:s)}:b)});
+const rmBlStep=(bid,sid)=>sv({...D,backlog:D.backlog.map(b=>b.id===bid?{...b,steps:(b.steps||[]).filter(s=>s.id!==sid)}:b)});
+const updBlNotes=(id,notes)=>sv({...D,backlog:D.backlog.map(b=>b.id===id?{...b,notes}:b)});
+const blStats=()=>{const items=D.backlog||[];const total=items.length;const done=items.filter(b=>b.status==="done").length;const inProgress=items.filter(b=>b.status==="wip").length;const todo=items.filter(b=>b.status==="todo").length;const pct=total>0?Math.round(done/total*100):0;const byClient={};items.forEach(b=>{const c=D.clients.find(x=>x.id===b.cid);const name=c?.ct||"?";if(!byClient[name])byClient[name]={total:0,done:0,items:[]};byClient[name].total++;if(b.status==="done")byClient[name].done++;byClient[name].items.push(b);});const byYear={};items.forEach(b=>{const y=b.year||"?";if(!byYear[y])byYear[y]={total:0,done:0};byYear[y].total++;if(b.status==="done")byYear[y].done++;});return{total,done,inProgress,todo,pct,byClient,byYear};};
+const invPaid=(inv)=>inv.payments.reduce((s,p)=>s+p.amount,0);
+const invBalance=(inv)=>Math.round((inv.total-invPaid(inv))*100)/100;
+const invOverdueDays=(inv)=>{if(inv.status==="paid")return 0;const d=Math.round((Date.now()-new Date(inv.due).getTime())/86400000);return d>0?d:0;};
+const invInterest=(inv)=>{const days=invOverdueDays(inv);if(days<90)return 0;const bal=invBalance(inv);return Math.round(bal*0.05*(days/365)*100)/100;};
+
+// ═══ V12b 智能账期日历 ═══
+const billingCalendar=()=>{const cal=[];const now=new Date();D.clients.filter(c=>c.m>0).forEach(c=>{const bc=c.bc||"monthly";const periods=bc==="annual"?[1]:bc==="semi"?[1,7]:bc==="quarterly"?[1,4,7,10]:[1,2,3,4,5,6,7,8,9,10,11,12];periods.forEach(m=>{if(m>CM&&yr===CY||yr>CY)return;const period=`${yr}-${String(m).padStart(2,"0")}`;const exists=D.invoices.find(i=>i.cid===c.id&&i.period===period);const status=exists?exists.status:"pending";const due=exists?exists.due:null;const overdue=exists&&status!=="paid"?invOverdueDays(exists):0;cal.push({cid:c.id,ct:c.ct||c.n,period,m,bc:BC_LABELS[bc],status,due,overdue,inv:exists});});});return cal.sort((a,b)=>a.period.localeCompare(b.period));};
+
+// ═══ V12b 现金流预测 ═══
+const cashFlowForecast=()=>{const months=[];for(let i=0;i<3;i++){const d=new Date();d.setMonth(d.getMonth()+i);const m=d.getMonth()+1;const y=d.getFullYear();const key=`${y}-${String(m).padStart(2,"0")}`;let expected=0;let overdue=0;D.clients.filter(c=>c.m>0).forEach(c=>{const bc=c.bc||"monthly";const periods=bc==="annual"?[1]:bc==="semi"?[1,7]:bc==="quarterly"?[1,4,7,10]:[1,2,3,4,5,6,7,8,9,10,11,12];if(periods.includes(m)){const amt=bc==="annual"?c.m*12:bc==="semi"?c.m*6:bc==="quarterly"?c.m*3:c.m;expected+=amt;}});D.invoices.filter(inv=>inv.status!=="paid"&&inv.due&&inv.due<key+"-28").forEach(inv=>{overdue+=invBalance(inv);});const tva=Math.round(expected*0.081*100)/100;months.push({key,label:`${y}年${m}月`,expected,tva,total:Math.round((expected+tva)*100)/100,overdue});}return months;};
+const BC_LABELS={monthly:"月付",quarterly:"季付",semi:"半年付",annual:"年付"};
+
+const clientPortal=(cid)=>{const c=D.clients.find(x=>x.id===cid);if(!c)return;const invs=D.invoices.filter(i=>i.cid===cid).sort((a,b)=>b.date.localeCompare(a.date));const tb=invs.reduce((s,i)=>s+i.total,0);const tp2=invs.reduce((s,i)=>s+invPaid(i),0);const w=window.open("","_blank");w.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8"><title>Compte – ${c.n}</title><style>@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Noto+Sans+SC:wght@400;600&display=swap');*{margin:0;padding:0;box-sizing:border-box}body{font-family:'DM Sans','Noto Sans SC',sans-serif;background:#f8f7f4;color:#1c1c1a;padding:40px;max-width:800px;margin:auto}.hd{display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:2px solid #c8a86e;margin-bottom:24px}.hd h1{font-size:16pt;color:#1a3a5f}.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}.kpi>div{padding:16px;background:#fff;border-radius:8px;border:1px solid #e8e7e0;text-align:center}.kpi .l{font-size:9pt;color:#888;text-transform:uppercase;margin-bottom:6px}.kpi .v{font-size:20pt;font-weight:700}table{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;border:1px solid #e8e7e0}th{background:#f5f4f0;padding:10px;text-align:left;font-size:9pt;font-weight:600;color:#888;text-transform:uppercase}td{padding:10px;font-size:10pt;border-bottom:1px solid #f0efe8}.r{text-align:right}.st{font-size:9pt;padding:3px 10px;border-radius:4px;font-weight:600}.paid{background:rgba(45,138,86,.1);color:#2d8a56}.unpaid{background:rgba(196,84,84,.08);color:#c45454}.partial{background:rgba(200,168,110,.1);color:#c8882e}.ft{margin-top:30px;text-align:center;font-size:9pt;color:#aaa;padding-top:16px;border-top:1px solid #e8e7e0}@media print{body{padding:20px}}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+</style></head><body><div class="hd"><div><h1>W&B Société Fiduciaire</h1><div style="font-size:9pt;color:#888">利安达国际瑞士W&B 信托公司</div></div><div style="text-align:right"><div style="font-size:12pt;font-weight:600;color:#1a3a5f">${c.n}</div><div style="font-size:9pt;color:#888">Relevé de compte / 账户概览</div></div></div><div class="kpi"><div><div class="l">Facturé / 已开票</div><div class="v" style="color:#1a3a5f">${tb.toLocaleString()}</div></div><div><div class="l">Payé / 已付</div><div class="v" style="color:#2d8a56">${tp2.toLocaleString()}</div></div><div><div class="l">Solde / 余额</div><div class="v" style="color:${tb>tp2?"#c45454":"#2d8a56"}">${(tb-tp2).toLocaleString()}</div></div></div><table><thead><tr><th>N° Facture</th><th>Date</th><th>Période</th><th class="r">Montant</th><th class="r">Payé</th><th>Statut</th></tr></thead><tbody>${invs.map(inv=>{const pd=invPaid(inv);const st=inv.status==="paid"?"paid":pd>0?"partial":"unpaid";const sl=st==="paid"?"Payé/已付":st==="partial"?"Partiel/部分":"Impayé/未付";return`<tr><td style="font-family:monospace;font-weight:600">${inv.num}</td><td>${inv.date}</td><td>${inv.period}</td><td class="r">${inv.total.toLocaleString("fr-CH",{minimumFractionDigits:2})}</td><td class="r">${pd>0?pd.toLocaleString("fr-CH",{minimumFractionDigits:2}):"—"}</td><td><span class="st ${st}">${sl}</span></td></tr>`;}).join("")}</tbody></table><div class="ft">Document généré automatiquement / 系统自动生成<br>W&B Société Fiduciaire · Grand Rue 80 · 1820 Montreux</div>
+</body></html>`);w.document.close();};
+const INV_STATUS={draft:{l:"草稿",c:"var(--tx3)"},sent:{l:"已发",c:"var(--yellow)"},paid:{l:"已付",c:"var(--green)"},partial:{l:"部分付",c:"var(--ac)"},overdue:{l:"逾期",c:"var(--red)"}};
+const printInvoice=(inv)=>{const c=D.clients.find(x=>x.id===inv.cid);if(!c)return;const lg=inv.lang||"zh";
+const LOGO="data:image/png;base64,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";
+const L={zh:{billTo:"收件人 Rechnung an",shipTo:"收件地址 LIEFERADRESSE",instr:"说明 ANWEISUNGEN",qty:"数量 Menge",desc:"说明 Beschreibung",unit:"单价 Einzelpreis",total:"总额 Gesamtbetrag",sub:"小计 Zwischensumme",tva:"增值税 TVA 8.1%",fee:"手续费",dueLabel:"应付总额 fällig bis",thx:"感谢您的信任与合作"},fr:{billTo:"Facturé à",shipTo:"Adresse",instr:"Instructions",qty:"Qté",desc:"Description",unit:"Prix unit.",total:"Montant",sub:"Sous-total",tva:"TVA 8.1%",fee:"Frais",dueLabel:"Total dû au",thx:"Merci pour votre confiance"},en:{billTo:"Bill to",shipTo:"Ship to",instr:"Instructions",qty:"Qty",desc:"Description",unit:"Unit price",total:"Amount",sub:"Subtotal",tva:"VAT 8.1%",fee:"Fees",dueLabel:"Total due by",thx:"Thank you for your trust"}};
+const t=L[lg]||L.zh;
+const letterZh=`尊敬的${c.n}：\n\n您好。\n\n现随函附上贵司${inv.period}咨询服务费账单，敬请查收。烦请贵方在安排上予以协助，以便我们顺利完成相关工作结算。\n\n相关费用系综合贵司在此期间的财税服务需求，以及我们团队为确保服务连贯性所投入的时间与专业资源所计算。感谢贵方一直以来对我们工作的信任。\n\n此致\n敬礼\n\n  汪涛`;
+const letter=lg==="zh"?letterZh:"";
+const w=window.open("","_blank");
+w.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8"><title>${inv.num}</title><style>@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;600&family=DM+Sans:wght@400;500;600&display=swap');@page{size:A4;margin:15mm 20mm}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'DM Sans','Noto Sans SC',sans-serif;font-size:10pt;color:#222;padding:40px 50px;max-width:780px;margin:auto;line-height:1.5}table{width:100%;border-collapse:collapse}.hdr td{padding:6px 0;vertical-align:top;border:none}.cn{font-size:11pt;font-weight:600}.en{font-size:10pt;font-weight:500;color:#333}.inv-m{margin:18px 0;border-top:2px solid #c8a86e;border-bottom:1px solid #ddd}.inv-m td{padding:10px 12px}.lb{color:#888;font-size:8pt;text-transform:uppercase;letter-spacing:.05em}.vl{font-weight:600;font-size:12pt}.addr td{padding:10px 14px;vertical-align:top;border:1px solid #ddd;width:33.3%;font-size:9pt}.addr .lb{font-weight:600;margin-bottom:6px}.dt th{background:#f5f4f0;padding:8px 10px;text-align:left;font-size:9pt;font-weight:600;border-bottom:2px solid #c8a86e;color:#555}.dt td{padding:7px 10px;font-size:9pt;border-bottom:1px solid #eee;vertical-align:top}.si{color:#666;font-size:8.5pt;padding-left:16px;line-height:1.8}.r{text-align:right}.sm{margin:0 0 20px;width:50%;margin-left:auto}.sm td{padding:5px 10px;font-size:10pt;border:1px solid #ddd}.tr{background:#f5f4f0;font-weight:700;font-size:11pt;border-top:2px solid #c8a86e}.bk{margin:20px 0;padding:14px 18px;background:#fafaf6;border:1px solid #e8e7e0;border-radius:4px;font-size:8.5pt;line-height:2;color:#444}.bk strong{color:#222}.mt{text-align:center;font-size:8.5pt;color:#888;margin:16px 0;line-height:2}.lt{margin-top:24px;padding-top:16px;border-top:1px solid #ddd;font-size:9.5pt;line-height:2;white-space:pre-line;color:#333}@media print{body{padding:0}}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+</style></head><body><table class="hdr"><tr><td style="width:65%"><div class="cn">利安达国际瑞士W&B 信托公司</div><div class="en">W&B Société Fiduciaire Suisse SARL</div><div style="margin-top:4px;font-size:9pt;line-height:1.8;color:#333">Grand Rue 80<br>1820 Montreux<br>Suisse<br>CHE-198.674.530 TVA</div></td><td style="text-align:right;padding-top:4px"><img src="${LOGO}" style="height:56px"/></td></tr></table><div class="inv-m"><table><tr><td style="width:50%"><span class="lb">N° de facture</span><br><span class="vl">${inv.num}</span></td><td class="r"><span class="lb">Date</span><br><span class="vl">${inv.date}</span></td></tr></table></div><table class="addr"><tr><td><div class="lb">${t.billTo}</div>${c.n}</td><td><div class="lb">${t.shipTo}</div>${c.daddr||c.addr||c.n}</td><td><div class="lb">${t.instr}</div>Honoraires ${inv.period}</td></tr></table><table class="dt" style="margin:16px 0"><thead><tr><th style="width:60px">${t.qty}</th><th>${t.desc}</th><th class="r" style="width:100px">${t.unit}</th><th class="r" style="width:100px">${t.total}</th></tr></thead><tbody>${inv.items.map(it=>`<tr><td>1</td><td><strong>${it.desc}</strong>${it.details?it.details.map(d=>`<div class="si">${d}</div>`).join(""):""}${it.hours?`<div class="si">${it.hours}h × ${it.rate} CHF/h</div>`:""}</td><td class="r">1</td><td class="r">${it.amount.toLocaleString("fr-CH",{minimumFractionDigits:2})}</td></tr>`).join("")}</tbody></table><table class="sm"><tr><td>${t.sub}</td><td class="r">${inv.subtotal.toLocaleString("fr-CH",{minimumFractionDigits:2})}</td></tr>${inv.tva>0?`<tr><td>${t.tva}</td><td class="r">${inv.tva.toLocaleString("fr-CH",{minimumFractionDigits:2})}</td></tr>`:""}<tr><td>${t.fee}</td><td class="r">0.00</td></tr><tr class="tr"><td>${t.dueLabel} ${inv.due}</td><td class="r">${inv.total.toLocaleString("fr-CH",{minimumFractionDigits:2})}</td></tr></table><div class="bk"><strong>Banque :</strong> Banque cantonale Vaudoise<br><strong>Bénéficiaire :</strong> W&B Société Fiduciaire Suisse Sarl<br><strong>Adresse :</strong> Grand Rue 80, 1820 Montreux<br><strong>No. IBAN :</strong> CH03 0076 7000 C557 4216 5<br><strong>Code BIC :</strong> BCVLCH2LXXX</div><div class="mt">Grazie mille per il vostro ordine<br>Vielen Dank für Ihren Auftrag!<br>Merci beaucoup pour votre commande<br>Thank you very much for your order</div>${letter?`<div class="lt">${letter}</div>`:""}
+</body></html>`);w.document.close();setTimeout(()=>w.print(),500);};
+const doMail=(c,tp,lg,lv,oi)=>{setMod({t:"email",cid:c.id,tp,lg:lg||"zh",lv:lv||1,oi:oi||null});};
+const importICSFile=f=>{const r=new FileReader();r.onload=ev=>{const evts=parseICS(ev.target.result);evts.forEach(ev=>{sv(d=>({...d,personal:[...d.personal,{id:d.nid,name:ev.SUMMARY||"导入事件",cat:"个人",pri:"M",dl:ev.DTSTART||"",status:"N",notes:ev.DESCRIPTION||"",steps:[],acts:[{t:TD,a:"从ICS导入"}],created:TD}],nid:d.nid+1}));});};r.readAsText(f);};
+const setCfg=(k,v)=>sv({...D,cfg:{...D.cfg,[k]:v}});
+const nm=yr==CY?CM:12;
+const avYrs=useMemo(()=>{if(!D)return[CY];const yrs=Object.keys(D.years).map(Number);if(!yrs.includes(CY))yrs.push(CY);return yrs.sort((a,b)=>b-a);},[D]);
+
+// ═══════════════════════════════════════
+// V10 计算引擎：四面板 + 红绿灯
+// ═══════════════════════════════════════
+const stats=useMemo(()=>{if(!D)return{};let tot=0,done=0,od=0;const bc={};const st=D.years[yr]?.st||{};D.clients.forEach(c=>{let cd=0,ct2=0,co=0;TK.forEach(t=>{const s=st[`${c.id}-${t.id}`]||"";ct2++;if(s==="O")cd++;else if(s!=="P"&&t.dl&&t.dl<=(yr==CY?CM:12)){co++;od++;}tot++;if(s==="O")done++;});bc[c.id]={d:cd,t:ct2,o:co};});return{tot,done,od,bc,mr:D.clients.reduce((s,c)=>s+c.m,0)};},[D,yr]);
+
+// 逾期项目
+const urg=useMemo(()=>{if(!D)return[];const r=[];const st=D.years[yr]?.st||{};const nm2=yr==CY?CM:12;D.clients.forEach(c=>{TK.forEach(t=>{const s=st[`${c.id}-${t.id}`]||"";if(t.dl&&t.dl<=nm2&&s!=="O"&&s!=="P")r.push({c,t,s,gap:nm2-t.dl,light:trafficLight(t.dl,nm2,s)});});});return r.sort((a,b)=>b.gap-a.gap);},[D,yr]);
+
+// 等客户材料
+const waitDoc=useMemo(()=>{if(!D)return[];const r=[];const st=D.years[yr]?.st||{};D.clients.forEach(c=>{TK.forEach(t=>{const s=st[`${c.id}-${t.id}`]||"";if(s==="N")r.push({c,t});});});return r;},[D,yr]);
+
+// 本周到期（按截止月计算）
+const thisWeek=useMemo(()=>{if(!D)return[];const r=[];const st=D.years[yr]?.st||{};D.clients.forEach(c=>{TK.forEach(t=>{const s=st[`${c.id}-${t.id}`]||"";if(t.dl&&t.dl===CM&&s!=="O"&&s!=="P")r.push({c,t,s});});});return r;},[D,yr]);
+
+// 待联系
+const crmA=useMemo(()=>{if(!D)return[];return D.clients.filter(c=>c.m>0).map(c=>({...c,days:c.lc?dayDiff(c.lc,TD):999,due:(c.lc?dayDiff(c.lc,TD):999)>=c.crm})).filter(x=>x.due).sort((a,b)=>b.days-a.days);},[D]);
+
+// 产能指标
+const capacity=useMemo(()=>{if(!D)return{};const st=D.years[yr]?.st||{};let working=0,queue=0;D.clients.forEach(c=>{TK.forEach(t=>{const s=st[`${c.id}-${t.id}`]||"";if(s==="/")working++;if(s==="N"||s==="")queue++;});});return{working,queue,done:stats.done||0,total:stats.tot||0};},[D,yr,stats]);
+
+const fCli=useMemo(()=>{if(!D)return[];return D.clients.filter(c=>{if(q&&!c.n.toLowerCase().includes(q.toLowerCase())&&!c.ct.toLowerCase().includes(q.toLowerCase()))return false;if(gf!=="all"&&c.g!==gf)return false;return true;});},[D,q,gf]);
+
+if(!D)return<div style={{minHeight:"100vh",display:"flex",alignItems:"center",justifyContent:"center"}}><span className="heading" style={{fontSize:28,color:"var(--ac)"}}>AWB</span></div>;
+
+const TABS=[{id:"cmd",l:"指挥",e:"⬡"},{id:"tasks",l:"任务",e:"☰"},{id:"billing",l:"账单",e:"¤"},{id:"inv",l:"发票",e:"▤"},{id:"time",l:"工时",e:"◷"},{id:"revenue",l:"收入",e:"$"},{id:"projects",l:"项目",e:"◆"},{id:"backlog",l:"重整",e:"⚡"},{id:"calendar",l:"日历",e:"◉"},{id:"personal",l:"个人",e:"○"},{id:"crm",l:"关系",e:"∞"},{id:"email",l:"邮件",e:"✉"}];
+
+return(<div style={{minHeight:"100dvh"}}>
+{/* TOP NAV */}
+<nav className="top-nav" style={{background:D.cfg?.theme==="dark"?"rgba(14,14,18,.9)":"rgba(248,247,244,.92)",backdropFilter:"blur(20px)",borderBottom:"1px solid var(--bd2)",position:"sticky",top:0,zIndex:40}}>
+<div style={{maxWidth:1400,margin:"0 auto",padding:"0 20px",height:52,display:"flex",alignItems:"center",justifyContent:"space-between"}}>
+  <div style={{display:"flex",alignItems:"center",gap:12}}>
+    <span className="heading" style={{fontSize:22,color:"var(--ac)",letterSpacing:".08em"}}>AWB</span>
+    <button onClick={()=>setMod("voice")} style={{width:44,height:44,borderRadius:"50%",border:"none",background:listening?"var(--red)":"var(--acA)",color:listening?"#fff":"var(--ac)",fontSize:20,cursor:"pointer",boxShadow:"0 2px 8px rgba(0,0,0,.1)",transition:".2s"}}>🎙</button>
+    {listening&&<span style={{fontSize:11,color:"var(--red)",fontWeight:600,animation:"pulse 1s infinite"}}>🎙 录音中...</span>}
+    <span style={{fontSize:11,color:"var(--tx3)",letterSpacing:".1em",textTransform:"uppercase"}}>V12 · Fiduciaire</span>
+  </div>
+  <div style={{display:"flex",gap:2}}>{TABS.map(v=><button key={v.id} className={`nb ${vw===v.id?"on":""}`} onClick={()=>{setVw(v.id);setSel(null);}}>{v.l}</button>)}</div>
+  <div style={{display:"flex",gap:8,alignItems:"center"}}>
+    <div style={{display:"flex",alignItems:"center",gap:4}}>
+      <button onClick={()=>{const py=yr-1;sv(ensureYr({...D},py));setYr(py);}} style={{background:"none",border:"none",cursor:"pointer",color:"var(--tx3)",fontSize:14}}>‹</button>
+      <span style={{fontSize:15,fontWeight:700,color:yr===CY?"var(--ac)":"var(--wn)",minWidth:40,textAlign:"center"}}>{yr}</span>
+      <button onClick={()=>{if(yr<CY+99){sv(ensureYr({...D},yr+1));setYr(yr+1);}}} style={{background:"none",border:"none",cursor:"pointer",color:yr>=CY+99?"var(--bd)":"var(--tx3)",fontSize:14}}>›</button>
+    </div>
+    {D.cfg?.syncUrl&&<button onClick={cloudPush} disabled={syncing} style={{background:"none",border:"none",cursor:syncing?"wait":"pointer",color:"var(--ac)",fontSize:12,opacity:syncing?0.5:1}}>SYNC</button>}
+    <button onClick={()=>setMod("voice")} style={{background:"none",border:"none",cursor:"pointer",color:listening?"var(--red)":"var(--tx3)",fontSize:14}}>🎙</button>
+    <button onClick={()=>setMod("cfg")} style={{background:"none",border:"none",cursor:"pointer",color:"var(--tx3)",fontSize:12}}>设置</button>
+    <button onClick={()=>{setFrm({});setMod("addCli");}} style={{padding:"6px 14px",borderRadius:6,background:"var(--ac)",color:"var(--bg0)",fontSize:11,fontWeight:600,border:"none",cursor:"pointer",letterSpacing:".06em",textTransform:"uppercase"}}>+客户</button>
+  </div>
+</div></nav>
+
+{/* BOTTOM NAV */}
+<div className="bot-nav">
+  {TABS.slice(0,7).map(v=><button key={v.id} className={`bnb ${vw===v.id?"on":""}`} onClick={()=>{setVw(v.id);setSel(null);}}><span className="bi">{v.e}</span>{v.l}</button>)}
+  <button className={`bnb ${vw==="crm"||vw==="email"?"on":""}`} onClick={()=>setMod("more")}><span className="bi">⋯</span>更多</button>
+</div>
+
+<div className="main-wrap" style={{maxWidth:1400,margin:"0 auto",padding:"20px"}}>
+{yr!==CY&&<div style={{padding:"8px 14px",borderRadius:6,border:"1px solid var(--acB)",color:"var(--ac)",fontSize:12,marginBottom:16,textAlign:"center"}}>{yr} 年{yr<CY?" · 历史数据":" · 预设"}</div>}
+
+{/* ═══ V10 指挥中心 ═══ */}
+{vw==="cmd"&&<div style={{display:"flex",flexDirection:"column",gap:16}}>
+{D.cfg?.vacation?.on&&TD>=D.cfg.vacation.from&&TD<=D.cfg.vacation.to&&<div style={{padding:"12px 16px",borderRadius:8,background:"var(--greenA)",border:"1px solid var(--green)",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+  <div><span style={{fontSize:14}}>🏖</span> <span style={{fontSize:13,fontWeight:600,color:"var(--green)"}}>假期模式已开启</span> <span className="t2">{D.cfg.vacation.from} ~ {D.cfg.vacation.to}</span></div>
+  <button onClick={()=>setCfg("vacation",{on:false})} className="tg" style={{fontSize:10}}>关闭</button>
+</div>}
+{/* 语音按钮 - 移动端可见 */}
+<div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8}}>
+  <span className="heading" style={{fontSize:20,color:"var(--ac)"}}>指挥中心</span>
+  <button onClick={()=>setMod("voice")} style={{width:48,height:48,borderRadius:"50%",border:"none",background:listening?"var(--red)":"var(--ac)",color:"#fff",fontSize:22,cursor:"pointer",boxShadow:"0 3px 12px rgba(26,58,95,.2)",transition:".2s",transform:listening?"scale(1.1)":"scale(1)"}}>🎙</button>
+</div>
+{/* KPI 行 */}
+<div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(110px,1fr))",gap:10}}>
+  {[
+    {l:"活跃客户",v:D.clients.filter(c=>c.m>0).length,c:"var(--ac)"},
+    {l:"完成率",v:`${stats.tot?Math.round(stats.done/stats.tot*100):0}%`,c:stats.tot&&stats.done/stats.tot>.7?"var(--green)":"var(--yellow)"},
+    {l:"⚫ 逾期",v:urg.filter(u=>u.light==="black").length,c:urg.filter(u=>u.light==="black").length>0?"var(--red)":"var(--green)"},
+    {l:"🔴 本月",v:thisWeek.length,c:thisWeek.length>5?"var(--red)":"var(--yellow)"},
+    {l:"⏳ 等客户",v:waitDoc.length,c:"var(--yellow)"},
+    {l:"月收入",v:`${(stats.mr||0).toLocaleString()}`,c:"var(--ac)"},{l:"积压",v:(D.backlog||[]).filter(b=>b.status!=="done").length,c:(D.backlog||[]).filter(b=>b.status!=="done").length>0?"var(--red)":"var(--green)"},
+  ].map((k,i)=><div key={i} className="ki" style={{textAlign:"center"}}>
+    <div style={{fontSize:10,color:"var(--tx3)",textTransform:"uppercase",letterSpacing:".08em",marginBottom:6}}>{k.l}</div>
+    <div style={{fontSize:28,fontWeight:800,color:k.c}}>{k.v}</div>
+  </div>)}
+</div>
+
+{/* 四面板 */}
+<div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))",gap:12}}>
+
+{/* 面板1：严重逾期（黑灯） */}
+<div className="cmd-panel">
+  <div className="cmd-header"><span className="cmd-title" style={{color:"var(--red)"}}>⚫ 严重逾期</span><span className="cmd-count" style={{color:"var(--red)"}}>{urg.filter(u=>u.light==="black").length}</span></div>
+  <div style={{maxHeight:220,overflowY:"auto"}}>{urg.filter(u=>u.light==="black").slice(0,15).map((u,i)=><div key={i} className="cmd-item">
+    <div><button onClick={()=>openC(u.c.id)} style={{fontWeight:600,background:"none",border:"none",cursor:"pointer",color:"var(--tx)",fontSize:13}}>{u.c.ct}</button> <span className="t2">{u.t.s}</span></div>
+    <div style={{display:"flex",alignItems:"center",gap:6}}><TrafficLight color="black" label={`${u.gap}月`}/><SB s={u.s} onClick={()=>cyc(`${u.c.id}-${u.t.id}`)}/></div>
+  </div>)}{urg.filter(u=>u.light==="black").length===0&&<div className="t2" style={{padding:12,textAlign:"center"}}>全部清零 ✓</div>}</div>
+</div>
+
+{/* 面板2：等客户材料（黄灯） */}
+<div className="cmd-panel">
+  <div className="cmd-header"><span className="cmd-title" style={{color:"var(--yellow)"}}>⏳ 等客户材料</span><span className="cmd-count" style={{color:"var(--yellow)"}}>{waitDoc.length}</span></div>
+  <div style={{maxHeight:220,overflowY:"auto"}}>{waitDoc.slice(0,15).map((w,i)=><div key={i} className="cmd-item">
+    <div><button onClick={()=>openC(w.c.id)} style={{fontWeight:500,background:"none",border:"none",cursor:"pointer",color:"var(--tx)",fontSize:13}}>{w.c.ct}</button> <span className="t2">{w.t.s}</span></div>
+    <div style={{display:"flex",gap:4}}><button onClick={()=>doMail(w.c,"doc","zh")} className="tg warn" style={{fontSize:10}}>催</button><SB s="N" onClick={()=>cyc(`${w.c.id}-${w.t.id}`)}/></div>
+  </div>)}{waitDoc.length===0&&<div className="t2" style={{padding:12,textAlign:"center"}}>全部齐全 ✓</div>}</div>
+</div>
+
+{/* 面板3：本月到期（红灯） */}
+<div className="cmd-panel">
+  <div className="cmd-header"><span className="cmd-title" style={{color:"var(--red)"}}>🔴 本月到期</span><span className="cmd-count" style={{color:"var(--red)"}}>{thisWeek.length}</span></div>
+  <div style={{maxHeight:220,overflowY:"auto"}}>{thisWeek.slice(0,15).map((w,i)=><div key={i} className="cmd-item">
+    <div><button onClick={()=>openC(w.c.id)} style={{fontWeight:500,background:"none",border:"none",cursor:"pointer",color:"var(--tx)",fontSize:13}}>{w.c.ct}</button> <span className="t2">{w.t.s}</span></div>
+    <SB s={w.s} onClick={()=>cyc(`${w.c.id}-${w.t.id}`)} z="m"/>
+  </div>)}{thisWeek.length===0&&<div className="t2" style={{padding:12,textAlign:"center"}}>本月无截止 ✓</div>}</div>
+</div>
+
+{/* 面板4：产能仪表 */}
+<div className="cmd-panel">
+  <div className="cmd-header"><span className="cmd-title" style={{color:"var(--ac)"}}>📊 产能</span></div>
+  <div style={{padding:"12px 0"}}>
+    <div style={{display:"flex",justifyContent:"space-between",marginBottom:4,fontSize:12}}><span>进行中</span><span style={{fontWeight:700,color:"var(--ac)"}}>{capacity.working}</span></div>
+    <div style={{width:"100%",height:8,background:"var(--bg3)",borderRadius:4,marginBottom:12}}><div style={{width:`${capacity.total?capacity.done/capacity.total*100:0}%`,height:"100%",background:"var(--green)",borderRadius:4,transition:"width .5s"}}/></div>
+    <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
+      <div style={{padding:10,borderRadius:6,background:"var(--bg0)",textAlign:"center"}}><div style={{fontSize:10,color:"var(--tx3)"}}>已完成</div><div style={{fontSize:20,fontWeight:700,color:"var(--green)"}}>{capacity.done}</div></div>
+      <div style={{padding:10,borderRadius:6,background:"var(--bg0)",textAlign:"center"}}><div style={{fontSize:10,color:"var(--tx3)"}}>总任务</div><div style={{fontSize:20,fontWeight:700}}>{capacity.total}</div></div>
+    </div>
+  </div>
+  {/* 待联系 */}
+  <div style={{borderTop:"1px solid var(--bd2)",paddingTop:10,marginTop:4}}>
+    <div style={{fontSize:11,fontWeight:600,color:"var(--tx3)",marginBottom:6}}>📞 待联系 ({crmA.length})</div>
+    {crmA.slice(0,5).map((c,i)=><div key={i} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"5px 0",fontSize:12}}>
+      <button onClick={()=>openC(c.id)} style={{background:"none",border:"none",cursor:"pointer",color:"var(--ac)",fontSize:12}}>{c.ct}</button>
+      <span className="t2">{c.lc?c.days+"天":"从未"}</span>
+    </div>)}
+  </div>
+</div>
+</div>
+
+{/* 客户网格（带红绿灯） */}
+<div>
+  <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
+    <span className="heading" style={{fontSize:24}}>客户</span>
+    <input value={q} onChange={e=>setQ(e.target.value)} placeholder="搜索..." className="ip" style={{maxWidth:160,fontSize:14}}/><select value={gf} onChange={e=>setGf(e.target.value)} className="ip" style={{maxWidth:100,fontSize:12}}><option value="all">全部类型</option>{Object.entries(SVC_TYPES).map(([k,v])=><option key={k} value={k}>{v.l}</option>)}</select>
+  </div>
+  <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(175px,1fr))",gap:10}}>
+  {D.clients.filter(c=>{if(q&&!c.n.toLowerCase().includes(q.toLowerCase())&&!c.ct.toLowerCase().includes(q.toLowerCase()))return false;if(gf!=="all"&&c.svc!==gf&&c.g!==gf)return true;return true;}).filter(c=>!q||c.n.toLowerCase().includes(q.toLowerCase())||c.ct.toLowerCase().includes(q.toLowerCase())).map(c=>{
+    const bc=stats.bc?.[c.id]||{d:0,t:26,o:0};const pct=bc.t?Math.round(bc.d/bc.t*100):0;
+    // V10: 计算此客户的最严重红绿灯
+    const cSt=D.years[yr]?.st||{};
+    let worst="green";
+    TK.forEach(t=>{const s=cSt[`${c.id}-${t.id}`]||"";const l=trafficLight(t.dl,yr==CY?CM:12,s);if(l==="black")worst="black";else if(l==="red"&&worst!=="black")worst="red";else if(l==="yellow"&&worst==="green")worst="yellow";});
+    const ringColor={green:"var(--green)",yellow:"var(--yellow)",red:"var(--red)",black:"#6b7280"}[worst];
+    return<button key={c.id} onClick={()=>openC(c.id)} style={{display:"flex",alignItems:"center",gap:12,padding:14,borderRadius:8,border:`1px solid ${worst==="black"||worst==="red"?ringColor:"var(--bd2)"}`,background:"var(--bg1)",cursor:"pointer",textAlign:"left",WebkitTapHighlightColor:"transparent",transition:"border-color .2s"}}>
+    <div style={{position:"relative",flexShrink:0}}>
+      <svg width="44" height="44" viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" fill="none" stroke="var(--gy)" strokeWidth="2"/><circle cx="22" cy="22" r="18" fill="none" stroke={ringColor} strokeWidth="2.5" strokeDasharray={`${pct*1.13} 200`} strokeLinecap="round" className="pr" style={{opacity:pct>0?1:.15}}/></svg>
+      <span style={{position:"absolute",inset:0,display:"flex",alignItems:"center",justifyContent:"center",fontSize:13,fontWeight:700,color:"var(--tx)"}}>{pct}<span style={{fontSize:9}}>%</span></span>
+      {bc.o>0&&<span style={{position:"absolute",top:-4,right:-4,minWidth:18,height:18,background:ringColor,color:"var(--bg0)",fontSize:9,fontWeight:700,borderRadius:9,display:"flex",alignItems:"center",justifyContent:"center",padding:"0 4px"}}>{bc.o}</span>}
+    </div>
+    <div style={{minWidth:0,flex:1}}>
+      <div style={{fontSize:14,fontWeight:600,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",color:"var(--tx)"}}>{c.ct||c.n}</div>
+      <div style={{fontSize:11,color:"var(--tx2)",marginTop:2}}>{c.m>0?c.m.toLocaleString()+" CHF":"—"}{c.canton?" · "+c.canton:""}{c.svc&&c.svc!=="fiscal"?" · "+(SVC_TYPES[c.svc]?.s||""):""}</div>
+    </div>
+  </button>;})}
+  </div>
+</div>
+</div>}
+{/* ═══ 任务矩阵 ═══ */}
+{vw==="tasks"&&<div style={{display:"flex",flexDirection:"column",gap:12}}>
+<div style={{display:"flex",gap:10,flexWrap:"wrap",alignItems:"center"}}>
+  <input value={q} onChange={e=>setQ(e.target.value)} placeholder="搜索..." className="ip" style={{maxWidth:200,fontSize:14}}/>
+  <select value={gf} onChange={e=>setGf(e.target.value)} className="ip" style={{maxWidth:120}}><option value="all">全部</option>{GR.map(g=><option key={g}>{g}</option>)}</select>
+</div>
+<div className="cd" style={{overflowX:"auto",WebkitOverflowScrolling:"touch",padding:0}}>
+<table><thead><tr>
+  <th style={{position:"sticky",left:0,background:"var(--bg1)",zIndex:20,textAlign:"left",minWidth:120,padding:"10px 12px"}}>客户</th>
+  <th style={{width:32}}>%</th>
+  <th style={{width:28}}>灯</th>
+  {TK.map(t=><th key={t.id} style={{padding:0,textAlign:"center"}}><span className="vt">{t.s}</span></th>)}{TK_DOM.map(t=><th key={t.id} style={{padding:0,textAlign:"center"}}><span className="vt" style={{color:"var(--green)"}}>{t.s}</span></th>)}
+</tr></thead><tbody>
+  {fCli.map(c=>{const bc=stats.bc?.[c.id]||{d:0,t:26,o:0};const pct=bc.t?Math.round(bc.d/bc.t*100):0;
+    const cSt=D.years[yr]?.st||{};let worst="green";
+    TK.forEach(t=>{const s=cSt[`${c.id}-${t.id}`]||"";const l=trafficLight(t.dl,yr==CY?CM:12,s);if(l==="black")worst="black";else if(l==="red"&&worst!=="black")worst="red";else if(l==="yellow"&&worst==="green")worst="yellow";});
+    const dot={green:"🟢",yellow:"🟡",red:"🔴",black:"⚫"}[worst];
+    return<tr key={c.id}>
+    <td style={{position:"sticky",left:0,background:"var(--bg1)",zIndex:10,borderRight:"1px solid var(--bd2)",padding:"6px 12px"}}><button onClick={()=>openC(c.id)} style={{fontSize:13,color:"var(--tx)",background:"none",border:"none",cursor:"pointer",maxWidth:110,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",display:"block"}}>{c.n}</button></td>
+    <td style={{textAlign:"center",fontSize:11,fontWeight:600,color:pct===100?"var(--ok)":"#bbb"}}>{pct}</td>
+    <td style={{textAlign:"center",fontSize:12}}>{dot}</td>
+    {TK.map(t=><td key={t.id} style={{textAlign:"center",padding:2}}><SB s={ySt[`${c.id}-${t.id}`]||""} onClick={()=>cyc(`${c.id}-${t.id}`)}/></td>)}
+  </tr>;})}
+</tbody></table></div></div>}
+
+{/* ═══ 账单 ═══ */}
+{vw==="billing"&&<div className="cd" style={{overflowX:"auto",WebkitOverflowScrolling:"touch",padding:0}}>
+<table><thead><tr>
+  <th style={{position:"sticky",left:0,background:"var(--bg1)",zIndex:20,textAlign:"left",minWidth:120,padding:"10px 12px"}}>客户</th><th style={{textAlign:"right",width:60}}>月费</th>
+  {MZ.map((m,i)=><th key={i} style={{textAlign:"center",color:yr===CY&&i+1===CM?"var(--ac)":""}}>{m}</th>)}
+  <th style={{textAlign:"right",width:65}}>已收</th><th style={{width:36}}/>
+</tr></thead><tbody>
+  {fCli.filter(c=>c.m>0).map(c=>{const paid=Array.from({length:12},(_,i)=>yPy[`${c.id}-${i+1}`]==="paid");const yp=paid.filter(Boolean).length*c.m;const unp=Array.from({length:nm},(_,i)=>!paid[i]).some(Boolean);return<tr key={c.id}>
+    <td style={{position:"sticky",left:0,background:"var(--bg1)",zIndex:10,borderRight:"1px solid var(--bd2)",padding:"6px 12px"}}><button onClick={()=>openC(c.id)} style={{fontSize:13,color:"var(--tx)",background:"none",border:"none",cursor:"pointer"}}>{c.n}</button></td>
+    <td style={{textAlign:"right",fontSize:12,color:"var(--tx2)"}}>{c.m.toLocaleString()}</td>
+    {Array.from({length:12},(_,i)=>{const k=`${c.id}-${i+1}`;const p=yPy[k]==="paid";const cur=yr===CY&&i+1===CM;const past=yr<CY||(yr===CY&&i+1<CM);return<td key={i} style={{textAlign:"center",padding:2}}>
+      <button onClick={()=>tPay(k)} className={`sb ss ${p?"sO":(past||cur)?"sE":"sP"}`} style={{borderRadius:3}}>{p?"✓":(past||cur)?"·":"·"}</button>
+    </td>;})}
+    <td style={{textAlign:"right",fontWeight:600,fontSize:13}}>{yp.toLocaleString()}</td>
+    <td>{unp&&<button onClick={()=>doMail(c,"pay","zh")} className="tg warn" style={{fontSize:10}}>催</button>}</td>
+  </tr>;})}
+</tbody></table></div>}
+
+
+
+{/* ═══ V12 发票管理 ═══ */}
+{vw==="inv"&&<div style={{display:"flex",flexDirection:"column",gap:16}}>
+<div style={{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:8}}>
+  <span className="heading" style={{fontSize:24}}>发票管理</span>
+  <div style={{display:"flex",gap:6}}>
+    <button onClick={()=>{const fc=D.clients.find(c=>c.m>0);setFrm({cid:fc?fc.id:"",period:TD.slice(0,7)});setMod("genInv");}} className="bb" style={{width:"auto",padding:"8px 16px"}}>+ 生成发票</button>
+    <button onClick={()=>{const m=TD.slice(0,7);const n=batchGenInvoices(m);alert(`已生成 ${n} 张发票（${m}）`);}} className="tg">批量生成</button>
+  </div>
+</div>
+
+{/* KPI */}
+{(()=>{const invs=D.invoices.filter(i=>i.date?.startsWith(String(yr)));const drafted=invs.filter(i=>i.status==="draft").length;const sent=invs.filter(i=>i.status==="sent").length;const paid=invs.filter(i=>i.status==="paid");const partial=invs.filter(i=>i.status==="partial");const overdue=invs.filter(i=>i.status!=="paid"&&invOverdueDays(i)>0);const totalBilled=invs.reduce((s,i)=>s+i.total,0);const totalCollected=invs.reduce((s,i)=>s+invPaid(i),0);const totalAR=Math.round((totalBilled-totalCollected)*100)/100;return<div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(100px,1fr))",gap:8}}>
+  {[{l:"草稿",v:drafted,c:"var(--tx3)"},{l:"已发",v:sent,c:"var(--yellow)"},{l:"已付",v:paid.length,c:"var(--green)"},{l:"部分付",v:partial.length,c:"var(--ac)"},{l:"逾期",v:overdue.length,c:overdue.length?"var(--red)":"var(--green)"},{l:"应收AR",v:(totalAR/1000).toFixed(1)+"K",c:totalAR>0?"var(--red)":"var(--green)"}].map((k,i)=><div key={i} className="ki" style={{textAlign:"center"}}><div style={{fontSize:9,color:"var(--tx3)",textTransform:"uppercase",letterSpacing:".08em",marginBottom:4}}>{k.l}</div><div style={{fontSize:22,fontWeight:800,color:k.c}}>{k.v}</div></div>)}
+</div>;})()}
+
+{/* 发票列表 */}
+<div className="cd" style={{padding:0,overflowX:"auto"}}>
+<table><thead><tr>
+  <th style={{padding:"8px 10px",fontSize:11}}>发票号</th>
+  <th style={{fontSize:11}}>客户</th>
+  <th style={{fontSize:11}}>期间</th>
+  <th style={{textAlign:"right",fontSize:11}}>金额</th>
+  <th style={{textAlign:"right",fontSize:11}}>已付</th>
+  <th style={{textAlign:"center",fontSize:11}}>状态</th>
+  <th style={{fontSize:11}}>到期</th>
+  <th style={{width:120,fontSize:11}}>操作</th>
+</tr></thead><tbody>
+{D.invoices.filter(i=>i.date?.startsWith(String(yr))).sort((a,b)=>b.num.localeCompare(a.num)).map(inv=>{const c=D.clients.find(x=>x.id===inv.cid);const st=inv.status==="paid"?"paid":invOverdueDays(inv)>0?"overdue":inv.status;const stInfo=INV_STATUS[st]||INV_STATUS.draft;const bal=invBalance(inv);const od=invOverdueDays(inv);return<tr key={inv.id} style={{opacity:st==="paid"?.6:1}}>
+  <td style={{padding:"6px 10px",fontSize:12,fontWeight:600,fontFamily:"monospace"}}>{inv.num}</td>
+  <td style={{fontSize:12}}><button onClick={()=>openC(inv.cid)} style={{background:"none",border:"none",cursor:"pointer",color:"var(--ac)",fontSize:12}}>{c?.ct||"?"}</button></td>
+  <td style={{fontSize:12,color:"var(--tx2)"}}>{inv.period}</td>
+  <td style={{textAlign:"right",fontSize:12}}>{inv.total.toLocaleString()}</td>
+  <td style={{textAlign:"right",fontSize:12,color:invPaid(inv)>0?"var(--green)":"var(--tx3)"}}>{invPaid(inv)>0?invPaid(inv).toLocaleString():"—"}</td>
+  <td style={{textAlign:"center"}}><span style={{fontSize:10,padding:"2px 8px",borderRadius:4,background:stInfo.c+"22",color:stInfo.c,fontWeight:600}}>{stInfo.l}{od>0?` ${od}天`:""}</span></td>
+  <td style={{fontSize:11,color:od>0?"var(--red)":"var(--tx2)"}}>{inv.due}</td>
+  <td><div style={{display:"flex",gap:3}}>
+    <button onClick={()=>printInvoice(inv)} className="tg" style={{fontSize:10}}>预览</button>
+    {st==="draft"&&<button onClick={()=>updInvoice(inv.id,{status:"sent",sentDate:TD})} className="tg" style={{fontSize:10}}>标记已发</button>}
+    {st!=="paid"&&<button onClick={()=>{setFrm({invId:inv.id,pamt:bal,pdate:TD});setMod("addPay");}} className="tg" style={{fontSize:10,color:"var(--green)"}}>收款</button>}
+    {st!=="paid"&&od>0&&<button onClick={()=>{const cc=D.clients.find(x=>x.id===inv.cid);if(cc)doMail(cc,"pay",inv.lang||"zh",od>=90?3:od>=30?2:1,{balance:invBalance(inv),days:od,interest:invInterest(inv)});}} className="tg warn" style={{fontSize:10}}>催</button>}
+    <button onClick={()=>{if(confirm("删除发票 "+inv.num+" ？")){rmInvoice(inv.id);}}} style={{background:"none",border:"none",cursor:"pointer",color:"var(--red)",fontSize:13,padding:"2px 6px"}}>✕</button>
+  </div></td>
+</tr>;})}
+</tbody></table>
+{D.invoices.filter(i=>i.date?.startsWith(String(yr))).length===0&&<div className="t2" style={{textAlign:"center",padding:24}}>暂无发票 — 点击"生成发票"或"批量生成"</div>}
+</div>
+</div>}
+
+{/* ═══ V11 工时 ═══ */}
+{vw==="time"&&<div style={{display:"flex",flexDirection:"column",gap:16}}>
+<div style={{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:8}}>
+  <span className="heading" style={{fontSize:24}}>工时记录</span>
+  <div style={{display:"flex",gap:6,alignItems:"center"}}>
+    {timer?<div style={{display:"flex",alignItems:"center",gap:8,padding:"6px 14px",borderRadius:6,background:"var(--erA)",border:"1px solid var(--red)"}}>
+      <span style={{fontSize:13,color:"var(--red)",fontWeight:600}}>⏱ {D.clients.find(c=>c.id===timer.cid)?.ct} · {timer.task}</span>
+      <span style={{fontSize:18,fontWeight:700,fontFamily:"monospace",color:"var(--red)"}}>{fmtDur(Math.round((Date.now()-timer.start)/60000))}</span>
+      <button onClick={()=>setMod("stopTimer")} style={{padding:"4px 12px",borderRadius:4,background:"var(--red)",color:"#fff",border:"none",cursor:"pointer",fontSize:12,fontWeight:600}}>停止</button>
+    </div>:<button onClick={()=>{setFrm({cid:D.clients.find(c=>c.m>0)?.id,task:"通用"});setMod("startTimer");}} className="bb" style={{width:"auto",padding:"8px 16px"}}>⏱ 开始计时</button>}
+    <button onClick={()=>{setFrm({cid:D.clients.find(c=>c.m>0)?.id,task:"通用"});setMod("addTime");}} className="tg">手动录入</button>
+    <button onClick={()=>setMod("exportTS")} className="tg">导出Timesheet</button>
+  </div>
+</div>
+<div className="cd"><div style={{fontSize:12,color:"var(--ac)",textTransform:"uppercase",letterSpacing:".1em",marginBottom:12,fontWeight:600}}>客户盈利分析</div>
+  <div style={{overflowX:"auto"}}><table><thead><tr><th style={{textAlign:"left",padding:"8px 10px",fontSize:12}}>客户</th><th style={{textAlign:"right",fontSize:12}}>月费</th><th style={{textAlign:"right",fontSize:12}}>本月</th><th style={{textAlign:"right",fontSize:12}}>年度</th><th style={{textAlign:"right",fontSize:12}}>时薪</th><th style={{textAlign:"center",fontSize:12}}>效率</th></tr></thead><tbody>
+  {D.clients.filter(c=>c.m>0).map(c=>{const ml=D.timeLogs.filter(t=>t.cid===c.id&&t.date?.startsWith(`${CY}-${String(CM).padStart(2,"0")}`));const yl=D.timeLogs.filter(t=>t.cid===c.id&&t.date?.startsWith(String(CY)));const mm=ml.reduce((s,t)=>s+(t.duration||0),0);const ym=yl.reduce((s,t)=>s+(t.duration||0),0);const hr=mm>0?Math.round(c.m/(mm/60)):null;return<tr key={c.id}><td style={{padding:"6px 10px",fontSize:13}}><button onClick={()=>openC(c.id)} style={{background:"none",border:"none",cursor:"pointer",color:"var(--ac)",fontSize:13}}>{c.ct}</button></td><td style={{textAlign:"right",fontSize:13}}>{c.m.toLocaleString()}</td><td style={{textAlign:"right",fontSize:13,fontWeight:600}}>{fmtDur(mm)}</td><td style={{textAlign:"right",fontSize:13,color:"var(--tx2)"}}>{fmtDur(ym)}</td><td style={{textAlign:"right",fontSize:13,fontWeight:700,color:hr&&hr>=200?"var(--green)":hr&&hr<100?"var(--red)":"var(--ac)"}}>{hr?hr+" CHF":"—"}</td><td style={{textAlign:"center"}}>{hr?hr>=200?"🟢":hr>=100?"🟡":"🔴":"—"}</td></tr>;})}
+  </tbody></table></div></div>
+<div className="cd"><div style={{fontSize:12,color:"var(--ac)",textTransform:"uppercase",letterSpacing:".1em",marginBottom:10,fontWeight:600}}>最近记录</div>
+  {D.timeLogs.length===0?<p className="t2" style={{textAlign:"center",padding:16}}>暂无工时记录</p>
+  :<div style={{maxHeight:400,overflowY:"auto"}}>{D.timeLogs.slice(0,50).map(t=>{const c=D.clients.find(x=>x.id===t.cid);return<div key={t.id} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"8px 0",borderBottom:"1px solid var(--bd2)",fontSize:13}}><div style={{flex:1,minWidth:0}}><span style={{color:"var(--ac)",fontWeight:500}}>{c?.ct||"?"}</span> <span className="t2">· {t.task}</span>{t.desc&&<div className="t2" style={{fontSize:11,marginTop:2,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{t.desc}</div>}</div><div style={{display:"flex",alignItems:"center",gap:8,flexShrink:0}}>{t.t0&&<span className="t2" style={{fontSize:11}}>{t.t0}–{t.t1}</span>}<span className="t2">{t.date}</span><span style={{fontWeight:700,fontFamily:"monospace",minWidth:45,textAlign:"right"}}>{fmtDur(t.duration)}</span><button onClick={()=>rmTimeLog(t.id)} style={{background:"none",border:"none",cursor:"pointer",color:"var(--tx3)",fontSize:12}}>×</button></div></div>;})}</div>}
+</div></div>}
+
+{/* ═══ V11 收入 ═══ */}
+{vw==="revenue"&&(()=>{const rc=D.clients.filter(c=>c.m>0);const mr=rc.reduce((s,c)=>s+c.m,0);const af=mr*12;const im=yr===CY?CM:12;const ti=mr*im;const py2=D.years[yr]?.py||{};const tp=rc.reduce((s,c)=>{let p=0;for(let i=1;i<=12;i++)if(py2[`${c.id}-${i}`]==="paid")p+=c.m;return s+p;},0);const os=ti-tp;const cr=ti>0?Math.round(tp/ti*100):0;const md=Array.from({length:12},(_,i)=>{const m=i+1;const pd=rc.reduce((s,c)=>s+(py2[`${c.id}-${m}`]==="paid"?c.m:0),0);return{m,inv:m<=im?mr:0,pd};});const od=rc.filter(c=>{for(let i=1;i<=im;i++)if(py2[`${c.id}-${i}`]!=="paid")return true;return false;}).map(c=>{let u=0;for(let i=1;i<=im;i++)if(py2[`${c.id}-${i}`]!=="paid")u+=c.m;return{...c,unpaid:u};}).sort((a,b)=>b.unpaid-a.unpaid);const ym=D.timeLogs.filter(t=>t.date?.startsWith(String(yr))).reduce((s,t)=>s+(t.duration||0),0);const ah=ym>0?Math.round(tp/(ym/60)):0;
+return<div style={{display:"flex",flexDirection:"column",gap:16}}>
+<span className="heading" style={{fontSize:24}}>收入总览 {yr}</span>
+<div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(120px,1fr))",gap:10}}>{[{l:"年度预测",v:(af/1000).toFixed(0)+"K",c:"var(--ac)"},{l:"已开票",v:(ti/1000).toFixed(0)+"K",c:"var(--tx)"},{l:"已收款",v:(tp/1000).toFixed(0)+"K",c:"var(--green)"},{l:"应收账款",v:(os/1000).toFixed(0)+"K",c:os>0?"var(--red)":"var(--green)"},{l:"回款率",v:cr+"%",c:cr>=90?"var(--green)":cr>=70?"var(--yellow)":"var(--red)"},{l:"综合时薪",v:ah?ah+"":"—",c:ah>=150?"var(--green)":"var(--yellow)"}].map((k,i)=><div key={i} className="ki" style={{textAlign:"center"}}><div style={{fontSize:10,color:"var(--tx3)",textTransform:"uppercase",letterSpacing:".08em",marginBottom:6}}>{k.l}</div><div style={{fontSize:26,fontWeight:800,color:k.c}}>{k.v}</div></div>)}</div>
+<div className="cd"><div style={{fontSize:12,color:"var(--ac)",textTransform:"uppercase",letterSpacing:".1em",marginBottom:12,fontWeight:600}}>月度收支</div>
+<div style={{display:"flex",alignItems:"flex-end",gap:4,height:120}}>{md.map((d,i)=><div key={i} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:2}}><div style={{width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"flex-end",height:100}}>{d.inv>0&&<div style={{width:"80%",background:"var(--bg3)",height:Math.max(8,d.inv/mr*90)+"px",borderRadius:2,position:"relative",overflow:"hidden"}}><div style={{position:"absolute",bottom:0,left:0,right:0,height:(d.inv>0?d.pd/d.inv*100:0)+"%",background:"var(--green)",borderRadius:2}}/></div>}</div><span style={{fontSize:9,color:yr===CY&&i+1===CM?"var(--ac)":"var(--tx3)"}}>{i+1}月</span></div>)}</div>
+<div style={{display:"flex",gap:16,justifyContent:"center",marginTop:8}}><span style={{fontSize:11,color:"var(--tx3)"}}>■ 已收</span><span style={{fontSize:11,color:"var(--tx3)"}}>□ 未收</span></div></div>
+{od.length>0&&<div className="cd"><div style={{fontSize:12,color:"var(--red)",textTransform:"uppercase",letterSpacing:".1em",marginBottom:10,fontWeight:600}}>应收明细</div>{od.map(c=><div key={c.id} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"8px 0",borderBottom:"1px solid var(--bd2)",fontSize:13}}><button onClick={()=>openC(c.id)} style={{background:"none",border:"none",cursor:"pointer",color:"var(--ac)",fontSize:13,fontWeight:500}}>{c.ct}</button><div style={{display:"flex",alignItems:"center",gap:8}}><span style={{fontWeight:700,color:"var(--red)"}}>{c.unpaid.toLocaleString()} CHF</span><button onClick={()=>doMail(c,"pay","zh")} className="tg warn" style={{fontSize:10}}>催</button></div></div>)}</div>}
+</div>;})()}
+{/* V12b 现金流预测 */}
+<div className="cd">
+  <div style={{fontSize:12,color:"var(--ac)",textTransform:"uppercase",letterSpacing:".1em",marginBottom:12,fontWeight:600}}>未来3个月现金流预测</div>
+  <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:12}}>
+    {cashFlowForecast().map((m,i)=><div key={i} style={{padding:14,borderRadius:8,background:"var(--bg0)",border:"1px solid var(--bd2)"}}>
+      <div style={{fontSize:11,color:"var(--tx3)",marginBottom:8,fontWeight:600}}>{m.label}</div>
+      <div style={{fontSize:20,fontWeight:800,color:"var(--ac)"}}>{(m.total/1000).toFixed(1)}K</div>
+      <div style={{fontSize:11,color:"var(--tx2)",marginTop:4}}>服务费 {m.expected.toLocaleString()}</div>
+      <div style={{fontSize:11,color:"var(--tx2)"}}>TVA {m.tva.toLocaleString()}</div>
+      {m.overdue>0&&<div style={{fontSize:11,color:"var(--red)",marginTop:4,fontWeight:600}}>+逾期应收 {m.overdue.toLocaleString()}</div>}
+    </div>)}
+  </div>
+</div>
+
+{/* V12b 智能账期日历 */}
+<div className="cd">
+  <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12}}>
+    <div style={{fontSize:12,color:"var(--ac)",textTransform:"uppercase",letterSpacing:".1em",fontWeight:600}}>智能账期日历 {yr}</div>
+    <button onClick={()=>{let n=0;billingCalendar().filter(x=>x.status==="pending"&&x.m<=CM).forEach(x=>{genMonthlyInvoice(x.cid,x.period);n++;});if(n)alert(`已自动生成 ${n} 张待审阅发票`);else alert("无待生成发票");}} className="tg" style={{fontSize:10}}>自动生成待审阅</button>
+  </div>
+  <div style={{overflowX:"auto"}}><table><thead><tr>
+    <th style={{textAlign:"left"}}>客户</th><th>账期</th><th>期间</th><th style={{textAlign:"center"}}>状态</th><th>到期</th>
+  </tr></thead><tbody>
+  {billingCalendar().filter(x=>x.m<=CM+1).slice(0,30).map((x,i)=>{const si=x.status==="paid"?{l:"已付",c:"var(--green)"}:x.status==="sent"?{l:"已发",c:"var(--yellow)"}:x.status==="partial"?{l:"部分",c:"var(--ac)"}:x.status==="draft"?{l:"草稿",c:"var(--tx3)"}:x.overdue>0?{l:"逾期",c:"var(--red)"}:{l:"待开",c:"var(--tx3)"};return<tr key={i} style={{opacity:x.status==="paid"?.5:1}}>
+    <td style={{fontSize:12}}><button onClick={()=>openC(x.cid)} style={{background:"none",border:"none",cursor:"pointer",color:"var(--ac)",fontSize:12}}>{x.ct}</button></td>
+    <td style={{fontSize:11,color:"var(--tx2)"}}>{x.bc}</td>
+    <td style={{fontSize:12,fontFamily:"monospace"}}>{x.period}</td>
+    <td style={{textAlign:"center"}}><span style={{fontSize:10,padding:"2px 8px",borderRadius:4,background:si.c+"18",color:si.c,fontWeight:600}}>{si.l}{x.overdue>0?` ${x.overdue}天`:""}</span></td>
+    <td style={{fontSize:11,color:x.overdue>0?"var(--red)":"var(--tx2)"}}>{x.due||"—"}</td>
+  </tr>;})}
+  </tbody></table></div>
+</div>
+
+
+
+{/* ═══ 项目 ═══ */}
+{vw==="projects"&&<div style={{display:"flex",flexDirection:"column",gap:14}}>
+<div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+  <span className="heading" style={{fontSize:24}}>项目</span>
+  <div style={{display:"flex",gap:6}}>
+    <button onClick={()=>{const evs=D.projects.filter(p=>p.dl&&p.status!=="O").map(p=>({date:p.dl,title:`AWB: ${p.name}`,desc:D.clients.find(x=>x.id===p.cid)?.n||""}));if(evs.length)dlICS(evs,"awb-projects.ics");else alert("无截止日");}} className="tg">导出日历</button>
+    <button onClick={()=>{setFrm({cid:D.clients[0]?.id,pri:"M"});setMod("addProj");}} className="bb" style={{width:"auto",padding:"8px 16px"}}>新建</button>
+  </div>
+</div>
+{D.projects.length===0?<div className="cd" style={{textAlign:"center",padding:30,color:"var(--tx3)"}}>暂无项目</div>
+:<div style={{display:"flex",flexDirection:"column",gap:12}}>{D.projects.sort((a,b)=>(a.status==="O"?1:0)-(b.status==="O"?1:0)||({H:0,M:1,L:2}[a.pri||"M"])-({H:0,M:1,L:2}[b.pri||"M"])).map(p=><ProjCard key={p.id} p={p} D={D} sv={sv} clients={D.clients}/>)}</div>}
+</div>}
+
+{/* ═══ 个人 ═══ */}
+
+
+{/* ═══ 重整计划 ═══ */}
+{vw==="backlog"&&<div style={{display:"flex",flexDirection:"column",gap:16}}>
+<div style={{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:8}}>
+  <span className="heading" style={{fontSize:24}}>重整计划</span>
+  <div style={{display:"flex",gap:6}}>
+    <button onClick={()=>{setFrm({year:CY-1,cat:"accounting",cid:D.clients[0]?.id});setMod("addBacklog");}} className="bb" style={{width:"auto",padding:"8px 16px"}}>+ 添加积压项</button>
+  </div>
+</div>
+
+{/* KPI */}
+{(()=>{const s=blStats();return<div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(100px,1fr))",gap:8}}>
+  {[{l:"总积压",v:s.total,c:"var(--tx)"},{l:"已完成",v:s.done,c:"var(--green)"},{l:"进行中",v:s.inProgress,c:"var(--ac)"},{l:"待处理",v:s.todo,c:s.todo>0?"var(--red)":"var(--green)"},{l:"完成率",v:s.pct+"%",c:s.pct>=80?"var(--green)":s.pct>=50?"var(--yellow)":"var(--red)"}].map((k,i)=><div key={i} className="ki" style={{textAlign:"center"}}><div style={{fontSize:9,color:"var(--tx2)",textTransform:"uppercase",letterSpacing:".08em",marginBottom:4}}>{k.l}</div><div style={{fontSize:24,fontWeight:800,color:k.c}}>{k.v}</div></div>)}
+</div>;})()}
+
+{/* 按年份进度 */}
+{(()=>{const s=blStats();return Object.keys(s.byYear).length>0&&<div className="cd">
+  <div style={{fontSize:12,color:"var(--ac)",textTransform:"uppercase",letterSpacing:".1em",marginBottom:10,fontWeight:600}}>年份进度</div>
+  <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>{Object.entries(s.byYear).sort((a,b)=>a[0]-b[0]).map(([y,d])=>{const pct=d.total>0?Math.round(d.done/d.total*100):0;return<div key={y} style={{flex:"1 1 100px",padding:12,borderRadius:8,background:"var(--bg0)",textAlign:"center",border:"1px solid var(--bd2)"}}>
+    <div style={{fontSize:18,fontWeight:800,color:pct===100?"var(--green)":"var(--ac)"}}>{y}</div>
+    <div style={{width:"100%",height:6,background:"var(--bg3)",borderRadius:3,margin:"8px 0"}}><div style={{width:pct+"%",height:"100%",background:pct===100?"var(--green)":"var(--ac)",borderRadius:3,transition:"width .4s"}}/></div>
+    <div style={{fontSize:11,color:"var(--tx2)"}}>{d.done}/{d.total} ({pct}%)</div>
+  </div>;})}</div>
+</div>;})()}
+
+{/* 按客户分组 */}
+{(()=>{const s=blStats();return<div style={{display:"flex",flexDirection:"column",gap:10}}>
+  {Object.entries(s.byClient).sort((a,b)=>(a[1].done/a[1].total)-(b[1].done/b[1].total)).map(([name,data])=>{const pct=data.total>0?Math.round(data.done/data.total*100):0;const items=data.items.sort((a,b)=>a.year-b.year||(a.status==="done"?1:0)-(b.status==="done"?1:0));
+  return<div key={name} className="cd" style={{padding:12}}>
+    <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8}}>
+      <div style={{display:"flex",alignItems:"center",gap:8}}>
+        <span style={{fontSize:14,fontWeight:600,color:"var(--ac)"}}>{name}</span>
+        <span className="t2">{data.done}/{data.total}</span>
+      </div>
+      <div style={{display:"flex",alignItems:"center",gap:8}}>
+        <div style={{width:80,height:4,background:"var(--bg3)",borderRadius:2}}><div style={{width:pct+"%",height:"100%",background:pct===100?"var(--green)":"var(--ac)",borderRadius:2}}/></div>
+        <span style={{fontSize:12,fontWeight:700,color:pct===100?"var(--green)":"var(--tx)"}}>{pct}%</span>
+      </div>
+    </div>
+    {items.map(b=>{const cat=BL_CATS.find(c=>c.id===b.cat)||BL_CATS[9];const stepsDone=(b.steps||[]).filter(s=>s.done).length;const stepsTotal=(b.steps||[]).length;const stepPct=stepsTotal>0?Math.round(stepsDone/stepsTotal*100):0;const nr=createRef();const sr=createRef();
+    return<details key={b.id} style={{borderBottom:"1px solid var(--bd2)",opacity:b.status==="done"?.5:1}}>
+      <summary style={{display:"flex",alignItems:"center",gap:8,padding:"8px 0",cursor:"pointer",listStyle:"none"}}>
+        <select value={b.status} onChange={e=>{e.stopPropagation();updBacklog(b.id,{status:e.target.value});}} onClick={e=>e.stopPropagation()} style={{width:76,fontSize:11,padding:3,border:"1px solid var(--bd)",borderRadius:4,background:b.status==="done"?"var(--greenA)":b.status==="wip"?"var(--acA)":"var(--bg0)",color:b.status==="done"?"var(--green)":b.status==="wip"?"var(--ac)":"var(--tx)"}}>
+          <option value="todo">待处理</option><option value="wip">进行中</option><option value="done">已完成</option>
+        </select>
+        <span style={{fontSize:13,minWidth:36,fontWeight:700,color:b.year<=CY-2?"var(--red)":"var(--tx2)"}}>{b.year}</span>
+        <span style={{fontSize:12}}>{cat.icon}</span>
+        <span style={{flex:1,fontSize:13,fontWeight:500}}>{cat.l}{b.desc?" · "+b.desc:""}</span>
+        {stepsTotal>0&&<span style={{fontSize:10,padding:"2px 6px",borderRadius:4,background:stepPct===100?"var(--greenA)":"var(--bg3)",color:stepPct===100?"var(--green)":"var(--tx2)"}}>{stepsDone}/{stepsTotal}</span>}
+        {b.target&&<span className="t2" style={{fontSize:10}}>目标:{b.target}</span>}
+        <span style={{fontSize:11,color:"var(--tx3)"}}>▸</span>
+      </summary>
+      <div style={{padding:"8px 0 12px 28px",fontSize:12}}>
+        {/* 步骤清单 */}
+        {(b.steps||[]).length>0&&<div style={{marginBottom:10}}>
+          <div style={{width:"100%",height:3,background:"var(--bg3)",borderRadius:2,marginBottom:6}}><div style={{width:stepPct+"%",height:"100%",background:"var(--green)",borderRadius:2,transition:"width .3s"}}/></div>
+          {(b.steps||[]).map(s=><div key={s.id} style={{display:"flex",alignItems:"center",gap:6,padding:"4px 0"}}>
+            <input type="checkbox" checked={s.done} onChange={()=>togBlStep(b.id,s.id)} style={{width:14,height:14,accentColor:"var(--green)"}}/>
+            <span style={{flex:1,fontSize:12,textDecoration:s.done?"line-through":"none",color:s.done?"var(--tx3)":"var(--tx)"}}>{s.text}</span>
+            {s.done&&s.doneDate&&<span className="t2" style={{fontSize:10}}>{s.doneDate}</span>}
+            <button onClick={()=>rmBlStep(b.id,s.id)} style={{background:"none",border:"none",cursor:"pointer",color:"var(--tx3)",fontSize:10}}>×</button>
+          </div>)}
+        </div>}
+        {/* 添加步骤 */}
+        <div style={{display:"flex",gap:4,marginBottom:10}}><input ref={sr} className="ip" style={{fontSize:12,padding:"6px 8px"}} placeholder="添加步骤..." onKeyDown={e=>{if(e.key==="Enter"&&sr.current?.value){addBlStep(b.id,sr.current.value);sr.current.value="";}}} /><button onClick={()=>{if(sr.current?.value){addBlStep(b.id,sr.current.value);sr.current.value="";}}} className="tg" style={{fontSize:10}}>+步骤</button></div>
+        {/* 备注 */}
+        <div style={{marginBottom:10}}><textarea value={b.notes||""} onChange={e=>updBlNotes(b.id,e.target.value)} className="ip" style={{fontSize:12,padding:"6px 8px",minHeight:40}} placeholder="备注..."/></div>
+        {/* 记录日志 */}
+        <div style={{display:"flex",gap:4,marginBottom:8}}><input ref={nr} className="ip" style={{fontSize:12,padding:"6px 8px"}} placeholder="记录进展..." onKeyDown={e=>{if(e.key==="Enter"&&nr.current?.value){addBlLog(b.id,nr.current.value);nr.current.value="";}}} /><button onClick={()=>{if(nr.current?.value){addBlLog(b.id,nr.current.value);nr.current.value="";}}} className="tg" style={{fontSize:10}}>+记录</button></div>
+        {/* 日志列表 */}
+        {(b.logs||[]).length>0&&<div style={{maxHeight:120,overflowY:"auto",borderTop:"1px solid var(--bd2)",paddingTop:6}}>{(b.logs||[]).map((l,i)=><div key={i} style={{padding:"3px 0",fontSize:11,color:"var(--tx2)"}}><span style={{color:"var(--ac)",marginRight:6}}>{l.t}</span>{l.text}</div>)}</div>}
+        {/* 删除 */}
+        <div style={{marginTop:8,textAlign:"right"}}><button onClick={()=>rmBacklog(b.id)} style={{background:"none",border:"none",cursor:"pointer",color:"var(--red)",fontSize:11}}>删除此项</button></div>
+      </div>
+    </details>;})}
+  </div>;})}
+</div>;})()}
+
+{(D.backlog||[]).length===0&&<div className="cd" style={{textAlign:"center",padding:30,color:"var(--tx3)"}}>
+  <div style={{fontSize:16,marginBottom:8}}>暂无积压记录</div>
+  <div style={{fontSize:12}}>点击"+ 添加积压项"开始录入历史欠账</div>
+</div>}
+</div>}
+
+{/* ═══ V13 统一日历 ═══ */}
+{vw==="calendar"&&(()=>{
+  const events=[];const ySt=D.years[CY]?.st||{};
+  D.clients.filter(c=>c.m>0).forEach(c=>{tkForClient(c).forEach(t=>{const s=ySt[`${c.id}-${t.id}`]||"";if(t.dl&&s!=="O"&&s!=="P")events.push({date:`${CY}-${String(t.dl).padStart(2,"0")}-28`,type:"task",label:`${c.ct}: ${t.s}`,color:t.dl<CM?"var(--red)":t.dl===CM?"var(--yellow)":"var(--tx3)"});});});
+  D.invoices.filter(i=>i.status!=="paid"&&i.due).forEach(inv=>{const c=D.clients.find(x=>x.id===inv.cid);events.push({date:inv.due,type:"inv",label:`${c?.ct||"?"}: ${inv.num} (${inv.total.toLocaleString()} CHF)`,color:invOverdueDays(inv)>0?"var(--red)":"var(--yellow)"});});
+  D.projects.filter(p=>p.dl&&p.status!=="O").forEach(p=>{const c=D.clients.find(x=>x.id===p.cid);events.push({date:p.dl,type:"proj",label:`${c?.ct||""} ${p.name}`,color:"var(--ac)"});});
+  D.personal.filter(p=>p.dl&&p.status!=="O").forEach(p=>events.push({date:p.dl,type:"life",label:`${p.cat}: ${p.name}`,color:"#7c5cbf"}));
+  events.sort((a,b)=>a.date.localeCompare(b.date));
+  const months={};events.forEach(e=>{const m=e.date?.slice(0,7)||"?";if(!months[m])months[m]=[];months[m].push(e);});
+  const TI={task:"☰",inv:"▤",proj:"◆",life:"○"};const TL={task:"任务",inv:"发票",proj:"项目",life:"生活"};
+  const vac=D.cfg?.vacation;
+  return<div style={{display:"flex",flexDirection:"column",gap:16}}>
+    <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:8}}>
+      <span className="heading" style={{fontSize:24}}>统一日历</span>
+      <div style={{display:"flex",gap:6,alignItems:"center"}}>
+        {vac?.on&&<span style={{fontSize:11,color:"var(--green)",padding:"4px 10px",borderRadius:6,background:"var(--greenA)",fontWeight:600}}>🏖 {vac.from}~{vac.to}</span>}
+        <button onClick={()=>setMod("vacation")} className="tg">{vac?.on?"修改假期":"🏖 假期"}</button>
+        {Object.entries(TL).map(([k,v])=><span key={k} style={{fontSize:9,padding:"2px 6px",borderRadius:4,border:"1px solid var(--bd)",color:"var(--tx3)"}}>{TI[k]} {v}</span>)}
+      </div>
+    </div>
+    {Object.entries(months).map(([m,evts])=><div key={m} className="cd">
+      <div style={{fontSize:13,fontWeight:700,color:"var(--ac)",marginBottom:10,letterSpacing:".1em"}}>{m}</div>
+      {evts.map((e,i)=>{const past=e.date<TD;const today=e.date===TD;const inVac=vac?.on&&e.date>=vac.from&&e.date<=vac.to;
+      return<div key={i} style={{display:"flex",alignItems:"center",gap:10,padding:"7px 0",borderBottom:i<evts.length-1?"1px solid var(--bd2)":"none",opacity:past?.4:1}}>
+        <span style={{fontSize:14,minWidth:20,textAlign:"center"}}>{TI[e.type]}</span>
+        <span style={{fontSize:12,fontFamily:"monospace",color:today?"var(--ac)":"var(--tx2)",fontWeight:today?700:400,minWidth:80}}>{e.date.slice(5)}</span>
+        <span style={{flex:1,fontSize:13,color:e.color,fontWeight:past?400:500}}>{e.label}</span>
+        {today&&<span style={{fontSize:9,padding:"2px 6px",borderRadius:4,background:"var(--acA)",color:"var(--ac)",fontWeight:600}}>今天</span>}
+        {inVac&&<span style={{fontSize:9,padding:"2px 6px",borderRadius:4,background:"var(--greenA)",color:"var(--green)"}}>假期</span>}
+      </div>;})}
+    </div>)}
+    {events.length===0&&<div className="cd" style={{textAlign:"center",padding:30,color:"var(--tx3)"}}>暂无事项</div>}
+  </div>;})()}
+
+{vw==="personal"&&<div style={{display:"flex",flexDirection:"column",gap:14}}>
+<div style={{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:8}}>
+  <span className="heading" style={{fontSize:24}}>个人 & 家庭</span>
+  <div style={{display:"flex",gap:6}}>
+    <label className="tg" style={{cursor:"pointer"}}>导入.ics<input type="file" accept=".ics" style={{display:"none"}} onChange={e=>{if(e.target.files?.[0])importICSFile(e.target.files[0]);e.target.value="";}}/></label>
+    <button onClick={()=>{setFrm({cat:"个人",pri:"M"});setMod("addPersn");}} className="bb" style={{width:"auto",padding:"8px 16px"}}>新建</button>
+  </div>
+</div>
+{D.personal.length===0?<div className="cd" style={{textAlign:"center",padding:30,color:"var(--tx3)"}}>暂无事项</div>
+:<div style={{display:"flex",flexDirection:"column",gap:12}}>{D.personal.sort((a,b)=>(a.status==="O"?1:0)-(b.status==="O"?1:0)||({H:0,M:1,L:2}[a.pri||"M"])-({H:0,M:1,L:2}[b.pri||"M"])).map(p=>{const pct=p.steps.length?Math.round(p.steps.filter(s=>s.done).length/p.steps.length*100):0;const dl=dLeft(p.dl);const nr=createRef();
+return<div key={p.id} className="cd" style={{opacity:p.status==="O"?.35:1}}>
+  <div style={{display:"flex",justifyContent:"space-between",marginBottom:10}}>
+    <div>
+      <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:4,flexWrap:"wrap"}}>
+        {p.pri==="H"&&<span style={{fontSize:11,fontWeight:600,color:"var(--wn)"}}>高优先</span>}
+        <span style={{fontSize:11,padding:"2px 8px",borderRadius:4,border:"1px solid var(--bd)",color:"var(--tx2)"}}>{p.cat}</span>
+        <span className="heading" style={{fontSize:17}}>{p.name}</span>
+        {dl!==null&&dl<=0&&<span style={{fontSize:11,color:"var(--wn)"}}>已逾期</span>}
+        {dl!==null&&dl>0&&dl<=7&&<span style={{fontSize:11,color:"var(--ac)"}}>剩{dl}天</span>}
+      </div>
+      {p.dl&&<div className="t2">{p.dl}</div>}
+    </div>
+    <div style={{display:"flex",alignItems:"center",gap:4}}>
+      <select value={p.status} onChange={e=>updPersn(p.id,"status",e.target.value)} className="ip" style={{width:76,fontSize:13,padding:4}}><option value="N">待办</option><option value="/">进行中</option><option value="O">完成</option></select>
+      <button onClick={()=>sv({...D,personal:D.personal.filter(x=>x.id!==p.id)})} style={{background:"none",border:"none",cursor:"pointer",color:"var(--tx3)",fontSize:14}}>×</button>
+    </div>
+  </div>
+  {p.notes&&<p style={{fontSize:13,color:"var(--tx2)",marginBottom:8,padding:"8px 10px",background:"var(--bg0)",borderRadius:6,lineHeight:1.6}}>{p.notes}</p>}
+  {p.steps.length>0&&<div style={{marginBottom:10}}>
+    <div style={{width:"100%",height:2,background:"var(--bg3)",borderRadius:99,marginBottom:8}}><div style={{width:`${pct}%`,height:"100%",background:"var(--ok)",borderRadius:99,transition:"width .4s ease"}}/></div>
+    {p.steps.map(s=><StepRow key={s.id} s={s} onTog={()=>togPStep(p.id,s.id)}/>)}
+    <div className="t2" style={{marginTop:4}}>{pct}%</div>
+  </div>}
+  <div style={{display:"flex",gap:4}}><input ref={nr} className="ip" placeholder="备注..." style={{fontSize:13}} onKeyDown={e=>{if(e.key==="Enter"&&nr.current?.value){addPNote(p.id,nr.current.value);nr.current.value="";}}} /><button onClick={()=>{if(nr.current?.value){addPNote(p.id,nr.current.value);nr.current.value="";}}} className="tg">+</button></div>
+  {(p.acts||[]).length>0&&<details style={{marginTop:8}}><summary className="t2" style={{cursor:"pointer",padding:4}}>历史 ({(p.acts||[]).length})</summary>
+    <div style={{maxHeight:100,overflowY:"auto",padding:"8px 0"}}>{(p.acts||[]).map((a,i)=><div key={i} className="t2" style={{padding:"2px 0"}}><span style={{color:"var(--ac)"}}>{a.t}</span> {a.a}</div>)}</div>
+  </details>}
+</div>;})}</div>}
+</div>}
+
+{/* ═══ CRM ═══ */}
+{vw==="crm"&&<div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))",gap:14}}>
+<div className="cd">
+  <div style={{fontSize:12,color:"var(--ac)",textTransform:"uppercase",letterSpacing:".1em",marginBottom:12,fontWeight:600}}>联系计划</div>
+  {D.clients.filter(c=>c.m>0).sort((a,b)=>(a.lc?dayDiff(a.lc,TD):999)<(b.lc?dayDiff(b.lc,TD):999)?1:-1).map(c=>{const d2=c.lc?dayDiff(c.lc,TD):999;const pct=Math.min(100,Math.round(d2/c.crm*100));return<div key={c.id} style={{display:"flex",alignItems:"center",gap:8,padding:"7px 0",borderBottom:"1px solid var(--bd2)",fontSize:12}}>
+    <button onClick={()=>openC(c.id)} style={{fontWeight:500,width:64,textAlign:"left",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",background:"none",border:"none",cursor:"pointer",color:"var(--ac)",fontSize:12}}>{c.ct}</button>
+    <div style={{flex:1,height:2,background:"var(--bg3)",borderRadius:99}}><div style={{width:`${Math.min(pct,100)}%`,height:"100%",borderRadius:99,background:pct>=100?"var(--wn)":"var(--ok)",transition:"width .3s"}}/></div>
+    <span className="t2" style={{width:40,textAlign:"right"}}>{c.lc?d2+"天":"—"}</span>
+    <Btns c={c} log={logC}/>
+  </div>;})}
+</div>
+<div style={{display:"flex",flexDirection:"column",gap:12}}>
+  <div className="cd"><div style={{display:"flex",justifyContent:"space-between",marginBottom:8}}><span style={{fontSize:12,color:"var(--ac)",textTransform:"uppercase",letterSpacing:".1em",fontWeight:600}}>潜在客户</span><button onClick={()=>{setFrm({});setMod("addProsp");}} style={{background:"none",border:"none",cursor:"pointer",color:"var(--ac)",fontSize:14}}>+</button></div>
+  {D.prospects.length===0?<p className="t2" style={{textAlign:"center",padding:10}}>暂无</p>:<div>{D.prospects.map(p=><div key={p.id} style={{display:"flex",justifyContent:"space-between",padding:"7px 0",borderBottom:"1px solid var(--bd2)",fontSize:12,alignItems:"center"}}><span style={{fontWeight:500}}>{p.name} <span className="t2">{p.src}</span></span><div style={{display:"flex",gap:4,alignItems:"center"}}><select value={p.status} onChange={e=>sv({...D,prospects:D.prospects.map(x=>x.id===p.id?{...x,status:e.target.value}:x)})} className="ip" style={{width:68,fontSize:11,padding:3}}>{["新线索","已联系","洽谈中","报价中","已签约","已流失"].map(s=><option key={s}>{s}</option>)}</select><button onClick={()=>sv({...D,prospects:D.prospects.filter(x=>x.id!==p.id)})} style={{background:"none",border:"none",cursor:"pointer",color:"var(--tx3)"}}>×</button></div></div>)}</div>}</div>
+  <div className="cd"><div style={{fontSize:12,color:"var(--ac)",textTransform:"uppercase",letterSpacing:".1em",fontWeight:600,marginBottom:8}}>联系记录</div>{D.logs.length===0?<p className="t2">暂无</p>:<div style={{maxHeight:180,overflowY:"auto"}}>{D.logs.slice(0,20).map((l,i)=><div key={i} className="t2" style={{padding:"3px 0"}}>{l.date} <span style={{color:"var(--tx)"}}>{l.ct}</span> {l.method}</div>)}</div>}</div>
+</div></div>}
+
+{/* ═══ 邮件 ═══ */}
+{vw==="email"&&<div>
+<div style={{marginBottom:16}}><span className="heading" style={{fontSize:24}}>邮件</span><span className="t2" style={{marginLeft:10}}>有邮箱直接发送 · 无邮箱弹窗复制</span></div>
+<div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(200px,1fr))",gap:10}}>{D.clients.filter(c=>c.m>0).map(c=>{const unp=Array.from({length:nm},(_,i)=>yPy[`${c.id}-${i+1}`]!=="paid").some(Boolean);return<div key={c.id} className="cd" style={{padding:12}}>
+  <div style={{fontSize:13,fontWeight:500,marginBottom:6,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{c.n}{c.em&&<span style={{color:"var(--ok)",marginLeft:4,fontSize:11}}>✓</span>}</div>
+  <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
+    {unp&&<><button onClick={()=>doMail(c,"pay","zh")} className="tg warn">CN催</button><button onClick={()=>doMail(c,"pay","fr")} className="tg warn">FR催</button><button onClick={()=>doMail(c,"pay","en")} className="tg warn">EN催</button></>}
+    <button onClick={()=>doMail(c,"doc","zh")} className="tg ac">CN料</button><button onClick={()=>doMail(c,"doc","fr")} className="tg ac">FR料</button><button onClick={()=>doMail(c,"doc","en")} className="tg ac">EN料</button>
+  </div></div>;})}</div></div>}
+
+{/* ═══ 客户详情 ═══ */}
+{vw==="client"&&sel&&(()=>{const c=D.clients.find(x=>x.id===sel);if(!c)return null;const clientTasks=tkForClient(c);const cats={};clientTasks.forEach(t=>{if(!cats[t.c])cats[t.c]=[];cats[t.c].push(t);});
+const canton=CANTONS[c.canton||"GE"]||CANTONS.GE;
+return<div style={{display:"flex",flexDirection:"column",gap:12}}>
+<div style={{display:"flex",gap:12}}>
+  <button onClick={()=>setVw("cmd")} style={{color:"var(--ac)",background:"none",border:"none",cursor:"pointer",fontSize:13}}>‹ 返回</button>
+  <button onClick={()=>{setFrm({n:c.n,m:c.m,g:c.g,ct:c.ct,crm:c.crm,em:c.em,ph:c.ph,wx:c.wx,canton:c.canton||"GE",svc:c.svc||"fiscal",bc:c.bc||"monthly",bl:c.bl||"zh",addr:c.addr||"",daddr:c.daddr||"",tva:c.tva!==false});setMod({t:"editCli",id:c.id});}} style={{color:"var(--tx3)",background:"none",border:"none",cursor:"pointer",fontSize:13}}>编辑</button>
+  <button onClick={()=>rmCli(c.id)} style={{color:"var(--tx3)",background:"none",border:"none",cursor:"pointer",fontSize:13}}>删除</button>
+</div>
+<div className="cd">
+  <div style={{display:"flex",justifyContent:"space-between",marginBottom:16,flexWrap:"wrap",gap:10}}>
+    <div>
+      <h2 className="heading" style={{fontSize:26,marginBottom:6}}>{c.n}</h2>
+      <div className="t2">{c.g}{c.m>0?` · ${c.m.toLocaleString()} CHF/${BC_LABELS[c.bc||"monthly"]||"月"}`:""}{c.ct?` · ${c.ct}`:""} · {canton.n} ({c.canton||"GE"}) · <span style={{color:SVC_TYPES[c.svc||"fiscal"]?.c||"var(--ac)"}}>{SVC_TYPES[c.svc||"fiscal"]?.l||"财税全包"}</span>{c.tva===false&&<span style={{color:"var(--green)",marginLeft:6,fontSize:11}}>免TVA</span>}</div>
+      <div style={{display:"flex",gap:10,marginTop:8,flexWrap:"wrap"}}>
+        {c.em&&<a href={`mailto:${c.em}`} className="t2" style={{color:"var(--ac)"}}>✉ {c.em}</a>}
+        {c.ph&&<a href={`tel:${c.ph}`} className="t2" style={{color:"var(--ac)"}}>☏ {c.ph}</a>}
+        {c.wx&&<span className="t2">微信 {c.wx}</span>}
+      </div>
+    </div>
+    <div style={{display:"flex",gap:4,alignItems:"flex-start",flexWrap:"wrap"}}>
+      <button onClick={()=>{setFrm({cid:c.id,pri:"M"});setMod("addProj");}} className="tg">+项目</button>
+      <button onClick={()=>doMail(c,"pay","zh")} className="tg warn">催款</button>
+      {timer&&timer.cid===c.id?<button onClick={stopTimer} className="tg" style={{color:"var(--red)"}}>⏱停 {fmtDur(Math.round((Date.now()-timer.start)/60000))}</button>:<button onClick={()=>startTimer(c.id,"通用")} className="tg">⏱计时</button>}
+      <Btns c={c} log={logC}/>
+    </div>
+  </div>
+  {Object.entries(cats).map(([cat,ts])=><div key={cat} style={{marginBottom:14}}>
+    <div style={{fontSize:11,fontWeight:600,color:"var(--tx3)",textTransform:"uppercase",letterSpacing:".08em",marginBottom:6,paddingBottom:4,borderBottom:"1px solid var(--bd2)"}}>{CT[cat]||CT_DOM[cat]||cat}</div>
+    <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(145px,1fr))",gap:4}}>{ts.map(t=>{const k=`${c.id}-${t.id}`;const s=ySt[k]||"";const light=trafficLight(t.dl,nm,s);const bgMap={green:"transparent",yellow:"var(--yellowA)",red:"var(--redA)",black:"var(--blackA)",none:"transparent"};
+    return<div key={t.id} style={{display:"flex",alignItems:"center",justifyContent:"space-between",padding:"8px 10px",borderRadius:6,background:bgMap[light]||"var(--bg0)"}}><span style={{fontSize:13,display:"flex",alignItems:"center",gap:4}}>{light==="black"?"⚫":light==="red"?"🔴":light==="yellow"?"🟡":""} {t.s}</span><SB s={s} onClick={()=>cyc(k)} z="m"/></div>;})}</div>
+  </div>)}
+  <div style={{fontSize:11,fontWeight:600,color:"var(--tx3)",textTransform:"uppercase",letterSpacing:".08em",marginBottom:8,paddingBottom:4,borderBottom:"1px solid var(--bd2)"}}>发票 {yr} · {BC_LABELS[c.bc||"monthly"]}</div>
+  {(()=>{const invs=D.invoices.filter(i=>i.cid===c.id&&i.date?.startsWith(String(yr)));const totalBilled=invs.reduce((s,i)=>s+i.total,0);const totalPaid2=invs.reduce((s,i)=>s+invPaid(i),0);return<div style={{marginBottom:16}}>
+    <div style={{display:"flex",gap:12,marginBottom:8,flexWrap:"wrap"}}>
+      <div style={{padding:"6px 12px",borderRadius:6,background:"var(--bg0)"}}><span className="t2" style={{fontSize:11}}>已开票</span><div style={{fontSize:16,fontWeight:700}}>{totalBilled.toLocaleString()}</div></div>
+      <div style={{padding:"6px 12px",borderRadius:6,background:"var(--bg0)"}}><span className="t2" style={{fontSize:11}}>已收款</span><div style={{fontSize:16,fontWeight:700,color:"var(--green)"}}>{totalPaid2.toLocaleString()}</div></div>
+      <div style={{padding:"6px 12px",borderRadius:6,background:"var(--bg0)"}}><span className="t2" style={{fontSize:11}}>余额</span><div style={{fontSize:16,fontWeight:700,color:totalBilled>totalPaid2?"var(--red)":"var(--green)"}}>{(totalBilled-totalPaid2).toLocaleString()}</div></div>
+    </div>
+    {invs.slice(0,6).map(inv=>{const st=inv.status==="paid"?"paid":invOverdueDays(inv)>0?"overdue":inv.status;const si=INV_STATUS[st]||INV_STATUS.draft;return<div key={inv.id} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"5px 0",borderBottom:"1px solid var(--bd2)",fontSize:12}}>
+      <div><span style={{fontFamily:"monospace",fontWeight:600}}>{inv.num}</span> <span className="t2">{inv.period}</span></div>
+      <div style={{display:"flex",gap:8,alignItems:"center"}}><span style={{fontSize:10,padding:"1px 6px",borderRadius:3,background:si.c+"22",color:si.c}}>{si.l}</span><span style={{fontWeight:600}}>{inv.total.toLocaleString()}</span>
+        <button onClick={()=>printInvoice(inv)} style={{background:"none",border:"none",cursor:"pointer",color:"var(--ac)",fontSize:11}}>预览</button>
+        {st!=="paid"&&<button onClick={()=>{setFrm({invId:inv.id,pamt:invBalance(inv),pdate:TD});setMod("addPay");}} style={{background:"none",border:"none",cursor:"pointer",color:"var(--green)",fontSize:11}}>收款</button>}
+      </div>
+    </div>;})}
+    <button onClick={()=>{genMonthlyInvoice(c.id);}} style={{marginTop:8,fontSize:11,color:"var(--ac)",background:"none",border:"none",cursor:"pointer"}}>+ 生成新发票</button>
+      <button onClick={()=>clientPortal(c.id)} style={{marginTop:4,marginLeft:12,fontSize:11,color:"var(--green)",background:"none",border:"none",cursor:"pointer"}}>📄 客户对账单</button>
+  </div>;})()}
+  <div style={{fontSize:11,fontWeight:600,color:"var(--tx3)",textTransform:"uppercase",letterSpacing:".08em",marginBottom:8,paddingBottom:4,borderBottom:"1px solid var(--bd2)"}}>工时 {yr}</div>
+  {(()=>{const tl=D.timeLogs.filter(t=>t.cid===c.id&&t.date?.startsWith(String(yr)));const tm=tl.reduce((s,t)=>s+(t.duration||0),0);return<div style={{marginBottom:16}}><div style={{display:"flex",gap:12,marginBottom:8,flexWrap:"wrap"}}><div style={{padding:"6px 12px",borderRadius:6,background:"var(--bg0)"}}><span className="t2" style={{fontSize:11}}>总工时</span><div style={{fontSize:16,fontWeight:700}}>{fmtDur(tm)}</div></div><div style={{padding:"6px 12px",borderRadius:6,background:"var(--bg0)"}}><span className="t2" style={{fontSize:11}}>记录</span><div style={{fontSize:16,fontWeight:700}}>{tl.length}</div></div></div>{tl.length>0&&<button onClick={()=>exportTimesheet(c.id,String(yr))} style={{fontSize:11,color:"var(--ac)",background:"none",border:"none",cursor:"pointer",marginBottom:6}}>📥 导出{yr}年Timesheet</button>}{tl.slice(0,5).map(t=><div key={t.id} style={{display:"flex",justifyContent:"space-between",padding:"4px 0",borderBottom:"1px solid var(--bd2)",fontSize:12}}><div style={{flex:1,minWidth:0}}><span>{t.task}</span>{t.desc&&<span className="t2"> · {t.desc}</span>}</div><span style={{display:"flex",gap:6,flexShrink:0}}>{t.t0&&<span className="t2">{t.t0}-{t.t1}</span>}<span className="t2">{t.date}</span><span style={{fontWeight:600,fontFamily:"monospace"}}>{fmtDur(t.duration)}</span></span></div>)}</div>;})()}
+  <div style={{fontSize:11,fontWeight:600,color:"var(--tx3)",textTransform:"uppercase",letterSpacing:".08em",marginBottom:8,paddingBottom:4,borderBottom:"1px solid var(--bd2)"}}>付款 {yr}</div>
+  <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>{MZ.map((m,i)=>{const k=`${c.id}-${i+1}`;const p=yPy[k]==="paid";const past=yr<CY||(yr===CY&&i+1<=CM);return<button key={i} onClick={()=>tPay(k)} style={{display:"flex",flexDirection:"column",alignItems:"center",padding:"6px 10px",borderRadius:6,border:`1px solid ${p?"var(--ok)":past?"var(--wn)":"var(--bd)"}`,background:"transparent",cursor:"pointer",color:p?"var(--ok)":past?"var(--wn)":"var(--tx3)",minWidth:46}}><span style={{fontSize:11}}>{m}</span><span style={{fontSize:14,fontWeight:600,marginTop:2}}>{p?"✓":"—"}</span></button>;})}</div>
+</div></div>;})()}
+
+{/* Footer */}
+<div style={{paddingTop:10,borderTop:"1px solid var(--bd2)",display:"flex",justifyContent:"space-between",marginTop:16}} className="t2">
+  <span>AWB V10 · {yr} · {TD}</span>
+  <div style={{display:"flex",gap:8}}>
+    {D.cfg?.syncUrl&&<button onClick={cloudPush} disabled={syncing} style={{background:"none",border:"none",cursor:"pointer",color:"var(--ac)",fontSize:11}}>{syncing?"同步中...":"SYNC"}</button>}
+    <button onClick={()=>setMod("cfg")} style={{background:"none",border:"none",cursor:"pointer",color:"var(--tx3)",fontSize:11}}>设置</button>
+  </div>
+</div></div>
+
+{/* ═══ 弹窗 ═══ */}
+<Dlg open={mod==="addCli"} close={()=>setMod(null)} title="添加客户"><CForm f={frm} sf={setFrm} onOk={()=>addCli(frm)} lb="添加"/></Dlg>
+<Dlg open={mod?.t==="editCli"} close={()=>setMod(null)} title="编辑客户"><CForm f={frm} sf={setFrm} onOk={()=>{if(mod?.id)editCli(mod.id,{n:frm.n,m:Number(frm.m)||0,g:frm.g,ct:frm.ct,crm:Number(frm.crm)||30,em:frm.em||"",ph:frm.ph||"",wx:frm.wx||"",canton:frm.canton||"GE",svc:frm.svc||"fiscal",bc:frm.bc||"monthly",bl:frm.bl||"zh",addr:frm.addr||"",daddr:frm.daddr||"",tva:frm.tva!==false});}} lb="保存"/></Dlg>
+
+<Dlg open={mod==="addProj"} close={()=>setMod(null)} title="新建项目"><div style={{display:"flex",flexDirection:"column",gap:12}}>
+  <div><label className="t2" style={{marginBottom:4,display:"block"}}>关联客户</label><select value={frm.cid||""} onChange={e=>setFrm({...frm,cid:e.target.value})} className="ip"><option value="">无</option>{D.clients.map(c=><option key={c.id} value={c.id}>{c.n}</option>)}</select></div>
+  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}><div><label className="t2" style={{marginBottom:4,display:"block"}}>项目名</label><input value={frm.name||""} onChange={e=>setFrm({...frm,name:e.target.value})} className="ip"/></div><div><label className="t2" style={{marginBottom:4,display:"block"}}>优先级</label><select value={frm.pri||"M"} onChange={e=>setFrm({...frm,pri:e.target.value})} className="ip"><option value="H">高</option><option value="M">中</option><option value="L">低</option></select></div></div>
+  <div><label className="t2" style={{marginBottom:4,display:"block"}}>截止日</label><input type="date" value={frm.dl||""} onChange={e=>setFrm({...frm,dl:e.target.value})} className="ip"/></div>
+  <div><label className="t2" style={{marginBottom:4,display:"block"}}>备注</label><input value={frm.notes||""} onChange={e=>setFrm({...frm,notes:e.target.value})} className="ip"/></div>
+  <div><label className="t2" style={{marginBottom:4,display:"block"}}>步骤（每行一个）</label><textarea value={frm.steps||""} onChange={e=>setFrm({...frm,steps:e.target.value})} rows={4} className="ip"/></div>
+  <button onClick={()=>addProj(frm)} className="bb">创建</button>
+</div></Dlg>
+
+<Dlg open={mod==="addPersn"} close={()=>setMod(null)} title="新建事项"><div style={{display:"flex",flexDirection:"column",gap:12}}>
+  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}><div><label className="t2" style={{marginBottom:4,display:"block"}}>名称</label><input value={frm.name||""} onChange={e=>setFrm({...frm,name:e.target.value})} className="ip"/></div><div><label className="t2" style={{marginBottom:4,display:"block"}}>分类</label><select value={frm.cat||"个人"} onChange={e=>setFrm({...frm,cat:e.target.value})} className="ip">{PC.map(c=><option key={c}>{c}</option>)}</select></div></div>
+  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}><div><label className="t2" style={{marginBottom:4,display:"block"}}>优先级</label><select value={frm.pri||"M"} onChange={e=>setFrm({...frm,pri:e.target.value})} className="ip"><option value="H">高</option><option value="M">中</option><option value="L">低</option></select></div><div><label className="t2" style={{marginBottom:4,display:"block"}}>截止日</label><input type="date" value={frm.dl||""} onChange={e=>setFrm({...frm,dl:e.target.value})} className="ip"/></div></div>
+  <div><label className="t2" style={{marginBottom:4,display:"block"}}>备注</label><input value={frm.notes||""} onChange={e=>setFrm({...frm,notes:e.target.value})} className="ip"/></div>
+  <div><label className="t2" style={{marginBottom:4,display:"block"}}>步骤</label><textarea value={frm.steps||""} onChange={e=>setFrm({...frm,steps:e.target.value})} rows={3} className="ip"/></div>
+  <button onClick={()=>addPersn(frm)} className="bb">创建</button>
+</div></Dlg>
+
+<Dlg open={mod==="addProsp"} close={()=>setMod(null)} title="潜在客户"><div style={{display:"flex",flexDirection:"column",gap:12}}><div><label className="t2" style={{marginBottom:4,display:"block"}}>名称</label><input value={frm.name||""} onChange={e=>setFrm({...frm,name:e.target.value})} className="ip"/></div><div><label className="t2" style={{marginBottom:4,display:"block"}}>来源</label><input value={frm.src||""} onChange={e=>setFrm({...frm,src:e.target.value})} className="ip"/></div><button onClick={()=>addProsp(frm)} className="bb">添加</button></div></Dlg>
+
+<Dlg open={mod?.t==="email"} close={()=>setMod(null)} title="邮件">{mod?.t==="email"&&(()=>{const c=D.clients.find(x=>x.id===mod.cid);if(!c)return null;const lv=mod.lv||1;const e=mkMail(c.ct,c.n,mod.tp,mod.lg,lv,mod.oi);const ml=c.em?`mailto:${c.em}?subject=${encodeURIComponent(e.s)}&body=${encodeURIComponent(e.b)}`:null;return<div style={{display:"flex",flexDirection:"column",gap:10}}>
+  {!c.em&&<div style={{padding:10,borderRadius:6,border:"1px solid var(--wn)",color:"var(--wn)",fontSize:13}}>未填写邮箱 — 可复制</div>}
+  {mod.tp==="pay"&&<div><div className="t2" style={{marginBottom:4}}>催款力度</div><div style={{display:"flex",gap:4}}>{[{v:1,l:"温和"},{v:2,l:"正式"},{v:3,l:"催告"}].map(o=><button key={o.v} onClick={()=>setMod({...mod,lv:o.v})} className="tg" style={{flex:1,fontSize:12,background:lv===o.v?"var(--acA)":"transparent",fontWeight:lv===o.v?600:400}}>{o.l}</button>)}</div></div>}
+  <div><div className="t2" style={{marginBottom:4}}>语言</div><div style={{display:"flex",gap:4}}>{[{v:"zh",l:"中文"},{v:"fr",l:"FR"},{v:"en",l:"EN"}].map(o=><button key={o.v} onClick={()=>setMod({...mod,lg:o.v})} className="tg" style={{flex:1,fontSize:12,fontWeight:mod.lg===o.v?600:400,background:mod.lg===o.v?"var(--acA)":"transparent"}}>{o.l}</button>)}</div></div>
+  <div><div className="t2" style={{marginBottom:4}}>主题</div><div className="ip" style={{fontWeight:500}}>{e.s}</div></div>
+  <div><div className="t2" style={{marginBottom:4}}>正文</div><div className="ip" style={{whiteSpace:"pre-wrap",lineHeight:1.7,maxHeight:220,overflowY:"auto"}}>{e.b}</div></div>
+  <div style={{display:"flex",gap:6}}>{ml?<a href={ml} className="bb" style={{textAlign:"center",textDecoration:"none",display:"block"}}>打开邮箱发送</a>:<button onClick={()=>{navigator.clipboard?.writeText(e.s+"\n\n"+e.b);setCped(true);setTimeout(()=>setCped(false),2000);}} className="bb">{cped?"已复制 ✓":"复制"}</button>}</div></div>;})()}</Dlg>
+
+<Dlg open={mod==="more"} close={()=>setMod(null)} title="更多"><div style={{display:"flex",flexDirection:"column",gap:8}}>
+  {[{id:"crm",l:"客户关系",d:"联系计划 · 潜客管道"},{id:"email",l:"邮件助手",d:"中法英三语催款"},{id:"inv",l:"发票管理",d:"生成 · 追踪 · 导出"},{id:"backlog",l:"重整计划",d:"历史积压 · 追赶进度"},{id:"calendar",l:"统一日历",d:"全部截止日 · 假期模式"},{id:"time",l:"工时记录",d:"计时 · 盈利分析"},{id:"revenue",l:"收入总览",d:"预测 · 应收"}].map(v=><button key={v.id} onClick={()=>{setVw(v.id);setMod(null);}} style={{padding:16,borderRadius:6,background:"var(--bg0)",border:"1px solid var(--bd2)",cursor:"pointer",textAlign:"left"}}><div style={{fontSize:15,fontWeight:500,color:"var(--tx)"}}>{v.l}</div><div className="t2" style={{marginTop:2}}>{v.d}</div></button>)}
+  <div style={{borderTop:"1px solid var(--bd2)",paddingTop:10,display:"flex",gap:6}}>
+    <button onClick={()=>{sv(ensureYr({...D},yr-1));setYr(yr-1);setMod(null);}} style={{flex:1,padding:10,borderRadius:6,border:"1px solid var(--bd)",background:"transparent",cursor:"pointer",color:"var(--tx)",fontSize:13}}>‹ {yr-1}</button>
+    <div style={{flex:1,padding:10,textAlign:"center",fontSize:15,fontWeight:700,color:"var(--ac)"}}>{yr}</div>
+    <button onClick={()=>{if(yr<CY+99){sv(ensureYr({...D},yr+1));setYr(yr+1);}setMod(null);}} style={{flex:1,padding:10,borderRadius:6,border:"1px solid var(--bd)",background:"transparent",cursor:"pointer",color:"var(--tx)",fontSize:13}}>{yr+1} ›</button>
+  </div>
+  <button onClick={()=>{setFrm({});setMod("addCli");}} className="bb">添加客户</button>
+  <button onClick={()=>setMod("cfg")} style={{padding:12,borderRadius:6,border:"1px solid var(--bd)",background:"transparent",cursor:"pointer",color:"var(--tx)",fontSize:13}}>设置</button>
+</div></Dlg>
+
+
+<Dlg open={mod==="startTimer"} close={()=>setMod(null)} title="开始计时"><div style={{display:"flex",flexDirection:"column",gap:12}}>
+  <div><label className="t2" style={{marginBottom:4,display:"block"}}>客户</label><select value={frm.cid||""} onChange={e=>setFrm({...frm,cid:Number(e.target.value)})} className="ip">{D.clients.filter(c=>c.m>0).map(c=><option key={c.id} value={c.id}>{c.ct}</option>)}</select></div>
+  <div><label className="t2" style={{marginBottom:4,display:"block"}}>任务</label><select value={frm.task||"通用"} onChange={e=>setFrm({...frm,task:e.target.value})} className="ip">{["通用","记账","TVA申报","工资处理","年终关账","税表申报","客户沟通","审计","咨询"].map(o=><option key={o}>{o}</option>)}</select></div>
+  <button onClick={()=>{startTimer(frm.cid||D.clients[0]?.id,frm.task||"通用");setMod(null);}} className="bb">⏱ 开始</button>
+</div></Dlg>
+<Dlg open={mod==="addTime"} close={()=>setMod(null)} title="手动录入工时"><div style={{display:"flex",flexDirection:"column",gap:12}}>
+  <div><label className="t2" style={{marginBottom:4,display:"block"}}>客户</label><select value={frm.cid||""} onChange={e=>setFrm({...frm,cid:Number(e.target.value)})} className="ip">{D.clients.filter(c=>c.m>0).map(c=><option key={c.id} value={c.id}>{c.ct}</option>)}</select></div>
+  <div><label className="t2" style={{marginBottom:4,display:"block"}}>任务类型</label><select value={frm.task||"通用"} onChange={e=>setFrm({...frm,task:e.target.value})} className="ip">{["通用","记账","TVA申报","工资处理","年终关账","税表申报","客户沟通","审计","咨询"].map(o=><option key={o}>{o}</option>)}</select></div>
+  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8}}>
+    <div><label className="t2" style={{marginBottom:4,display:"block"}}>日期</label><input type="date" value={frm.date||TD} onChange={e=>setFrm({...frm,date:e.target.value})} className="ip"/></div>
+    <div><label className="t2" style={{marginBottom:4,display:"block"}}>开始</label><input type="time" value={frm.t0||""} onChange={e=>setFrm({...frm,t0:e.target.value})} className="ip"/></div>
+    <div><label className="t2" style={{marginBottom:4,display:"block"}}>结束</label><input type="time" value={frm.t1||""} onChange={e=>setFrm({...frm,t1:e.target.value})} className="ip"/></div>
+  </div>
+  <div><label className="t2" style={{marginBottom:4,display:"block"}}>时长(分钟){frm.t0&&frm.t1?` — 自动计算: ${Math.max(0,Math.round((new Date("2000-01-01T"+frm.t1)-new Date("2000-01-01T"+frm.t0))/60000))}分钟`:""}</label><input type="number" value={frm.t0&&frm.t1?Math.max(0,Math.round((new Date("2000-01-01T"+frm.t1)-new Date("2000-01-01T"+frm.t0))/60000)):frm.dur||""} onChange={e=>setFrm({...frm,dur:e.target.value})} className="ip" placeholder="60"/></div>
+  <div><label className="t2" style={{marginBottom:4,display:"block"}}>工作描述</label><textarea value={frm.desc||""} onChange={e=>setFrm({...frm,desc:e.target.value})} rows={2} className="ip" placeholder="具体工作内容（导出timesheet时显示）" style={{resize:"vertical"}}/></div>
+  <button onClick={()=>{const dur=frm.t0&&frm.t1?Math.max(0,Math.round((new Date("2000-01-01T"+frm.t1)-new Date("2000-01-01T"+frm.t0))/60000)):Number(frm.dur)||0;addTimeLog(frm.cid||D.clients[0]?.id,frm.task||"通用",dur,frm.desc||"",frm.date||TD,frm.t0||"",frm.t1||"");setMod(null);}} className="bb">保存</button>
+</div></Dlg>
+
+<Dlg open={mod==="stopTimer"} close={()=>setMod(null)} title="停止计时">{timer&&<div style={{display:"flex",flexDirection:"column",gap:12}}>
+  <div style={{textAlign:"center",padding:12,borderRadius:8,background:"var(--bg0)"}}>
+    <div style={{fontSize:13,color:"var(--tx2)"}}>{D.clients.find(c=>c.id===timer.cid)?.ct} · {timer.task}</div>
+    <div style={{fontSize:32,fontWeight:800,fontFamily:"monospace",color:"var(--ac)",marginTop:4}}>{fmtDur(Math.round((Date.now()-timer.start)/60000))}</div>
+  </div>
+  <div><label className="t2" style={{marginBottom:4,display:"block"}}>工作描述</label><textarea value={frm.tdesc||""} onChange={e=>setFrm({...frm,tdesc:e.target.value})} rows={2} className="ip" placeholder="具体工作内容（导出timesheet时显示）" style={{resize:"vertical"}}/></div>
+  <button onClick={()=>{stopTimer(frm.tdesc||"");setFrm({...frm,tdesc:""});setMod(null);}} className="bb" style={{background:"var(--red)"}}>■ 停止并保存</button>
+</div>}</Dlg>
+
+<Dlg open={mod==="exportTS"} close={()=>setMod(null)} title="导出 Timesheet"><div style={{display:"flex",flexDirection:"column",gap:12}}>
+  <div><label className="t2" style={{marginBottom:4,display:"block"}}>客户</label><select value={frm.ecid||""} onChange={e=>setFrm({...frm,ecid:Number(e.target.value)})} className="ip"><option value="">全部客户</option>{D.clients.filter(c=>c.m>0).map(c=><option key={c.id} value={c.id}>{c.ct} — {c.n}</option>)}</select></div>
+  <div><label className="t2" style={{marginBottom:4,display:"block"}}>月份</label><select value={frm.emon||`${CY}-${String(CM).padStart(2,"0")}`} onChange={e=>setFrm({...frm,emon:e.target.value})} className="ip">{Array.from({length:12},(_,i)=>{const m=`${CY}-${String(i+1).padStart(2,"0")}`;return<option key={m} value={m}>{CY}年{i+1}月</option>;})}</select></div>
+  {frm.ecid&&(()=>{const logs=D.timeLogs.filter(t=>t.cid===Number(frm.ecid)&&t.date?.startsWith(frm.emon||`${CY}-${String(CM).padStart(2,"0")}`));const tot=logs.reduce((s,t)=>s+(t.duration||0),0);return<div style={{padding:10,borderRadius:6,background:"var(--bg0)",fontSize:12}}>{logs.length} 条记录 · {fmtDur(tot)} · {(tot/60).toFixed(1)} 小时</div>;})()}
+  <button onClick={()=>{if(frm.ecid){exportTimesheet(Number(frm.ecid),frm.emon||`${CY}-${String(CM).padStart(2,"0")}`);setMod(null);}else{D.clients.filter(c=>c.m>0).forEach(c=>{const logs=D.timeLogs.filter(t=>t.cid===c.id&&t.date?.startsWith(frm.emon||`${CY}-${String(CM).padStart(2,"0")}`));if(logs.length>0)exportTimesheet(c.id,frm.emon||`${CY}-${String(CM).padStart(2,"0")}`);});setMod(null);}}} className="bb">下载 CSV</button>
+  <p className="t2" style={{lineHeight:1.5}}>CSV 格式可直接用 Excel 打开，包含：日期、起止时间、时长、任务类型、工作描述、合计工时</p>
+</div></Dlg>
+
+<Dlg open={mod==="genInv"} close={()=>setMod(null)} title="生成发票"><div style={{display:"flex",flexDirection:"column",gap:12}}>
+  <div><label className="t2" style={{marginBottom:4,display:"block"}}>客户</label><select value={frm.cid||""} onChange={e=>setFrm({...frm,cid:Number(e.target.value)})} className="ip">{D.clients.filter(c=>c.m>0).map(c=><option key={c.id} value={c.id}>{c.ct} — {c.n} ({BC_LABELS[c.bc||"monthly"]} {c.m} CHF)</option>)}</select></div>
+  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
+    <div><label className="t2" style={{marginBottom:4,display:"block"}}>账期</label><select value={frm.period||TD.slice(0,7)} onChange={e=>setFrm({...frm,period:e.target.value})} className="ip">{Array.from({length:12},(_,i)=>{const m=`${CY}-${String(i+1).padStart(2,"0")}`;return<option key={m} value={m}>{CY}年{i+1}月</option>;})}</select></div>
+    <div><label className="t2" style={{marginBottom:4,display:"block"}}>语言</label><select value={frm.invLang||"zh"} onChange={e=>setFrm({...frm,invLang:e.target.value})} className="ip"><option value="zh">中文</option><option value="fr">Français</option><option value="en">English</option></select></div>
+  </div>
+  {frm.cid&&(()=>{const c=D.clients.find(x=>x.id===Number(frm.cid));if(!c)return null;const amt=c.bc==="annual"?c.m*12:c.bc==="semi"?c.m*6:c.bc==="quarterly"?c.m*3:c.m;const tva=c.tva===false?0:Math.round(amt*TVA_RATE*100)/100;return<div style={{padding:12,borderRadius:6,background:"var(--bg0)"}}>
+    <div style={{display:"flex",justifyContent:"space-between",fontSize:13}}><span>服务费</span><span style={{fontWeight:600}}>{amt.toLocaleString()} CHF</span></div>
+    {(()=>{const cc=D.clients.find(x=>x.id===Number(frm.cid));return cc?.tva===false?<div style={{fontSize:12,color:"var(--green)",marginTop:4}}>免TVA客户</div>:<div style={{display:"flex",justifyContent:"space-between",fontSize:12,color:"var(--tx2)",marginTop:4}}><span>TVA 8.1%</span><span>{tva.toLocaleString()} CHF</span></div>;})()}
+    <div style={{display:"flex",justifyContent:"space-between",fontSize:15,fontWeight:700,marginTop:8,paddingTop:8,borderTop:"1px solid var(--bd)"}}><span>总计</span><span style={{color:"var(--ac)"}}>{(amt+tva).toLocaleString()} CHF</span></div>
+    <div className="t2" style={{marginTop:6}}>发票号: {nextInvNum().num} · 到期: {calcDue(TD,30)}</div>
+  </div>;})()}
+  <button onClick={()=>{const cid=Number(frm.cid)||D.clients.find(c=>c.m>0)?.id;if(!cid){alert("请选择客户");return;}const c=D.clients.find(x=>x.id===cid);if(!c){alert("客户未找到");return;}const r=genMonthlyInvoice(c.id,frm.period||TD.slice(0,7),frm.invLang||"zh");if(r){setMod(null);}else{alert("生成失败：请检查客户月费设置");}}} className="bb">生成发票</button>
+</div></Dlg>
+
+<Dlg open={mod==="addPay"} close={()=>setMod(null)} title="记录收款"><div style={{display:"flex",flexDirection:"column",gap:12}}>
+  {frm.invId&&(()=>{const inv=D.invoices.find(i=>i.id===frm.invId);if(!inv)return null;const c=D.clients.find(x=>x.id===inv.cid);return<div style={{padding:10,borderRadius:6,background:"var(--bg0)",fontSize:12}}>
+    <div style={{fontWeight:600}}>{inv.num} · {c?.ct}</div>
+    <div className="t2" style={{marginTop:4}}>应付: {inv.total.toLocaleString()} CHF · 已付: {invPaid(inv).toLocaleString()} · 余额: {invBalance(inv).toLocaleString()}</div>
+  </div>;})()}
+  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
+    <div><label className="t2" style={{marginBottom:4,display:"block"}}>金额 (CHF)</label><input type="number" value={frm.pamt||""} onChange={e=>setFrm({...frm,pamt:e.target.value})} className="ip" step="0.01"/></div>
+    <div><label className="t2" style={{marginBottom:4,display:"block"}}>日期</label><input type="date" value={frm.pdate||TD} onChange={e=>setFrm({...frm,pdate:e.target.value})} className="ip"/></div>
+  </div>
+  <div><label className="t2" style={{marginBottom:4,display:"block"}}>备注</label><input value={frm.pnote||""} onChange={e=>setFrm({...frm,pnote:e.target.value})} className="ip" placeholder="转账参考号等"/></div>
+  <button onClick={()=>{if(frm.invId&&frm.pamt){addPayment(frm.invId,frm.pamt,frm.pdate,frm.pnote);setMod(null);}}} className="bb" style={{background:"var(--green)"}}>确认收款</button>
+</div></Dlg>
+
+
+<Dlg open={mod==="vacation"} close={()=>setMod(null)} title="🏖 假期模式"><div style={{display:"flex",flexDirection:"column",gap:12}}>
+  <p className="t2" style={{lineHeight:1.6}}>设置假期期间，日历中将标记假期事项。</p>
+  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
+    <div><label className="t2" style={{marginBottom:4,display:"block"}}>开始</label><input type="date" value={frm.vacFrom||D.cfg?.vacation?.from||""} onChange={e=>setFrm({...frm,vacFrom:e.target.value})} className="ip"/></div>
+    <div><label className="t2" style={{marginBottom:4,display:"block"}}>结束</label><input type="date" value={frm.vacTo||D.cfg?.vacation?.to||""} onChange={e=>setFrm({...frm,vacTo:e.target.value})} className="ip"/></div>
+  </div>
+  <button onClick={()=>{if(frm.vacFrom&&frm.vacTo){setCfg("vacation",{on:true,from:frm.vacFrom,to:frm.vacTo});setMod(null);}}} className="bb">开启假期模式</button>
+  {D.cfg?.vacation?.on&&<button onClick={()=>{setCfg("vacation",{on:false});setMod(null);}} className="tg" style={{textAlign:"center"}}>关闭假期模式</button>}
+</div></Dlg>
+
+
+<Dlg open={mod==="voice"} close={()=>{setMod(null);setVoiceText("");}} title="🎙 语音快速录入"><div style={{display:"flex",flexDirection:"column",gap:12}}>
+  <p className="t2" style={{lineHeight:1.6}}>点击麦克风按钮说话，例如：<br/>"王晓敏 材料已收到"<br/>"Roberto 计时开始"<br/>"郭露璐 30分钟 记账"</p>
+  <div style={{display:"flex",justifyContent:"center",padding:16}}>
+    <button onClick={voiceStart} style={{width:72,height:72,borderRadius:"50%",border:"none",background:listening?"var(--red)":"var(--ac)",color:"#fff",fontSize:28,cursor:"pointer",boxShadow:"0 4px 16px rgba(0,0,0,.15)",transition:".2s",transform:listening?"scale(1.1)":"scale(1)"}}>🎙</button>
+  </div>
+  {voiceText&&<div style={{padding:12,borderRadius:8,background:"var(--bg0)",border:"1px solid var(--bd)"}}>
+    <div className="t2" style={{marginBottom:4}}>识别结果</div>
+    <div style={{fontSize:15,fontWeight:500}}>{voiceText}</div>
+    {(()=>{const p=voiceParse(voiceText);const cn=p?.cid?D.clients.find(x=>x.id===p.cid):null;return p&&cn?<div style={{marginTop:8,padding:8,borderRadius:6,background:"var(--acA)",fontSize:12}}>
+      <div>客户: <strong>{cn.ct}</strong></div>
+      {p.action&&<div>动作: {p.action==="timer"?"开始计时":p.action==="material"?"材料更新":p.action==="followup"?"跟进联系":"其他"}</div>}
+      {p.minutes&&<div>时长: {fmtDur(p.minutes)}</div>}
+      <button onClick={()=>{const msg=voiceExecute(p);alert(msg);setVoiceText("");setMod(null);}} className="bb" style={{marginTop:8}}>执行</button>
+    </div>:<div style={{marginTop:8,fontSize:12,color:"var(--tx3)"}}>未识别到客户名，请重试</div>;})()}
+  </div>}
+  <div style={{textAlign:"center"}}><button onClick={()=>{setVoiceText("");}} className="tg">清除</button></div>
+</div></Dlg>
+
+
+<Dlg open={mod==="wechat"} close={()=>setMod(null)} title="💬 微信快捷消息">{frm.wxCid&&(()=>{const c=D.clients.find(x=>x.id===frm.wxCid);if(!c)return null;const types=[{id:"pay",l:"催款提醒",icon:"💰"},{id:"doc",l:"催材料",icon:"📄"},{id:"update",l:"进展通知",icon:"📊"}];return<div style={{display:"flex",flexDirection:"column",gap:12}}>
+  <div style={{fontSize:14,fontWeight:600,color:"var(--ac)"}}>{c.ct||c.n} {c.wx&&<span className="t2">· 微信 {c.wx}</span>}</div>
+  <div style={{display:"flex",gap:6}}>{types.map(t=><button key={t.id} onClick={()=>setFrm({...frm,wxType:t.id})} className={`tg ${frm.wxType===t.id?"on":""}`} style={{flex:1}}>{t.icon} {t.l}</button>)}</div>
+  {frm.wxType&&<div style={{padding:14,borderRadius:8,background:"var(--bg0)",border:"1px solid var(--bd)",whiteSpace:"pre-wrap",fontSize:13,lineHeight:1.8}}>{wxMsg(c,frm.wxType)}</div>}
+  {frm.wxType&&<div style={{display:"flex",gap:8}}>
+    <button onClick={()=>{wxCopy(wxMsg(c,frm.wxType));logC(c.id,"微信");alert("已复制到剪贴板，请粘贴到微信");}} className="bb" style={{background:"#07c160"}}>复制到剪贴板</button>
+    {c.wx&&<a href={`weixin://contacts/profile/${c.wx}`} style={{flex:"0 0 auto",padding:"12px 16px",borderRadius:8,background:"var(--bg1)",border:"1px solid var(--bd)",color:"var(--tx)",fontSize:13,textDecoration:"none",textAlign:"center"}}>打开微信</a>}
+  </div>}
+</div>;})()}</Dlg>
+
+
+<Dlg open={mod==="addBacklog"} close={()=>setMod(null)} title="添加积压项"><div style={{display:"flex",flexDirection:"column",gap:12}}>
+  <div><label className="t2" style={{marginBottom:4,display:"block"}}>客户</label><select value={frm.cid||""} onChange={e=>setFrm({...frm,cid:Number(e.target.value)})} className="ip">{D.clients.filter(c=>c.m>0).map(c=><option key={c.id} value={c.id}>{c.ct} — {c.n}</option>)}</select></div>
+  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
+    <div><label className="t2" style={{marginBottom:4,display:"block"}}>年份</label><select value={frm.year||CY-1} onChange={e=>setFrm({...frm,year:Number(e.target.value)})} className="ip">{[CY-4,CY-3,CY-2,CY-1,CY].map(y=><option key={y} value={y}>{y}</option>)}</select></div>
+    <div><label className="t2" style={{marginBottom:4,display:"block"}}>类型</label><select value={frm.cat||"accounting"} onChange={e=>setFrm({...frm,cat:e.target.value})} className="ip">{BL_CATS.map(c=><option key={c.id} value={c.id}>{c.icon} {c.l}</option>)}</select></div>
+  </div>
+  <div><label className="t2" style={{marginBottom:4,display:"block"}}>具体描述</label><input value={frm.blDesc||""} onChange={e=>setFrm({...frm,blDesc:e.target.value})} className="ip" placeholder="例如：2023年全年记账未完成"/></div>
+  <div><label className="t2" style={{marginBottom:4,display:"block"}}>目标完成日期</label><input type="date" value={frm.blTarget||""} onChange={e=>setFrm({...frm,blTarget:e.target.value})} className="ip"/></div>
+  <button onClick={()=>{addBacklog(frm.cid||D.clients[0]?.id,frm.cat||"accounting",frm.year||CY-1,frm.blDesc||"",frm.blTarget||"");setMod(null);}} className="bb">添加</button>
+  <div style={{borderTop:"1px solid var(--bd2)",paddingTop:12}}>
+    <div className="t2" style={{marginBottom:8}}>快速批量添加（选中的客户）</div>
+    <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>{BL_CATS.slice(0,8).map(c=><button key={c.id} onClick={()=>{addBacklog(frm.cid||D.clients[0]?.id,c.id,frm.year||CY-1,"","");}} className="tg" style={{fontSize:10}}>{c.icon} {c.l}</button>)}</div>
+  </div>
+</div></Dlg>
+
+{/* 设置 */}
+<Dlg open={mod==="cfg"} close={()=>setMod(null)} title="设置"><div style={{display:"flex",flexDirection:"column",gap:16}}>
+  <div><div style={{fontSize:11,textTransform:"uppercase",letterSpacing:".1em",color:"var(--tx3)",marginBottom:8,fontWeight:600}}>主题</div>
+    <div style={{display:"flex",gap:8}}>{[["light","明亮","#f8f7f4","#1c1c1a"],["dark","深色","#0e0e12","#f0eee8"]].map(([t,l,bg,fg])=><button key={t} onClick={()=>setCfg("theme",t)} style={{flex:1,padding:14,borderRadius:6,border:`1px solid ${D.cfg?.theme===t?"var(--ac)":"var(--bd)"}`,background:bg,color:fg,cursor:"pointer",fontWeight:500,fontSize:14}}>{l}</button>)}</div>
+  </div>
+  <div><div style={{fontSize:11,textTransform:"uppercase",letterSpacing:".1em",color:"var(--tx3)",marginBottom:8,fontWeight:600}}>色调</div>
+    <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>{Object.entries(PAL).map(([n,c])=><button key={n} onClick={()=>setCfg("accent",n)} style={{width:40,height:40,borderRadius:6,background:c,border:`2px solid ${D.cfg?.accent===n?"#fff":"transparent"}`,cursor:"pointer",fontSize:0,opacity:D.cfg?.accent===n?1:.5,transition:".2s"}} title={n}/>)}</div>
+  </div>
+  <div style={{borderTop:"1px solid var(--bd2)",paddingTop:12}}>
+    <div style={{fontSize:11,textTransform:"uppercase",letterSpacing:".1em",color:"var(--tx3)",marginBottom:8,fontWeight:600}}>云同步（双向）</div>
+    <input value={D.cfg?.syncUrl||""} onChange={e=>setCfg("syncUrl",e.target.value)} placeholder="Apps Script URL..." className="ip" style={{marginBottom:10}}/>
+    <div style={{display:"flex",gap:8,marginBottom:8}}>
+      <button disabled={syncing||!D.cfg?.syncUrl} onClick={cloudPush} className="bb" style={{opacity:D.cfg?.syncUrl?1:.4}}>{syncing==="push"?"同步中...":"双向同步"}</button>
+      <button disabled={syncing||!D.cfg?.syncUrl} onClick={cloudPull} style={{flex:1,padding:12,borderRadius:6,border:"1px solid var(--bd)",background:"transparent",color:"var(--tx)",fontSize:13,cursor:D.cfg?.syncUrl?"pointer":"not-allowed",opacity:D.cfg?.syncUrl?1:.4}}>{syncing==="pull"?"下载中...":"拉取"}</button>
+    </div>
+    {syncMsg&&<p style={{fontSize:12,color:"var(--tx2)"}}>{syncMsg}</p>}
+    {D.cfg?.lastPush&&<p className="t2" style={{marginTop:4}}>上次: {new Date(D.cfg.lastPush).toLocaleString("zh-CN")}</p>}
+  </div>
+  <div style={{borderTop:"1px solid var(--bd2)",paddingTop:12}}>
+    <div style={{fontSize:11,textTransform:"uppercase",letterSpacing:".1em",color:"var(--tx3)",marginBottom:8,fontWeight:600}}>日历 & 数据</div>
+    <div style={{display:"flex",gap:8,marginBottom:8}}>
+      <button onClick={()=>{const evs=[];D.clients.forEach(c=>{TK.forEach(t=>{const s=(D.years[CY]?.st||{})[`${c.id}-${t.id}`]||"";if(t.dl&&t.dl<=12&&s!=="O"&&s!=="P"){const m2=String(t.dl).padStart(2,"0");evs.push({date:`${CY}-${m2}-28`,title:`AWB: ${c.ct} - ${t.s}`,desc:c.n});}});});D.projects.filter(p=>p.dl&&p.status!=="O").forEach(p=>evs.push({date:p.dl,title:p.name,desc:""}));D.personal.filter(p=>p.dl&&p.status!=="O").forEach(p=>evs.push({date:p.dl,title:p.name,desc:p.cat}));if(evs.length)dlICS(evs,`awb-${TD}.ics`);else alert("暂无");}} style={{flex:1,padding:10,borderRadius:6,border:"1px solid var(--bd)",background:"transparent",color:"var(--tx)",fontSize:12,cursor:"pointer"}}>导出日历</button>
+      <button onClick={()=>{const blob=new Blob([JSON.stringify(D,null,2)],{type:"application/json"});const u=URL.createObjectURL(blob);const a=document.createElement("a");a.href=u;a.download=`AWB_V10_${TD}.json`;a.click();URL.revokeObjectURL(u);}} style={{flex:1,padding:10,borderRadius:6,border:"1px solid var(--bd)",background:"transparent",color:"var(--tx)",fontSize:12,cursor:"pointer"}}>导出数据</button>
+    </div>
+    <label style={{display:"block",padding:10,borderRadius:6,border:"1px solid var(--bd)",background:"transparent",color:"var(--tx)",fontSize:12,cursor:"pointer",textAlign:"center"}}>导入数据<input type="file" accept=".json" style={{display:"none"}} onChange={e=>{const f=e.target.files?.[0];if(!f)return;const r=new FileReader();r.onload=ev=>{try{let d=JSON.parse(ev.target.result);d=migrate(d);if(d.clients&&confirm(`导入 ${d.clients.length} 客户？`)){sv(d);setMod(null);}}catch{alert("解析失败");}};r.readAsText(f);e.target.value="";}}/></label>
+  </div>
+  <p className="t2" style={{lineHeight:1.6}}>年份: {avYrs.join(" · ")} · V12 认知外骨骼</p>
+</div></Dlg>
+
+</div>);
+}
+ReactDOM.render(<App/>,document.getElementById("root"));
+</script>
+
+<script>
+if('serviceWorker' in navigator){
+  var swCode="const CACHE=\'awb-v13\';self.addEventListener(\'install\',function(e){e.waitUntil(caches.open(CACHE).then(function(c){return c.addAll([\'./\'])}).then(function(){return self.skipWaiting()}))});self.addEventListener(\'activate\',function(e){e.waitUntil(caches.keys().then(function(ks){return Promise.all(ks.filter(function(k){return k!==CACHE}).map(function(k){return caches.delete(k)}))}).then(function(){return self.clients.claim()}))});self.addEventListener(\'fetch\',function(e){e.respondWith(fetch(e.request).then(function(r){if(r.ok){var rc=r.clone();caches.open(CACHE).then(function(c){c.put(e.request,rc)})}return r}).catch(function(){return caches.match(e.request)}))})";
+  var blob=new Blob([swCode],{type:'application/javascript'});
+  navigator.serviceWorker.register(URL.createObjectURL(blob),{scope:'.'}).then(function(){console.log('AWB offline')}).catch(function(){});
+  window.addEventListener('online',function(){var b=document.getElementById('offline-bar');if(b)b.remove()});
+  window.addEventListener('offline',function(){if(!document.getElementById('offline-bar')){var bar=document.createElement('div');bar.id='offline-bar';bar.style.cssText='position:fixed;top:0;left:0;right:0;padding:4px;background:#c45454;color:#fff;text-align:center;font-size:11px;z-index:999';bar.textContent='\u79bb\u7ebf\u6a21\u5f0f';document.body.prepend(bar)}});
+}
+</script>
+</body></html>
