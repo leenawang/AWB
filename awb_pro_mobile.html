@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AWB Pro">
+<meta name="theme-color" content="#1A3A5C">
+<meta name="mobile-web-app-capable" content="yes">
+<title>AWB Pro — Gestion d'entreprise</title>
+<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiQVdCIFBybyIsInNob3J0X25hbWUiOiJBV0IiLCJzdGFydF91cmwiOiIuIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiI0Y1RjBFOCIsInRoZW1lX2NvbG9yIjoiIzFBM0E1QyJ9">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#1C2333;--ink2:#3D4B63;--ink3:#8593A8;
+  --sand:#F5F0E8;--sand2:#EDE6D6;--sand3:#DDD4C0;
+  --ocean:#1A3A5C;--ocean2:#2A5080;
+  --wave:#4E9BB8;--foam:#EAF4F8;
+  --sage:#5A8A6A;--sage-bg:#EBF3ED;
+  --rust:#C0583A;--rust-bg:#FAEAE5;
+  --gold:#B8832A;--gold-bg:#FBF3E3;
+  --plum:#7A4A9A;--plum-bg:#F3EDF8;
+  --white:#FFF;--line:rgba(28,35,51,0.08);
+  --r:14px;--sh:0 2px 12px rgba(28,35,51,0.07);
+  --safe-b:env(safe-area-inset-bottom,0px);
+}
+html,body,#root{height:100%;margin:0;font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--ink);-webkit-font-smoothing:antialiased;overflow:hidden;-webkit-tap-highlight-color:transparent;}
+input,select,textarea,button{font-family:'DM Sans',sans-serif;-webkit-appearance:none;}
+
+/* ─── LAYOUT ─── */
+.app{display:flex;flex-direction:column;height:100%;height:100dvh;overflow:hidden;}
+.topbar{height:52px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 16px;gap:10px;flex-shrink:0;z-index:10;}
+.tb-title{font-family:'Fraunces',serif;font-size:16px;color:var(--ink);font-weight:400;flex:1;}
+.tb-icon{width:30px;height:30px;border-radius:8px;background:var(--wave);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;font-family:'Fraunces',serif;}
+.content{flex:1;overflow-y:auto;padding:14px 14px calc(70px + var(--safe-b));-webkit-overflow-scrolling:touch;}
+
+/* ─── BOTTOM NAV ─── */
+.bnav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);display:flex;padding:6px 4px calc(6px + var(--safe-b));z-index:100;}
+.bnav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;border:none;background:none;cursor:pointer;color:var(--ink3);transition:color 0.15s;position:relative;}
+.bnav-item.on{color:var(--ocean);}
+.bnav-item.on::after{content:'';position:absolute;top:-6px;left:25%;right:25%;height:2px;background:var(--wave);border-radius:1px;}
+.bnav-ic{font-size:18px;}
+.bnav-lbl{font-size:9px;font-weight:600;letter-spacing:0.3px;}
+.bnav-badge{position:absolute;top:2px;right:calc(50% - 16px);width:16px;height:16px;border-radius:50%;background:var(--rust);color:#fff;font-size:8px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+
+/* ─── CARDS ─── */
+.card{background:#fff;border-radius:var(--r);border:1px solid var(--line);margin-bottom:12px;overflow:hidden;}
+.ch{padding:12px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;}
+.ct{font-family:'Fraunces',serif;font-size:14px;font-weight:400;}
+.cb{padding:14px 16px;}
+
+/* ─── STATS ─── */
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.stat{background:#fff;border-radius:var(--r);border:1px solid var(--line);padding:14px;}
+.s-ic{font-size:18px;margin-bottom:6px;}
+.s-v{font-family:'Fraunces',serif;font-size:20px;font-weight:300;color:var(--ink);letter-spacing:-0.3px;}
+.s-l{font-size:10.5px;color:var(--ink3);margin-top:2px;}
+.s-n{font-size:10px;margin-top:4px;font-weight:500;}
+.up{color:var(--sage);}.dn{color:var(--rust);}
+
+/* ─── BUTTONS ─── */
+.btn{padding:10px 18px;border-radius:10px;border:none;cursor:pointer;font-size:13px;font-weight:600;transition:all 0.14s;display:inline-flex;align-items:center;gap:6px;justify-content:center;}
+.btn-p{background:var(--ocean);color:#fff;}.btn-s{background:var(--wave);color:#fff;}
+.btn-o{background:none;border:1.5px solid var(--line);color:var(--ink);}.btn-g{background:var(--sage);color:#fff;}
+.btn-d{background:var(--rust);color:#fff;}
+.btn-sm{padding:7px 14px;font-size:12px;border-radius:8px;}
+.btn-full{width:100%;}
+.fab{position:fixed;bottom:calc(76px + var(--safe-b));right:16px;width:50px;height:50px;border-radius:50%;background:var(--ocean);color:#fff;border:none;font-size:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(26,58,92,0.4);z-index:90;cursor:pointer;transition:transform 0.15s;}
+.fab:active{transform:scale(0.92);}
+
+/* ─── BADGE ─── */
+.badge{display:inline-flex;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.b-ok{background:var(--sage-bg);color:var(--sage);}
+.b-warn{background:var(--gold-bg);color:var(--gold);}
+.b-crit{background:var(--rust-bg);color:var(--rust);}
+.b-info{background:var(--foam);color:var(--wave);}
+
+/* ─── LIST ITEMS ─── */
+.li{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);}
+.li:last-child{border-bottom:none;}
+.li-av{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;flex-shrink:0;}
+.li-body{flex:1;min-width:0;}
+.li-title{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.li-sub{font-size:11px;color:var(--ink3);margin-top:1px;}
+.li-end{text-align:right;flex-shrink:0;}
+.li-val{font-family:'Fraunces',serif;font-size:16px;color:var(--ocean);}
+.li-meta{font-size:10px;color:var(--ink3);}
+
+/* ─── SCORE RING ─── */
+.score{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:13px;font-weight:400;flex-shrink:0;}
+
+/* ─── ALERT BOX ─── */
+.alert-box{border-radius:var(--r);border:2px solid rgba(192,88,58,0.2);background:#fff;margin-bottom:12px;overflow:hidden;}
+.alert-head{padding:10px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(192,88,58,0.1);}
+.alert-title{font-size:12px;font-weight:700;color:var(--rust);display:flex;align-items:center;gap:5px;}
+.alert-count{background:var(--rust);color:#fff;padding:2px 7px;border-radius:20px;font-size:10px;font-weight:700;}
+.alert-item{padding:10px 14px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.alert-item:last-child{border-bottom:none;}
+
+/* ─── FORM ─── */
+.fg{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;}
+.fg label{font-size:10px;font-weight:700;color:var(--ink2);text-transform:uppercase;letter-spacing:0.5px;}
+.fg input,.fg select,.fg textarea{padding:11px 14px;border:1.5px solid var(--line);border-radius:10px;font-size:14px;color:var(--ink);background:#fff;outline:none;transition:border-color 0.15s;width:100%;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--wave);}
+.fg textarea{resize:vertical;min-height:60px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+
+/* ─── MODAL (SHEET) ─── */
+.sheet-ov{position:fixed;inset:0;background:rgba(28,35,51,0.45);z-index:200;display:flex;align-items:flex-end;justify-content:center;backdrop-filter:blur(3px);}
+.sheet{background:#fff;border-radius:20px 20px 0 0;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;animation:slideUp 0.25s ease;padding-bottom:var(--safe-b);}
+.sheet-handle{width:36px;height:4px;border-radius:2px;background:var(--sand3);margin:10px auto 6px;}
+.sheet-head{padding:12px 18px 8px;display:flex;align-items:center;justify-content:space-between;}
+.sheet-title{font-family:'Fraunces',serif;font-size:18px;font-weight:400;}
+.sheet-close{width:28px;height:28px;border-radius:50%;border:none;background:var(--sand2);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.sheet-body{padding:6px 18px 20px;}
+@keyframes slideUp{from{transform:translateY(100%);}to{transform:translateY(0);}}
+
+/* ─── TABS ─── */
+.tabs{display:flex;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:12px;border-bottom:2px solid var(--line);}
+.tab{padding:8px 14px;border:none;background:none;cursor:pointer;font:600 12px 'DM Sans',sans-serif;color:var(--ink3);border-bottom:2px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all 0.12s;}
+.tab.on{color:var(--ocean);border-bottom-color:var(--ocean);}
+
+/* ─── TABLE ─── */
+.trow{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid var(--line);}
+.trow:last-child{border-bottom:none;}
+.trow:active{background:var(--foam);}
+
+/* ─── PROGRESS ─── */
+.prog{height:6px;background:var(--sand2);border-radius:3px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--wave),var(--sage));transition:width 0.5s ease;}
+
+/* ─── EMPTY ─── */
+.empty{text-align:center;padding:32px 20px;color:var(--ink3);}
+.empty-ic{font-size:36px;margin-bottom:10px;}
+.empty-t{font-family:'Fraunces',serif;font-size:16px;color:var(--ink);margin-bottom:4px;}
+
+/* ─── TOAST ─── */
+.toast{position:fixed;top:60px;left:50%;transform:translateX(-50%);background:var(--ocean);color:#fff;padding:10px 20px;border-radius:12px;font-size:13px;font-weight:500;box-shadow:0 8px 24px rgba(28,35,51,0.3);z-index:300;animation:slideDown 0.2s ease;display:flex;align-items:center;gap:6px;}
+@keyframes slideDown{from{opacity:0;transform:translate(-50%,-20px);}to{opacity:1;transform:translate(-50%,0);}}
+
+/* ─── ONBOARDING ─── */
+.ob{display:flex;flex-direction:column;align-items:center;padding:24px 16px;min-height:100%;min-height:100dvh;overflow-y:auto;background:var(--sand);}
+.ob-card{background:#fff;border-radius:20px;border:1px solid var(--line);width:100%;max-width:500px;padding:24px 20px;}
+.ob-title{font-family:'Fraunces',serif;font-size:22px;font-weight:300;margin-bottom:4px;}
+.ob-sub{font-size:12px;color:var(--ink3);margin-bottom:20px;}
+.ob-step{font-size:10px;font-weight:700;color:var(--ink3);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
+.prof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px;}
+.prof-card{border:1.5px solid var(--line);border-radius:12px;padding:12px 6px;cursor:pointer;text-align:center;transition:all 0.15s;background:#fff;-webkit-tap-highlight-color:transparent;}
+.prof-card:active,.prof-card.sel{border-color:var(--ocean);background:var(--foam);box-shadow:0 0 0 2px rgba(78,155,184,0.15);}
+.prof-emoji{font-size:22px;margin-bottom:3px;}
+.prof-name{font-size:10px;font-weight:600;line-height:1.3;}
+.prof-zh{font-size:9px;color:var(--ink3);margin-top:1px;}
+.ob-progress{display:flex;gap:6px;margin-bottom:24px;width:100%;max-width:500px;}
+.ob-dot{height:3px;border-radius:2px;flex:1;background:var(--sand2);transition:background 0.2s;}
+.ob-dot.done{background:var(--ocean);}
+.ob-dot.cur{background:var(--wave);}
+.staff-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px;}
+.staff-card{border:1.5px solid var(--line);border-radius:12px;padding:14px;cursor:pointer;text-align:center;transition:all 0.15s;background:#fff;}
+.staff-card.sel{border-color:var(--ocean);background:var(--foam);}
+.lang-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px;}
+.lang-card{border:1.5px solid var(--line);border-radius:10px;padding:10px 6px;cursor:pointer;text-align:center;transition:all 0.15s;background:#fff;}
+.lang-card.sel{border-color:var(--ocean);background:var(--foam);}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<script type="text/babel">
+const {useState,useMemo,useCallback} = React;
+
+// ─── CONFIG ───
+const TAUX = 95;
+let _id = 100;
+const nid = () => ++_id;
+const fmt = n => n.toLocaleString("fr-CH",{minimumFractionDigits:0,maximumFractionDigits:0});
+const fmtCHF = n => `CHF ${fmt(n)}`;
+const cn = (id, list) => list.find(c=>c.id===id)?.nom || "—";
+const ss = s => s.stock<=0?"Rupture":s.stock<s.min?"Critique":s.stock<s.min*1.5?"Faible":"OK";
+const sb = s => {const t=ss(s);return t==="OK"?"b-ok":t==="Faible"?"b-warn":"b-crit";};
+
+const PROFS = [
+  {id:"navire",emoji:"⚓",l:"Réparation navale",z:"船舶维修",m:["dashboard","taches","clients","factures","stock","heures","projets","calendrier"]},
+  {id:"artisan",emoji:"🔧",l:"Artisan",z:"手工业者",m:["dashboard","taches","clients","factures","stock","heures","projets","calendrier"]},
+  {id:"construction",emoji:"🏗️",l:"Construction",z:"建筑业",m:["dashboard","taches","clients","factures","stock","heures","projets","calendrier"]},
+  {id:"restauration",emoji:"🍽️",l:"Restauration",z:"餐饮业",m:["dashboard","taches","clients","factures","heures","calendrier"]},
+  {id:"medecin",emoji:"🏥",l:"Santé / TCM",z:"医疗健康",m:["dashboard","clients","factures","calendrier"]},
+  {id:"auto",emoji:"🚗",l:"Garage / Auto",z:"汽车维修",m:["dashboard","taches","clients","factures","stock","heures","calendrier"]},
+  {id:"assurance",emoji:"💼",l:"Courtier",z:"保险经纪",m:["dashboard","clients","factures","calendrier"]},
+  {id:"immo",emoji:"🏠",l:"Immobilier",z:"房产经纪",m:["dashboard","clients","factures","projets","calendrier"]},
+  {id:"commerce",emoji:"📦",l:"Commerce",z:"贸易进出口",m:["dashboard","clients","factures","stock","calendrier"]},
+  {id:"it",emoji:"💻",l:"IT / Digital",z:"IT/数字服务",m:["dashboard","clients","factures","projets","heures","calendrier"]},
+  {id:"conseil",emoji:"🎓",l:"Conseil",z:"咨询/培训",m:["dashboard","clients","factures","calendrier"]},
+  {id:"art",emoji:"🎨",l:"Art / Créatif",z:"艺术创意",m:["dashboard","clients","factures","projets","calendrier"]},
+];
+const CANTONS = ["Genève","Vaud","Valais","Fribourg","Neuchâtel","Berne","Zurich","Bâle","Lucerne","Autre"];
+const STAFF = [{id:"solo",l:"Solo"},{id:"1-3",l:"1–3"},{id:"4-10",l:"4–10"},{id:"10+",l:"10+"}];
+const LANGS = [{id:"fr",f:"🇫🇷",l:"Français"},{id:"zh",f:"🇨🇳",l:"中文"},{id:"de",f:"🇩🇪",l:"Deutsch"},{id:"en",f:"🇬🇧",l:"English"}];
+
+const NAV_ITEMS = [
+  {id:"dashboard",ic:"📊",l:"Accueil"},
+  {id:"taches",ic:"📋",l:"Bons"},
+  {id:"clients",ic:"👥",l:"Clients"},
+  {id:"factures",ic:"💰",l:"Factures"},
+  {id:"more",ic:"⋯",l:"Plus"},
+];
+
+// ─── INITIAL DATA ───
+const mkClients = () => [
+  {id:1,nom:"Nautique Léman SA",contact:"Pierre Dubois",tel:"079 123 45 67",type:"Entreprise",segment:"contrat",score:92,email:"p.dubois@nautique-leman.ch"},
+  {id:2,nom:"Marcel Favre",contact:"Marcel Favre",tel:"078 234 56 78",type:"Particulier",segment:"contrat",score:78,email:"marcel.favre@bluewin.ch"},
+  {id:3,nom:"Club Nautique Vevey",contact:"Sophie Martin",tel:"021 456 78 90",type:"Association",segment:"contrat",score:97,email:"sophie@cnvevey.ch"},
+  {id:4,nom:"Jean-Luc Perret",contact:"Jean-Luc Perret",tel:"076 345 67 89",type:"Particulier",segment:"ponctuel",score:28,email:"jl.perret@gmail.com"},
+  {id:5,nom:"Marina de Morges",contact:"Alex Blanc",tel:"021 678 90 12",type:"Entreprise",segment:"contrat",score:71,email:"alex@marina-morges.ch"},
+  {id:6,nom:"René Dupont",contact:"René Dupont",tel:"079 456 78 90",type:"Particulier",segment:"ponctuel",score:45,email:"rene.dupont@sunrise.ch"},
+];
+const mkTasks = () => [
+  {id:nid(),ref:"BT-042",title:"Révision moteur Volvo D2-55",cid:1,prio:"Haute",st:"En cours",date:"2026-03-13",h:14,cp:420,est:2450,cat:"Moteur"},
+  {id:nid(),ref:"BT-041",title:"Réparation hélice + arbre",cid:3,prio:"Normale",st:"En attente",date:"2026-03-11",h:5,cp:285,est:890,cat:"Hélice"},
+  {id:nid(),ref:"BT-040",title:"Maintenance hivernale",cid:2,prio:"Normale",st:"Terminé",date:"2026-03-08",h:8,cp:180,est:1200,cat:"Maintenance"},
+  {id:nid(),ref:"BT-039",title:"Remplacement pompe de cale",cid:5,prio:"Urgente",st:"Terminé",date:"2026-03-05",h:3,cp:95,est:650,cat:"Pompe"},
+  {id:nid(),ref:"BT-038",title:"Inspection carène",cid:3,prio:"Normale",st:"En cours",date:"2026-03-04",h:18,cp:520,est:3100,cat:"Carène"},
+  {id:nid(),ref:"BT-037",title:"Pose antifouling",cid:4,prio:"Basse",st:"En attente",date:"2026-03-14",h:4,cp:120,est:480,cat:"Carène"},
+  {id:nid(),ref:"BT-036",title:"Vidange moteur diesel",cid:1,prio:"Normale",st:"En attente",date:"2026-03-15",h:2,cp:48,est:320,cat:"Moteur"},
+];
+const mkFact = () => [
+  {id:nid(),num:"FAC-031",cid:3,date:"2026-03-10",ech:"2026-03-25",mnt:3100,st:"En attente",lignes:[{d:"Inspection carène",q:1,pu:3100}]},
+  {id:nid(),num:"FAC-030",cid:2,date:"2026-03-08",ech:"2026-03-23",mnt:1200,st:"Payée",lignes:[{d:"Maintenance hivernale",q:1,pu:1200}]},
+  {id:nid(),num:"FAC-029",cid:5,date:"2026-03-05",ech:"2026-03-20",mnt:650,st:"Payée",lignes:[{d:"Pompe de cale",q:1,pu:650}]},
+  {id:nid(),num:"FAC-028",cid:1,date:"2026-03-01",ech:"2026-03-16",mnt:1850,st:"En retard",lignes:[{d:"Révision moteur",q:1,pu:1850}]},
+];
+const mkStock = () => [
+  {id:nid(),ref:"MOT-VD255",nom:"Filtre huile Volvo D2-55",stock:8,min:5,prix:34.50},
+  {id:nid(),ref:"ANO-ZINC-L",nom:"Anode zinc grande",stock:3,min:10,prix:28.00},
+  {id:nid(),ref:"HEL-3B-14",nom:"Hélice tripale 14\"",stock:2,min:3,prix:285.00},
+  {id:nid(),ref:"IMP-JB18",nom:"Impulseur Jabsco",stock:12,min:6,prix:42.00},
+  {id:nid(),ref:"HUI-25W50",nom:"Huile marine 25W50 (5L)",stock:6,min:8,prix:48.00},
+];
+const mkHeures = () => [
+  {id:nid(),emp:"Julien Morel",date:"2026-03-13",h:8,ref:"BT-042",note:"Démontage moteur"},
+  {id:nid(),emp:"Théo Blanc",date:"2026-03-13",h:8,ref:"BT-040",note:"Maintenance hivernale"},
+  {id:nid(),emp:"Anaïs Perrin",date:"2026-03-13",h:7,ref:"BT-038",note:"Inspection carène"},
+  {id:nid(),emp:"Romain Favre",date:"2026-03-13",h:8,ref:"—",note:"Préparation matériel"},
+];
+const mkProj = () => [
+  {id:nid(),ref:"PRJ-001",title:"Refonte flotte Nautique Léman",cid:1,budget:18000,dep:11400,st:"En cours",av:63,ech:"2026-04-30"},
+  {id:nid(),ref:"PRJ-002",title:"Hivernage Club Vevey",cid:3,budget:8500,dep:8500,st:"Terminé",av:100,ech:"2026-02-28"},
+];
+
+// ─── COMPONENTS ───
+function Score({v}){const c=v>=70?"var(--sage)":v>=40?"var(--gold)":"var(--rust)";const bg=v>=70?"var(--sage-bg)":v>=40?"var(--gold-bg)":"var(--rust-bg)";return <div className="score" style={{background:bg,color:c}}>{v}</div>;}
+function Toast({msg}){return <div className="toast">✅ {msg}</div>;}
+
+// ─── ONBOARDING ───
+function Onboarding({onDone}){
+  const [step,setStep]=useState(1);
+  const [prof,setProf]=useState(null);
+  const [staff,setStaff]=useState(null);
+  const [canton,setCanton]=useState("");
+  const [lang,setLang]=useState("fr");
+  const ok=step===1?!!prof:step===2?!!staff:step===3?!!canton:true;
+
+  return(
+    <div className="ob">
+      <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:16,width:"100%",maxWidth:500}}>
+        <div className="tb-icon">A</div>
+        <div><div style={{fontFamily:"'Fraunces',serif",fontSize:17}}>AWB Pro</div><div style={{fontSize:11,color:"var(--ink3)"}}>Configuration · 设置</div></div>
+      </div>
+      <div className="ob-progress">{[1,2,3,4].map(s=><div key={s} className={`ob-dot ${s<step?"done":s===step?"cur":""}`}/>)}</div>
+      <div className="ob-card">
+        {step===1&&<>
+          <div className="ob-step">Étape 1/4</div>
+          <div className="ob-title">Votre métier ? 您的职业</div>
+          <div className="ob-sub">L'interface s'adaptera à votre activité</div>
+          <div className="prof-grid">{PROFS.map(p=><div key={p.id} className={`prof-card ${prof?.id===p.id?"sel":""}`} onClick={()=>setProf(p)}><div className="prof-emoji">{p.emoji}</div><div className="prof-name">{p.l}</div><div className="prof-zh">{p.z}</div></div>)}</div>
+        </>}
+        {step===2&&<>
+          <div className="ob-step">Étape 2/4</div>
+          <div className="ob-title">Employés ? 员工数</div>
+          <div className="ob-sub">Modules RH adaptés</div>
+          <div className="staff-grid">{STAFF.map(s=><div key={s.id} className={`staff-card ${staff===s.id?"sel":""}`} onClick={()=>setStaff(s.id)}>{s.l}</div>)}</div>
+        </>}
+        {step===3&&<>
+          <div className="ob-step">Étape 3/4</div>
+          <div className="ob-title">Canton ? 所在州</div>
+          <div className="ob-sub">Paramètres fiscaux</div>
+          <div className="fg"><select value={canton} onChange={e=>setCanton(e.target.value)} style={{fontSize:15}}><option value="">— Sélectionner —</option>{CANTONS.map(c=><option key={c}>{c}</option>)}</select></div>
+        </>}
+        {step===4&&<>
+          <div className="ob-step">Étape 4/4</div>
+          <div className="ob-title">Langue 语言</div>
+          <div className="ob-sub">Interface multilingue</div>
+          <div className="lang-grid">{LANGS.map(la=><div key={la.id} className={`lang-card ${lang===la.id?"sel":""}`} onClick={()=>setLang(la.id)}><div style={{fontSize:22}}>{la.f}</div><div style={{fontSize:11,fontWeight:600}}>{la.l}</div></div>)}</div>
+        </>}
+        <div style={{display:"flex",justifyContent:"space-between",marginTop:8}}>
+          {step>1?<button className="btn btn-o" onClick={()=>setStep(step-1)}>← Retour</button>:<div/>}
+          {step<4?<button className="btn btn-p" style={{opacity:ok?1:0.4}} onClick={()=>{if(ok) setStep(step+1);}}>Suivant →</button>
+            :<button className="btn btn-p" onClick={()=>onDone({prof})}>🚀 Lancer AWB</button>}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── DASHBOARD ───
+function Dash({clients,tasks,factures,stock,setView}){
+  const ca=factures.reduce((s,f)=>s+f.mnt,0);
+  const paid=factures.filter(f=>f.st==="Payée").reduce((s,f)=>s+f.mnt,0);
+  const late=factures.filter(f=>f.st==="En retard");
+  const active=tasks.filter(t=>t.st!=="Terminé");
+  const scrit=stock.filter(s=>s.stock<s.min);
+  const lowC=clients.filter(c=>c.score<50);
+
+  return(<div>
+    <div className="sg">
+      <div className="stat" onClick={()=>setView("factures")}><div className="s-ic">💰</div><div className="s-v">{fmtCHF(ca)}</div><div className="s-l">Chiffre d'affaires</div><div className="s-n up">{fmtCHF(paid)} encaissé</div></div>
+      <div className="stat" onClick={()=>setView("taches")}><div className="s-ic">📋</div><div className="s-v">{active.length}</div><div className="s-l">Bons en cours</div><div className="s-n">{tasks.filter(t=>t.st==="Terminé").length} terminés</div></div>
+      <div className="stat" onClick={()=>setView("clients")}><div className="s-ic">👥</div><div className="s-v">{clients.length}</div><div className="s-l">Clients</div><div className="s-n">{clients.filter(c=>c.segment==="contrat").length} contrats</div></div>
+      <div className="stat"><div className="s-ic">📦</div><div className="s-v">{scrit.length}</div><div className="s-l">Alertes stock</div><div className="s-n dn">{scrit.length?"Réappro!":"Tout OK"}</div></div>
+    </div>
+
+    {late.length>0&&<div className="alert-box">
+      <div className="alert-head"><div className="alert-title">⚠️ Factures en retard</div><div className="alert-count">{late.length}</div></div>
+      {late.map(f=><div className="alert-item" key={f.id}><div><div style={{fontWeight:600,fontSize:12}}>{f.num}</div><div style={{fontSize:10,color:"var(--ink3)"}}>{cn(f.cid,clients)} · {fmtCHF(f.mnt)}</div></div><span className="badge b-crit">En retard</span></div>)}
+    </div>}
+
+    <div className="card"><div className="ch"><span className="ct">Bons récents</span></div><div className="cb" style={{padding:0}}>
+      {tasks.slice(0,5).map(t=><div className="trow" key={t.id}>
+        <span className={`badge ${t.st==="Terminé"?"b-ok":t.st==="En cours"?"b-info":"b-warn"}`} style={{minWidth:44,justifyContent:"center",fontSize:9}}>{t.st==="En attente"?"Attente":t.st}</span>
+        <div style={{flex:1,minWidth:0}}><div className="li-title">{t.title}</div><div className="li-sub">{cn(t.cid,clients)}</div></div>
+        <div style={{fontWeight:600,fontSize:12,color:"var(--ocean)",flexShrink:0}}>{fmtCHF(t.est)}</div>
+      </div>)}
+    </div></div>
+
+    {lowC.length>0&&<div className="card"><div className="ch"><span className="ct">Clients à relancer</span></div><div className="cb" style={{padding:0}}>
+      {lowC.map(c=><div className="trow" key={c.id}><Score v={c.score}/><div style={{flex:1}}><div className="li-title">{c.nom}</div><div className="li-sub">{c.type}</div></div><span className="badge b-warn">Score {c.score}</span></div>)}
+    </div></div>}
+  </div>);
+}
+
+// ─── TASKS ───
+function Tasks({tasks,setTasks,clients,showToast}){
+  const [tab,setTab]=useState("Tous");
+  const [sheet,setSheet]=useState(null);
+  const [form,setForm]=useState({title:"",cid:"",prio:"Normale",h:0,cp:0,cat:"Moteur"});
+  const [sel,setSel]=useState(null);
+  const list=tab==="Tous"?tasks:tasks.filter(t=>t.st===tab);
+  const nextRef=`BT-${String(43+tasks.length).padStart(3,"0")}`;
+
+  function save(){
+    if(!form.title||!form.cid)return;
+    const est=Number(form.h)*TAUX+Number(form.cp);
+    if(sel){setTasks(p=>p.map(t=>t.id===sel.id?{...t,...form,cid:+form.cid,h:+form.h,cp:+form.cp,est}:t));}
+    else{setTasks(p=>[{id:nid(),ref:nextRef,st:"En attente",date:new Date().toISOString().slice(0,10),...form,cid:+form.cid,h:+form.h,cp:+form.cp,est},...p]);}
+    setSheet(null);showToast(sel?"Bon modifié":"Bon créé");
+  }
+  function chSt(id,st){setTasks(p=>p.map(t=>t.id===id?{...t,st}:t));showToast(`Statut → ${st}`);}
+  function edit(t){setSel(t);setForm({title:t.title,cid:String(t.cid),prio:t.prio,h:t.h,cp:t.cp,cat:t.cat});setSheet("form");}
+
+  return(<div>
+    <div className="tabs">{["Tous","En attente","En cours","Terminé"].map(t=><button key={t} className={`tab ${tab===t?"on":""}`} onClick={()=>setTab(t)}>{t==="En attente"?"Attente":t}</button>)}</div>
+    <div className="card"><div className="cb" style={{padding:0}}>
+      {list.length===0&&<div className="empty"><div className="empty-ic">📋</div><div className="empty-t">Aucun bon</div></div>}
+      {list.map(t=><div className="trow" key={t.id} onClick={()=>edit(t)} style={{cursor:"pointer"}}>
+        <div style={{flex:1,minWidth:0}}>
+          <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:3}}>
+            <span style={{fontFamily:"'DM Mono',monospace",fontSize:10,fontWeight:700,color:"var(--wave)"}}>{t.ref}</span>
+            <span className={`badge ${t.prio==="Urgente"?"b-crit":t.prio==="Haute"?"b-warn":"b-info"}`}>{t.prio}</span>
+          </div>
+          <div className="li-title">{t.title}</div>
+          <div className="li-sub">{cn(t.cid,clients)} · {t.h}h · {fmtCHF(t.est)}</div>
+        </div>
+        <div style={{display:"flex",flexDirection:"column",gap:4,alignItems:"flex-end"}}>
+          <span className={`badge ${t.st==="Terminé"?"b-ok":t.st==="En cours"?"b-info":"b-warn"}`}>{t.st}</span>
+          {t.st==="En attente"&&<button className="btn btn-s btn-sm" onClick={e=>{e.stopPropagation();chSt(t.id,"En cours");}}>▶</button>}
+          {t.st==="En cours"&&<button className="btn btn-g btn-sm" onClick={e=>{e.stopPropagation();chSt(t.id,"Terminé");}}>✓</button>}
+        </div>
+      </div>)}
+    </div></div>
+    <button className="fab" onClick={()=>{setSel(null);setForm({title:"",cid:"",prio:"Normale",h:0,cp:0,cat:"Moteur"});setSheet("form");}}>＋</button>
+
+    {sheet==="form"&&<div className="sheet-ov" onClick={()=>setSheet(null)}><div className="sheet" onClick={e=>e.stopPropagation()}>
+      <div className="sheet-handle"/>
+      <div className="sheet-head"><span className="sheet-title">{sel?"Modifier":"Nouveau bon"}</span><button className="sheet-close" onClick={()=>setSheet(null)}>✕</button></div>
+      <div className="sheet-body">
+        <div className="fg"><label>Travail</label><input value={form.title} onChange={e=>setForm({...form,title:e.target.value})} placeholder="Ex: Révision moteur"/></div>
+        <div className="form-row">
+          <div className="fg"><label>Client</label><select value={form.cid} onChange={e=>setForm({...form,cid:e.target.value})}><option value="">—</option>{clients.map(c=><option key={c.id} value={c.id}>{c.nom}</option>)}</select></div>
+          <div className="fg"><label>Priorité</label><select value={form.prio} onChange={e=>setForm({...form,prio:e.target.value})}><option>Basse</option><option>Normale</option><option>Haute</option><option>Urgente</option></select></div>
+        </div>
+        <div className="form-row">
+          <div className="fg"><label>Heures</label><input type="number" value={form.h} onChange={e=>setForm({...form,h:e.target.value})}/></div>
+          <div className="fg"><label>Pièces CHF</label><input type="number" value={form.cp} onChange={e=>setForm({...form,cp:e.target.value})}/></div>
+        </div>
+        {form.h>0&&<div style={{background:"var(--foam)",borderRadius:10,padding:12,marginBottom:12,textAlign:"center"}}>
+          <div style={{fontSize:10,color:"var(--ink3)"}}>Estimation</div>
+          <div style={{fontFamily:"'Fraunces',serif",fontSize:22,color:"var(--ocean)"}}>{fmtCHF(+form.h*TAUX+(+form.cp))}</div>
+        </div>}
+        <button className="btn btn-p btn-full" onClick={save}>{sel?"✓ Enregistrer":"＋ Créer le bon"}</button>
+      </div>
+    </div></div>}
+  </div>);
+}
+
+// ─── CLIENTS ───
+function Clients({clients,setClients,factures,tasks,showToast}){
+  const [tab,setTab]=useState("Tous");
+  const [sheet,setSheet]=useState(null);
+  const [sel,setSel]=useState(null);
+  const [form,setForm]=useState({nom:"",contact:"",tel:"",email:"",type:"Particulier",segment:"ponctuel"});
+  const contrats=clients.filter(c=>c.segment==="contrat");
+  const poncts=clients.filter(c=>c.segment==="ponctuel");
+  const alerts=clients.filter(c=>c.score<50);
+  const list=tab==="Tous"?clients:tab==="Contrats"?contrats:tab==="Ponctuels"?poncts:alerts;
+
+  function save(){
+    if(!form.nom)return;
+    if(sel){setClients(p=>p.map(c=>c.id===sel.id?{...c,...form}:c));}
+    else{setClients(p=>[...p,{id:nid(),score:50,...form}]);}
+    setSheet(null);showToast(sel?"Client modifié":"Client ajouté");
+  }
+  function edit(c){setSel(c);setForm({nom:c.nom,contact:c.contact,tel:c.tel,email:c.email||"",type:c.type,segment:c.segment});setSheet("form");}
+  const caC=id=>factures.filter(f=>f.cid===id).reduce((s,f)=>s+f.mnt,0);
+
+  return(<div>
+    <div className="tabs">{["Tous","Contrats","Ponctuels","Alertes"].map(t=><button key={t} className={`tab ${tab===t?"on":""}`} onClick={()=>setTab(t)}>{t}</button>)}</div>
+    {list.map(c=><div key={c.id} className="card" onClick={()=>edit(c)} style={{cursor:"pointer"}}><div style={{padding:14,display:"flex",gap:12,alignItems:"center"}}>
+      <Score v={c.score}/>
+      <div style={{flex:1,minWidth:0}}><div className="li-title">{c.nom}</div><div className="li-sub">{c.contact} · {c.tel}</div>
+        <div style={{marginTop:4,display:"flex",gap:4}}><span className={`badge ${c.segment==="contrat"?"b-info":"b-warn"}`}>{c.segment}</span><span className="badge b-ok">{c.type}</span></div>
+      </div>
+      <div className="li-end"><div className="li-val">{fmtCHF(caC(c.id))}</div></div>
+    </div></div>)}
+    {list.length===0&&<div className="empty"><div className="empty-ic">👥</div><div className="empty-t">Aucun client</div></div>}
+    <button className="fab" onClick={()=>{setSel(null);setForm({nom:"",contact:"",tel:"",email:"",type:"Particulier",segment:"ponctuel"});setSheet("form");}}>＋</button>
+
+    {sheet==="form"&&<div className="sheet-ov" onClick={()=>setSheet(null)}><div className="sheet" onClick={e=>e.stopPropagation()}>
+      <div className="sheet-handle"/>
+      <div className="sheet-head"><span className="sheet-title">{sel?"Modifier":"Nouveau client"}</span><button className="sheet-close" onClick={()=>setSheet(null)}>✕</button></div>
+      <div className="sheet-body">
+        <div className="fg"><label>Nom / Raison sociale</label><input value={form.nom} onChange={e=>setForm({...form,nom:e.target.value})}/></div>
+        <div className="fg"><label>Contact</label><input value={form.contact} onChange={e=>setForm({...form,contact:e.target.value})}/></div>
+        <div className="form-row">
+          <div className="fg"><label>Téléphone</label><input value={form.tel} onChange={e=>setForm({...form,tel:e.target.value})} type="tel"/></div>
+          <div className="fg"><label>Email</label><input value={form.email} onChange={e=>setForm({...form,email:e.target.value})} type="email"/></div>
+        </div>
+        <div className="form-row">
+          <div className="fg"><label>Type</label><select value={form.type} onChange={e=>setForm({...form,type:e.target.value})}><option>Particulier</option><option>Entreprise</option><option>Association</option></select></div>
+          <div className="fg"><label>Segment</label><select value={form.segment} onChange={e=>setForm({...form,segment:e.target.value})}><option value="contrat">Contrat</option><option value="ponctuel">Ponctuel</option></select></div>
+        </div>
+        <button className="btn btn-p btn-full" onClick={save}>{sel?"✓ Enregistrer":"＋ Ajouter"}</button>
+        {sel&&<button className="btn btn-d btn-full" style={{marginTop:8}} onClick={()=>{setClients(p=>p.filter(c=>c.id!==sel.id));setSheet(null);showToast("Client supprimé");}}>🗑 Supprimer</button>}
+      </div>
+    </div></div>}
+  </div>);
+}
+
+// ─── FACTURES ───
+function Factures({factures,setFactures,clients,tasks,showToast}){
+  const [tab,setTab]=useState("Toutes");
+  const [sheet,setSheet]=useState(null);
+  const [form,setForm]=useState({cid:"",lignes:[{d:"",q:1,pu:0}]});
+  const list=tab==="Toutes"?factures:factures.filter(f=>f.st===tab);
+  const nextNum=`FAC-${String(32+factures.length).padStart(3,"0")}`;
+  const total=form.lignes.reduce((s,l)=>s+l.q*l.pu,0);
+
+  function save(){
+    if(!form.cid||total<=0)return;
+    const today=new Date().toISOString().slice(0,10);
+    const ech=new Date(Date.now()+15*86400000).toISOString().slice(0,10);
+    setFactures(p=>[{id:nid(),num:nextNum,cid:+form.cid,date:today,ech,mnt:total,st:"En attente",lignes:form.lignes},...p]);
+    setSheet(null);showToast("Facture créée");
+  }
+  function markPaid(id){setFactures(p=>p.map(f=>f.id===id?{...f,st:"Payée"}:f));showToast("Marquée payée");}
+  function fromTask(t){setForm({cid:String(t.cid),lignes:[{d:t.title,q:1,pu:t.est}]});setSheet("form");}
+  function updLine(i,k,v){const nl=[...form.lignes];nl[i]={...nl[i],[k]:v};setForm({...form,lignes:nl});}
+
+  return(<div>
+    <div className="sg" style={{gridTemplateColumns:"repeat(3,1fr)"}}>
+      <div className="stat"><div className="s-v" style={{fontSize:16}}>{fmtCHF(factures.reduce((s,f)=>s+f.mnt,0))}</div><div className="s-l">Total</div></div>
+      <div className="stat"><div className="s-v" style={{fontSize:16,color:"var(--sage)"}}>{fmtCHF(factures.filter(f=>f.st==="Payée").reduce((s,f)=>s+f.mnt,0))}</div><div className="s-l">Encaissé</div></div>
+      <div className="stat"><div className="s-v" style={{fontSize:16,color:"var(--rust)"}}>{fmtCHF(factures.filter(f=>f.st==="En retard").reduce((s,f)=>s+f.mnt,0))}</div><div className="s-l">En retard</div></div>
+    </div>
+    <div className="tabs">{["Toutes","En attente","Payée","En retard"].map(t=><button key={t} className={`tab ${tab===t?"on":""}`} onClick={()=>setTab(t)}>{t}</button>)}</div>
+    <div className="card"><div className="cb" style={{padding:0}}>
+      {list.length===0&&<div className="empty"><div className="empty-ic">💰</div><div className="empty-t">Aucune facture</div></div>}
+      {list.map(f=><div className="trow" key={f.id}>
+        <div style={{flex:1,minWidth:0}}>
+          <div style={{display:"flex",alignItems:"center",gap:6}}><span style={{fontFamily:"'DM Mono',monospace",fontSize:10,fontWeight:700,color:"var(--wave)"}}>{f.num}</span><span className={`badge ${f.st==="Payée"?"b-ok":f.st==="En retard"?"b-crit":"b-warn"}`}>{f.st}</span></div>
+          <div className="li-title" style={{marginTop:3}}>{cn(f.cid,clients)}</div>
+          <div className="li-sub">Éch. {f.ech}</div>
+        </div>
+        <div style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:4}}>
+          <div style={{fontFamily:"'Fraunces',serif",fontSize:17,color:"var(--ocean)"}}>{fmtCHF(f.mnt)}</div>
+          {f.st!=="Payée"&&<button className="btn btn-g btn-sm" onClick={()=>markPaid(f.id)}>✓ Payée</button>}
+        </div>
+      </div>)}
+    </div></div>
+
+    <div style={{display:"flex",gap:8,marginBottom:14}}>
+      <button className="btn btn-p" style={{flex:1}} onClick={()=>{setForm({cid:"",lignes:[{d:"",q:1,pu:0}]});setSheet("form");}}>＋ Nouvelle facture</button>
+      <button className="btn btn-o" style={{flex:1}} onClick={()=>setSheet("fromTask")}>📋 Depuis un bon</button>
+    </div>
+
+    {sheet==="form"&&<div className="sheet-ov" onClick={()=>setSheet(null)}><div className="sheet" onClick={e=>e.stopPropagation()}>
+      <div className="sheet-handle"/>
+      <div className="sheet-head"><span className="sheet-title">Nouvelle facture</span><button className="sheet-close" onClick={()=>setSheet(null)}>✕</button></div>
+      <div className="sheet-body">
+        <div className="fg"><label>Client</label><select value={form.cid} onChange={e=>setForm({...form,cid:e.target.value})}><option value="">—</option>{clients.map(c=><option key={c.id} value={c.id}>{c.nom}</option>)}</select></div>
+        {form.lignes.map((l,i)=><div key={i} style={{display:"grid",gridTemplateColumns:"2fr 1fr 1fr",gap:6,marginBottom:6}}>
+          <input placeholder="Description" value={l.d} onChange={e=>updLine(i,"d",e.target.value)} style={{padding:10,border:"1.5px solid var(--line)",borderRadius:8,fontSize:13}}/>
+          <input type="number" placeholder="Qté" value={l.q} onChange={e=>updLine(i,"q",+e.target.value)} style={{padding:10,border:"1.5px solid var(--line)",borderRadius:8,fontSize:13}}/>
+          <input type="number" placeholder="Prix" value={l.pu} onChange={e=>updLine(i,"pu",+e.target.value)} style={{padding:10,border:"1.5px solid var(--line)",borderRadius:8,fontSize:13}}/>
+        </div>)}
+        <button className="btn btn-o btn-sm" style={{marginBottom:12}} onClick={()=>setForm({...form,lignes:[...form.lignes,{d:"",q:1,pu:0}]})}>＋ Ligne</button>
+        <div style={{background:"var(--foam)",borderRadius:10,padding:12,marginBottom:14,textAlign:"center"}}>
+          <div style={{fontFamily:"'Fraunces',serif",fontSize:24,color:"var(--ocean)"}}>{fmtCHF(total)}</div>
+          <div style={{fontSize:10,color:"var(--ink3)"}}>HT · TVA 8.1% non incluse</div>
+        </div>
+        <button className="btn btn-p btn-full" onClick={save}>📄 Créer la facture</button>
+      </div>
+    </div></div>}
+
+    {sheet==="fromTask"&&<div className="sheet-ov" onClick={()=>setSheet(null)}><div className="sheet" onClick={e=>e.stopPropagation()}>
+      <div className="sheet-handle"/>
+      <div className="sheet-head"><span className="sheet-title">Facturer un bon</span><button className="sheet-close" onClick={()=>setSheet(null)}>✕</button></div>
+      <div className="sheet-body">
+        {tasks.filter(t=>t.st==="Terminé").map(t=><div key={t.id} style={{padding:14,border:"1.5px solid var(--line)",borderRadius:12,marginBottom:8,cursor:"pointer",display:"flex",justifyContent:"space-between",alignItems:"center"}} onClick={()=>fromTask(t)}>
+          <div><div style={{fontWeight:600,fontSize:13}}>{t.ref} — {t.title}</div><div style={{fontSize:11,color:"var(--ink3)"}}>{cn(t.cid,clients)}</div></div>
+          <div style={{fontWeight:700,color:"var(--ocean)"}}>{fmtCHF(t.est)}</div>
+        </div>)}
+        {tasks.filter(t=>t.st==="Terminé").length===0&&<div className="empty"><div className="empty-ic">📋</div><div className="empty-t">Aucun bon terminé</div></div>}
+      </div>
+    </div></div>}
+  </div>);
+}
+
+// ─── MORE MENU ───
+function MoreMenu({stock,setStock,heures,setHeures,projets,setProjets,clients,showToast}){
+  const [view,setView]=useState(null);
+  const emps=["Julien Morel","Théo Blanc","Anaïs Perrin","Romain Favre"];
+
+  // Stock sub-view
+  function StockView(){
+    return(<div>
+      <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:12}}><button className="btn btn-o btn-sm" onClick={()=>setView(null)}>← Retour</button><span className="ct">📦 Stock</span></div>
+      <div className="sg" style={{gridTemplateColumns:"repeat(3,1fr)"}}>
+        <div className="stat"><div className="s-v" style={{fontSize:16}}>{stock.length}</div><div className="s-l">Articles</div></div>
+        <div className="stat"><div className="s-v" style={{fontSize:16,color:"var(--rust)"}}>{stock.filter(s=>s.stock<s.min).length}</div><div className="s-l">Alertes</div></div>
+        <div className="stat"><div className="s-v" style={{fontSize:14}}>{fmtCHF(stock.reduce((s,i)=>s+i.stock*i.prix,0))}</div><div className="s-l">Valeur</div></div>
+      </div>
+      <div className="card"><div className="cb" style={{padding:0}}>
+        {stock.map(s=><div className="trow" key={s.id}>
+          <div style={{flex:1,minWidth:0}}>
+            <div className="li-title">{s.nom}</div>
+            <div className="li-sub">{s.ref} · {fmtCHF(s.prix)}/u</div>
+          </div>
+          <div style={{display:"flex",alignItems:"center",gap:6}}>
+            <button className="btn btn-o btn-sm" onClick={()=>setStock(p=>p.map(x=>x.id===s.id?{...x,stock:Math.max(0,x.stock-1)}:x))}>−</button>
+            <span style={{fontWeight:700,minWidth:24,textAlign:"center"}}>{s.stock}</span>
+            <button className="btn btn-s btn-sm" onClick={()=>setStock(p=>p.map(x=>x.id===s.id?{...x,stock:x.stock+1}:x))}>+</button>
+          </div>
+          <span className={`badge ${sb(s)}`}>{ss(s)}</span>
+        </div>)}
+      </div></div>
+    </div>);
+  }
+
+  // Heures sub-view
+  function HeuresView(){
+    const tot=heures.reduce((s,h)=>s+h.h,0);
+    return(<div>
+      <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:12}}><button className="btn btn-o btn-sm" onClick={()=>setView(null)}>← Retour</button><span className="ct">⏱️ Heures ({tot}h total)</span></div>
+      <div className="card"><div className="cb" style={{padding:0}}>
+        {heures.map(h=><div className="trow" key={h.id}>
+          <div style={{flex:1}}><div className="li-title">{h.emp}</div><div className="li-sub">{h.date} · {h.ref} · {h.note}</div></div>
+          <span style={{fontWeight:700,color:"var(--ocean)"}}>{h.h}h</span>
+        </div>)}
+      </div></div>
+    </div>);
+  }
+
+  // Projets sub-view
+  function ProjetsView(){
+    return(<div>
+      <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:12}}><button className="btn btn-o btn-sm" onClick={()=>setView(null)}>← Retour</button><span className="ct">🏗️ Projets</span></div>
+      {projets.map(p=><div key={p.id} className="card"><div style={{padding:14}}>
+        <div style={{display:"flex",justifyContent:"space-between",marginBottom:6}}>
+          <div><span style={{fontFamily:"'DM Mono',monospace",fontSize:10,color:"var(--wave)",fontWeight:700}}>{p.ref}</span><div style={{fontWeight:600,fontSize:13,marginTop:2}}>{p.title}</div><div className="li-sub">{cn(p.cid,clients)}</div></div>
+          <span className={`badge ${p.st==="Terminé"?"b-ok":p.st==="En cours"?"b-info":"b-warn"}`}>{p.st}</span>
+        </div>
+        <div style={{display:"flex",justifyContent:"space-between",fontSize:11,color:"var(--ink3)",marginBottom:6}}><span>Budget {fmtCHF(p.budget)}</span><span>Dépensé {fmtCHF(p.dep)}</span></div>
+        <div className="prog"><div className="prog-fill" style={{width:`${p.av}%`}}/></div>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:6}}>
+          <span style={{fontSize:12,fontWeight:600,color:"var(--ocean)"}}>{p.av}%</span>
+          <div style={{display:"flex",gap:4}}>
+            <button className="btn btn-o btn-sm" onClick={()=>setProjets(pr=>pr.map(x=>x.id===p.id?{...x,av:Math.max(0,x.av-10),st:x.av-10<=0?"Planifié":"En cours"}:x))}>−10</button>
+            <button className="btn btn-s btn-sm" onClick={()=>setProjets(pr=>pr.map(x=>x.id===p.id?{...x,av:Math.min(100,x.av+10),st:x.av+10>=100?"Terminé":"En cours"}:x))}>+10</button>
+          </div>
+        </div>
+      </div></div>)}
+    </div>);
+  }
+
+  if(view==="stock") return <StockView/>;
+  if(view==="heures") return <HeuresView/>;
+  if(view==="projets") return <ProjetsView/>;
+
+  // Main menu
+  const menuItems = [
+    {id:"stock",ic:"📦",l:"Stock & Inventaire",sub:`${stock.filter(s=>s.stock<s.min).length} alertes`,badge:stock.filter(s=>s.stock<s.min).length},
+    {id:"heures",ic:"⏱️",l:"Suivi des heures",sub:`${heures.reduce((s,h)=>s+h.h,0)}h enregistrées`},
+    {id:"projets",ic:"🏗️",l:"Projets",sub:`${projets.filter(p=>p.st==="En cours").length} en cours`},
+  ];
+  return(<div>
+    <div className="card"><div className="ch"><span className="ct">Modules supplémentaires</span></div><div className="cb" style={{padding:0}}>
+      {menuItems.map(m=><div key={m.id} className="trow" style={{cursor:"pointer"}} onClick={()=>setView(m.id)}>
+        <div style={{fontSize:24,width:40,textAlign:"center"}}>{m.ic}</div>
+        <div style={{flex:1}}><div className="li-title">{m.l}</div><div className="li-sub">{m.sub}</div></div>
+        {m.badge>0&&<span className="badge b-crit">{m.badge}</span>}
+        <span style={{color:"var(--ink3)"}}>›</span>
+      </div>)}
+    </div></div>
+    <div className="card">
+      <div className="ch"><span className="ct">Sécurité & Conformité</span></div>
+      <div className="cb">
+        <div style={{display:"flex",flexWrap:"wrap",gap:6}}>
+          {["🇨🇭 Données en Suisse","🔐 AES-256","✅ Conforme nLPD"].map((t,i)=><span key={i} className="badge b-info" style={{padding:"6px 12px"}}>{t}</span>)}
+        </div>
+        <div style={{fontSize:11,color:"var(--ink3)",marginTop:10}}>AWB Pro v15 · mars 2026 · Cloud Infomaniak Suisse</div>
+      </div>
+    </div>
+  </div>);
+}
+
+// ═══ MAIN APP ═══
+function AWB(){
+  const [onboarded,setOnboarded]=useState(false);
+  const [profile,setProfile]=useState(null);
+  const [view,setView]=useState("dashboard");
+  const [toast,setToast]=useState(null);
+
+  const [clients,setClients]=useState(mkClients);
+  const [tasks,setTasks]=useState(mkTasks);
+  const [factures,setFactures]=useState(mkFact);
+  const [stock,setStock]=useState(mkStock);
+  const [heures,setHeures]=useState(mkHeures);
+  const [projets,setProjets]=useState(mkProj);
+
+  const showToast=useCallback(msg=>{setToast(msg);setTimeout(()=>setToast(null),2200);},[]);
+
+  if(!onboarded) return <Onboarding onDone={p=>{setProfile(p);setOnboarded(true);}}/>;
+
+  const titles={dashboard:"Tableau de bord",taches:"Bons de travail",clients:"Clients",factures:"Factures",more:"Plus"};
+  const lateCount=factures.filter(f=>f.st==="En retard").length;
+
+  return(<div className="app">
+    <div className="topbar">
+      <div className="tb-icon">{profile?.prof?.emoji||"A"}</div>
+      <span className="tb-title">{titles[view]||"AWB Pro"}</span>
+      <span style={{fontSize:10,color:"var(--ink3)"}}>18.03.26</span>
+    </div>
+    <div className="content">
+      {view==="dashboard"&&<Dash clients={clients} tasks={tasks} factures={factures} stock={stock} setView={setView}/>}
+      {view==="taches"&&<Tasks tasks={tasks} setTasks={setTasks} clients={clients} showToast={showToast}/>}
+      {view==="clients"&&<Clients clients={clients} setClients={setClients} factures={factures} tasks={tasks} showToast={showToast}/>}
+      {view==="factures"&&<Factures factures={factures} setFactures={setFactures} clients={clients} tasks={tasks} showToast={showToast}/>}
+      {view==="more"&&<MoreMenu stock={stock} setStock={setStock} heures={heures} setHeures={setHeures} projets={projets} setProjets={setProjets} clients={clients} showToast={showToast}/>}
+    </div>
+    <nav className="bnav">
+      {NAV_ITEMS.map(n=><button key={n.id} className={`bnav-item ${view===n.id?"on":""}`} onClick={()=>setView(n.id)}>
+        <span className="bnav-ic">{n.ic}</span>
+        <span className="bnav-lbl">{n.l}</span>
+        {n.id==="factures"&&lateCount>0&&<span className="bnav-badge">{lateCount}</span>}
+      </button>)}
+    </nav>
+    {toast&&<Toast msg={toast}/>}
+  </div>);
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<AWB/>);
+</script>
+</body>
+</html>
